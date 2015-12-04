@@ -1,0 +1,135 @@
+
+/* ---------------------------------------------------------------------- */
+/*	Color Styling
+/* ---------------------------------------------------------------------- */
+
+/* Color Default */
+
+.color .cls_nav_wrapper > ul > li.active > a,
+.color .cls_nav_wrapper > ul > li:hover > a,
+.color .cls_nav_wrapper > ul > li > ul > li:hover > a, 
+.color .cls_nav_wrapper > ul > li > ul.sub-menu > li:hover > a,
+.color .cls_nav_wrapper > ul > li > ul > li > ul > li:hover > a, 
+.color .cls_nav_wrapper > ul > li > ul.sub-menu > li > ul.sub-menu > li > a:hover,
+.color .mega-menu-wrapper ul li a:hover,
+.color .mb-slider .mb-panel:hover .mb-inside,
+.color .footer .widget.widget_twitter_feed ul li .content p,
+.color .products .product-info h3 a:hover,
+.color .cls_service_iconr > .icon > i,
+.color .cls_heading label,
+.color .business_text h1 label,
+.color .business_text a.buy_theme,
+.color .feature_icon span,
+.color .cls_feature_div a.cls_btn,
+.color .service_div span,
+.color .ct_highlight,
+.color .post_date h3,
+.color .post_data .post_meta h4:hover,
+.color .theme_color,
+.color .cls_video_wrapper .cls_feature_div:hover .feature_icon span,
+.color .features_detail li:after,
+.color .features_detail a.feature_btn,
+.color .process_content:after,
+.color .process_detail h4,
+.color .team_detail .cls_social > ul > li > a,
+.color .post_content .post_read_more,
+.color .single_post_pagination ul li a:hover,
+.color .comment-form-wrapper input[type="submit"]:focus, 
+.color .comment-form-wrapper input[type="submit"]:hover,
+.color .faq-tabs .tab-wrapper ul li a.active, 
+.color .faq-tabs .tab-wrapper ul li a:hover,
+.color .cls_contact_form input.cls_submit,
+.color .portfolio_single_content .port_launch_project
+{
+	color: #99a4bd;
+}
+
+
+/* Background Color */
+
+.color .header_style3 .header_top ,
+.color .header_style5 .header_top,
+.color .header_style7 .header_top,
+.color .cls_social > ul > li > a:hover,
+.color #style-switcher h2,
+.color #style-switcher h2 a,
+.color #reset button,
+.color .mb-slider .mb-panel.current .mb-inside,
+.color .cls_service > ul > li > .icon > span:after,
+.color .slider_purchase_now:after,
+.color .products .product-image .product-image-overlay .add_to_cart button.add_to_cart_button,
+.color .service_div span:after,
+.color .owl-theme .owl-dots .owl-dot.active span, 
+.color .owl-theme .owl-dots .owl-dot:hover span,
+.color .post_video .video_overlay #playvideo:after,
+.color .pricing_heading,
+.color .pricing_table a.price_submit,
+.color .pricing_table.pricing_active ul,
+.color .pricing_table.pricing_active .pricing_tabel_button,
+.color .process_icon span,
+.color .post_content .post_read_more:hover,
+.color .widget.widget_tag_cloud a:hover,
+.color .post_pagination ul li a:hover,
+.color .label-theme,
+.color.woocommerce div.product div.summary .single_add_to_cart_button,
+.color .cls_btn_color,
+.color .faq-tabs .panel-heading.active .panel-title > a > i,
+.color .portfolio_single_content .port_launch_project:hover,
+.color .shortcode_accordion .panel-default > .panel-heading.active,
+.color .shortcode_accordion .panel-title > a > i,
+.color .progress-bar,
+.color .cls_list li:before
+{
+	background-color: #99a4bd; 
+}
+
+
+/*transparent background color*/
+.color .footer .widget.widget_recent_portfolio ul li .footer_project_overlay,
+.color .portfolio_img_overlay,
+.color .post_image .post_image_overlay
+{
+	background-color: rgba(153, 164, 189, 0.90);
+}
+
+
+
+/* Border Color */
+
+.color .portfolioFilter a.current,
+.color .portfolioFilter a:hover,
+.color .business_text a.buy_theme,
+.color .cls_feature_div a.cls_btn,
+.color .service_div span,
+.color .cls_video_wrapper .feature_icon span,
+.color .pricing_table a.price_submit,
+.color .features_detail a.feature_btn,
+.color .post_content .post_read_more,
+.color .comment-form-wrapper input[type="submit"]:focus, 
+.color .comment-form-wrapper input[type="submit"]:hover,
+.color .cls_btn_color,
+.color .cls_contact_form input.cls_submit,
+.color .portfolio_single_content .port_launch_project
+{ 
+	border-color: #99a4bd; 
+}
+
+.color .process_icon span:after,
+.color blockquote
+{
+	border-left-color: #99a4bd; 
+}
+
+.color .process_icon:after,
+.color .faq-tabs .tab-wrapper ul li a.active, 
+.color .faq-tabs .tab-wrapper ul li a:hover
+{
+	border-bottom-color: #99a4bd; 
+}
+
+/* Selection */ 
+
+
+.color ::-moz-selection	{ background-color: #99a4bd; } 
+.color ::selection		{ background-color: #99a4bd; }
+.color .highlight			{ background-color: #99a4bd; }
