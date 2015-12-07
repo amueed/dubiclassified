@@ -11,6 +11,8 @@
     </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="MobileOptimized" content="320">
+    <!--Fav Icon-->
+    <link rel="icon" type="image/ico" href="images/favicon.ico"/>
     <link href="css/main.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="css/colors/default.css" id="colors" />
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>

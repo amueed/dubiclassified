@@ -4,10 +4,16 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Dubbizle | Classified</title>
+    <%--<title>Dubbizle | Classified</title>--%>
+    <title>
+        <asp:Literal ID="TabTitle" runat="server"></asp:Literal>
+    </title>
+
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="MobileOptimized" content="320" />
+
+    <link rel="icon" type="image/ico" href="images/favicon.ico" />
 
     <link href="css/main.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="css/colors/default.css" id="colors" />
@@ -29,8 +35,8 @@
                                 </div>
                                 <div class="top-right">
                                     <ul>
-                                        <li><a href="#">Sign In</a></li>
-                                        <li><a href="#">Register</a></li>
+                                        <li><a href="UserLogin.aspx">Sign In</a></li>
+                                        <li><a href="SignUp.aspx">Register</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -43,8 +49,11 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-3">
                             <div class="r">
-                                <a href="index-2.html" class="cls_logo">
-                                    <img src="images/logo.jpg" alt="cls logo" />
+                                <a href="MainPage.aspx" class="cls_logo">
+                                    <%--<img src="images/logo.jpg" alt="cls logo" />--%>
+                                    <h3>
+                                        <asp:Literal ID="WebTitle" runat="server"></asp:Literal>
+                                    </h3>
                                 </a>
                             </div>
                         </div>
