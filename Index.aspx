@@ -5,7 +5,10 @@
 <html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
-    <title>Market</title>
+    <%--<title>Market</title>--%>
+    <title>
+        <asp:Literal ID="TabTitle" runat="server"></asp:Literal>
+    </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="MobileOptimized" content="320">
     <link href="css/main.css" rel="stylesheet" type="text/css" />
@@ -14,13 +17,22 @@
     <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
 </head>
 <body>
+    <!--Data Source for Locations-->
+    <asp:SqlDataSource ID="sdsLocations" runat="server" ConnectionString="<%$ ConnectionStrings:CS %>" SelectCommand="SELECT [location_id],[location_name] FROM locations" SelectCommandType="Text"></asp:SqlDataSource>
+
     <!--main wrapper start-->
     <div class="section first">
         <div class="container">
             <div class="row">
                 <div class="title1">
                     <h1>Website Name</h1>
+                    <h1>
+                        <asp:Literal ID="WebTitle" runat="server"></asp:Literal>
+                    </h1>
                     <h4>The best place to buy a house, sell a car or find a job in UAE</h4>
+                    <h4>
+                        <asp:Literal ID="WebDesc" runat="server"></asp:Literal>
+                    </h4>
                 </div>
             </div>
         </div>
@@ -30,14 +42,20 @@
             <div class="container">
                 <div class="row">
                     <ul>
-                        <li><a href="#">Abu Dhabi</a></li>
+                        <%--<li><a href="#">Abu Dhabi</a></li>
                         <li><a href="#">Ajman </a></li>
                         <li><a href="#">Al Ain</a></li>
                         <li><a href="#">Dubai</a></li>
                         <li><a href="#">Fujairah</a></li>
                         <li><a href="#">Ras al Khaimah</a> </li>
                         <li><a href="#">Sharjah</a> </li>
-                        <li><a href="#">Umm al Quwain</a></li>
+                        <li><a href="#">Umm al Quwain</a></li>--%>
+                        <asp:Repeater ID="Repeater1" runat="server" DataSourceID="sdsLocations">
+                            <ItemTemplate>
+                                <li><a href="MainPage.aspx?loc=<%#Eval("location_id")%>"><%#Eval("location_name")%></a></li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+
                     </ul>
                 </div>
             </div>
@@ -55,7 +73,20 @@
         <div class="row">
             <div class="banner4">
                 <ul>
-                    <li>
+                    <asp:Repeater ID="Repeater2" runat="server" DataSourceID="sdsLocations">
+                        <ItemTemplate>
+                            <li>
+                                <a href="MainPage.aspx?loc=<%#Eval("location_id")%>">
+                                    <span>
+                                        <img src="images/burji.jpg">
+                                    </span>
+                                    <%#Eval("location_name")%>
+                                </a>
+                            </li>
+                        </ItemTemplate>
+                    </asp:Repeater>
+
+                    <%-- <li>
                         <span>
                             <img src="images/burji.jpg"></span>
                         <a href="#">
@@ -103,28 +134,7 @@
                         <a href="#">
                             <p>Dubhi</p>
                         </a>
-                    </li>
-                    <li>
-                        <span>
-                            <img src="images/oman.jpg"></span>
-                        <a href="#">
-                            <p>Oman</p>
-                        </a>
-                    </li>
-                    <li>
-                        <span>
-                            <img src="images/bahrain.jpg"></span>
-                        <a href="#">
-                            <p>Bahrain</p>
-                        </a>
-                    </li>
-                    <li>
-                        <span>
-                            <img src="images/qatar.jpg"></span>
-                        <a href="#">
-                            <p>Qatar</p>
-                        </a>
-                    </li>
+                    </li>--%>
                 </ul>
             </div>
         </div>
