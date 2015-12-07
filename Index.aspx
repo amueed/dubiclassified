@@ -18,18 +18,17 @@
 </head>
 <body>
     <!--Data Source for Locations-->
-    <asp:SqlDataSource ID="sdsLocations" runat="server" ConnectionString="<%$ ConnectionStrings:CS %>" SelectCommand="SELECT [location_id],[location_name] FROM locations" SelectCommandType="Text"></asp:SqlDataSource>
-
+    <asp:SqlDataSource ID="sdsLocations" runat="server" ConnectionString="<%$ ConnectionStrings:CS %>" SelectCommand="SELECT UPPER([location_id]) [location_id],UPPER([location_name]) [location_name] FROM locations" SelectCommandType="Text"></asp:SqlDataSource>
     <!--main wrapper start-->
     <div class="section first">
         <div class="container">
             <div class="row">
                 <div class="title1">
-                    <h1>Website Name</h1>
+                    <%--<h1>Website Name</h1>--%>
                     <h1>
                         <asp:Literal ID="WebTitle" runat="server"></asp:Literal>
                     </h1>
-                    <h4>The best place to buy a house, sell a car or find a job in UAE</h4>
+                    <%--<h4>The best place to buy a house, sell a car or find a job in UAE</h4>--%>
                     <h4>
                         <asp:Literal ID="WebDesc" runat="server"></asp:Literal>
                     </h4>
