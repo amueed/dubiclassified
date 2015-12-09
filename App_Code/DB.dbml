@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dubizzle" Class="DBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=mc-91;Initial Catalog=dubizzle;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="dubizzleConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.categories" Member="categories">
+    <Type Name="category">
+      <Column Name="category_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="category_name" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="category_photo" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="created_by" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="created_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="modified_by" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="modified_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="deleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="parent_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.locations" Member="locations">
+    <Type Name="location">
+      <Column Name="location_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="location_name" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="location_photo" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="created_by" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="created_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="modified_by" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="modified_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="deleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.web_config" Member="web_configs">
+    <Type Name="web_config">
+      <Column Name="config_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="config_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="config_val" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
