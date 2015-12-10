@@ -9,14 +9,13 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <lable>Category Name</lable>
+            <asp:Label ID="Label1" runat="server" Text="Category Name"></asp:Label>
             <input id="txtCategoryName" type="text" runat="server" />
             <br />
-            <lable>Category Photo</lable>
-            <input id="txtCategoryPhoto" type="text" runat="server" />
-            <input id="CategoryPhoto" type="file" runat="server" />
+            <asp:Label ID="Label2" runat="server" Text="Category Photo"></asp:Label>
+            <asp:FileUpload ID="FileUpload1" runat="server" />
             <br />
-            <input type="button" value="Save" />
+            <asp:Button ID="Button1" runat="server" Text="Save" />
             <br />
             <br />
             <br />

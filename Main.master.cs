@@ -13,13 +13,14 @@ public partial class Main : System.Web.UI.MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        LoadWebConfig();
         //try
         //{
         //    if (Request.Cookies["UserLocation"].Value == null)
         //    {
         //        Response.Redirect("~/Index.aspx");
         //    }
-        //    LoadWebConfig();
+        //    
         //}
         //catch (Exception ex)
         //{
