@@ -7,7 +7,8 @@
     <title></title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <%--<link href="plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>--%>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
     <!-- MetisMenu CSS -->
     <link href="plugins/metisMenu/dist/metisMenu.min.css" rel="stylesheet"/>
@@ -17,12 +18,10 @@
 
     <!-- Custom CSS -->
     <link href="css/sb-admin-2.css" rel="stylesheet" />
-    
-    <!-- Morris Charts CSS -->
-    <link href="plugins/morrisjs/morris.css" rel="stylesheet"/>
 
     <!-- Custom Fonts -->
-    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <%--<link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>--%>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -367,18 +366,15 @@
     </asp:ContentPlaceHolder>
 
     <!-- jQuery -->
-    <script src="plugins/jquery/dist/jquery.min.js"></script>
+    <%--<script src="plugins/jquery/dist/jquery.min.js"></script>--%>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <%--<script src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>--%>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="plugins/metisMenu/dist/metisMenu.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="plugins/raphael/raphael-min.js"></script>
-    <script src="plugins/morrisjs/morris.min.js"></script>
-    <script src="js/morris-data.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="js/components/sb-admin-2.js"></script>
