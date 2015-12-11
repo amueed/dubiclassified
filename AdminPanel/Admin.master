@@ -5,27 +5,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    
+
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
     <!-- MetisMenu CSS -->
-    <link href="css/metisMenu.min.css" rel="stylesheet" />
+    <link href="plugins/metisMenu/dist/metisMenu.min.css" rel="stylesheet"/>
 
     <!-- Timeline CSS -->
     <link href="css/timeline.css" rel="stylesheet" />
-    
+
     <!-- Custom CSS -->
     <link href="css/sb-admin-2.css" rel="stylesheet" />
-
-    <!-- Morris Charts CSS -->
-    <link href="css/morris.css" rel="stylesheet" />
     
+    <!-- Morris Charts CSS -->
+    <link href="plugins/morrisjs/morris.css" rel="stylesheet"/>
+
     <!-- Custom Fonts -->
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+
 </head>
 <body>
     <div id="wrapper">
@@ -268,7 +269,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
+                            <a href="Dashboard.aspx"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Charts<span class="fa arrow"></span></a>
@@ -283,7 +284,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i>Tables</a>
+                            <a href="Categories.aspx"><i class="fa fa-table fa-fw"></i>Tables</a>
                         </li>
                         <li>
                             <a href="forms.html"><i class="fa fa-edit fa-fw"></i>Forms</a>
@@ -366,18 +367,18 @@
     </asp:ContentPlaceHolder>
 
     <!-- jQuery -->
-    <script src="js/components/jquery.js"></script>
-    
+    <script src="plugins/jquery/dist/jquery.min.js"></script>
+
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/components/bootstrap.js"></script>
+    <script src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="js/components/metisMenu.js"></script>
-    
+    <script src="plugins/metisMenu/dist/metisMenu.min.js"></script>
+
     <!-- Morris Charts JavaScript -->
-    <script src="js/components/morris-data.js"></script>
-    <script src="js/components/raphael-min.js"></script>
-    <script src="js/components/morris.min.js"></script>
+    <script src="plugins/raphael/raphael-min.js"></script>
+    <script src="plugins/morrisjs/morris.min.js"></script>
+    <script src="js/morris-data.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="js/components/sb-admin-2.js"></script>

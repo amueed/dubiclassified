@@ -30,9 +30,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-9 main">
-                    <asp:Repeater ID="rptcategories" runat="server">
+                    <%--<asp:Repeater ID="rptcategories" runat="server">
                         <ItemTemplate>
                             <div class="feature_icon">
+                                <span><i class=<%#Eval()%></i></span>
                                 <span><i class="fa fa-car"></i></span>
                                 <h3>Moters</h3>
                             </div>
@@ -45,9 +46,9 @@
                             </ul>
                             <div class="place"><a href="#">Place an Ad</a></div>
                         </ItemTemplate>
-                    </asp:Repeater>
+                    </asp:Repeater>--%>
 
-                    <%--<div class="col-md-4">
+                    <div class="col-md-4">
                         <div class="feature_icon">
                             <span><i class="fa fa-car"></i></span>
                             <h3>Moters</h3>
@@ -171,7 +172,7 @@
 
                         </ul>
                         <div class="place"><a href="#">Place an Ad</a></div>
-                    </div>--%>
+                    </div>
                 </div>
                 <div class="col-md-3">
                     <div class="firstbox">
