@@ -5,17 +5,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <asp:Label ID="Label1" runat="server" Text="Category Name"></asp:Label>
+     <div>
+            <lable>Category Name</lable>
             <input id="txtCategoryName" type="text" runat="server" />
             <br />
-            <asp:Label ID="Label2" runat="server" Text="Category Photo"></asp:Label>
-            <asp:FileUpload ID="FileUpload1" runat="server" />
+            <lable>Category Photo</lable>
+            <input id="txtCategoryPhoto" type="text" runat="server" />
+            <input id="CategoryPhoto" type="file" runat="server" />
             <br />
-            <asp:Button ID="Button1" runat="server" Text="Save" />
+            <input type="button" value="Save" />
             <br />
             <br />
             <br />
@@ -40,5 +42,11 @@
             <input type="button" value="Save" />
         </div>
     </form>
+
+    <!--jQuery-->
+    <script src="js/jquery.js"></script>
+
+    <!--Custom js-->
+    <script src="js/categories.js"></script>
 </body>
 </html>
