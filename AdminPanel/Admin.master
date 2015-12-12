@@ -6,8 +6,8 @@
 <head runat="server">
     <title>Admin Panel</title>
     <!-- Bootstrap Core CSS -->
-    <%--<link href="plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>--%>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <%--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />--%>
 
     <!-- MetisMenu CSS -->
     <link href="plugins/metisMenu/dist/metisMenu.min.css" rel="stylesheet" />
@@ -19,8 +19,8 @@
     <link href="css/sb-admin-2.css" rel="stylesheet" />
 
     <!-- Custom Fonts -->
-    <%--<link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>--%>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <%--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />--%>
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -270,6 +270,9 @@
                             <a href="Dashboard.aspx"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
                         </li>
                         <li>
+                            <a href="Categories.aspx"><i class="fa fa-tags fa-fw"></i>Categories</a>
+                        </li>
+                        <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Charts<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -282,7 +285,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="Categories.aspx"><i class="fa fa-table fa-fw"></i>Tables</a>
+                            <a href="index.html"><i class="fa fa-table fa-fw"></i>Tables</a>
                         </li>
                         <li>
                             <a href="forms.html"><i class="fa fa-edit fa-fw"></i>Forms</a>
@@ -366,12 +369,12 @@
     </asp:ContentPlaceHolder>
 
     <!-- jQuery -->
-    <%--<script src="plugins/jquery/dist/jquery.min.js"></script>--%>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="plugins/jquery/dist/jquery.min.js"></script>
+    <%--<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>--%>
 
     <!-- Bootstrap Core JavaScript -->
-    <%--<script src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>--%>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>--%>
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="plugins/metisMenu/dist/metisMenu.min.js"></script>

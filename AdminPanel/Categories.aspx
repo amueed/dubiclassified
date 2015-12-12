@@ -1,52 +1,198 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Categories.aspx.cs" Inherits="AdminPanel_Categories" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminPanel/Admin.master" AutoEventWireup="true" CodeFile="Categories.aspx.cs" Inherits="AdminPanel_Categories" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="body" runat="Server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    
-</head>
-<body>
-    <form id="form1" runat="server">
-     <div>
-            <lable>Category Name</lable>
-            <input id="txtCategoryName" type="text" runat="server" />
-            <br />
-            <lable>Category Photo</lable>
-            <input id="txtCategoryPhoto" type="text" runat="server" />
-            <input id="CategoryPhoto" type="file" runat="server" />
-            <br />
-            <input type="button" value="Save" />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <label>Categories</label>
-            <select id="ddlCat">
-                <option>--Select Any--</option>
-                <option>Cat-1</option>
-                <option>Cat-2</option>
-                <option>Cat-3</option>
-            </select>
-            <br />
-            <lable>Sub-Category Name</lable>
-            <input id="txtSubCate" type="text" runat="server" />
-            <br />
-            <lable>Sub-Category Photo</lable>
-            <input id="txtSubCatPhoto" type="text" runat="server" />
-            <input id="SubCatPhoto" type="file" runat="server" />
-            <br />
-            <input type="button" value="Save" />
+    <!-- Modal Category -->
+    <div id="catModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add New Category</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="inputEmail">Category Name</label>
+                            <input type="email" class="form-control" id="inputEmail" placeholder="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword">Category Icon</label>
+                            <input type="password" class="form-control" id="inputPassword" placeholder="" readonly="readonly" />
+                        </div>
+                        <button type="button" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </form>
+                </div>
+            </div>
+
         </div>
-    </form>
+    </div>
 
-    <!--jQuery-->
-    <script src="js/jquery.js"></script>
+    <!-- Modal Category -->
+    <div id="subCatModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add New Sub-Category</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="inputEmail">Sub-Category Name</label>
+                            <select class="form-control">
+                                <option value="1">Cat 1</option>
+                                <option value="2">Cat 2</option>
+                                <option value="3">Cat 3</option>
+                                <option value="4">Cat 4</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail">Sub-Category Name</label>
+                            <input type="email" class="form-control" id="inputEmail" placeholder="" />
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword">Sub-Category Icon</label>
+                            <input type="password" class="form-control" id="inputPassword" placeholder="" readonly="readonly" />
+                        </div>
+                        <button type="button" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </form>
+                </div>
+            </div>
 
-    <!--Custom js-->
-    <script src="js/categories.js"></script>
-</body>
-</html>
+        </div>
+    </div>
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header">Category Management</h3>
+            </div>
+        </div>
+        <!--Category Panel-->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>Categories</strong>
+                        <button type="button" class="btn-link pull-right" data-toggle="modal" data-target="#catModal" title="Add">
+                            <span class="fa fa-plus fa-fw"></span>
+                        </button>
+                        <button type="button" class="btn-link pull-right" title="Refresh">
+                            <span class="fa fa-refresh fa-fw"></span>
+                        </button>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Category Name</th>
+                                        <th>Created By</th>
+                                        <th>Last Updated</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                        <td>Edit | Delete</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>@fat</td>
+                                        <td>Edit | Delete</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                        <td>Edit | Delete</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Sub-Category Panel-->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>Sub-Categories</strong>
+                        <button type="button" class="btn-link pull-right" data-toggle="modal" data-target="#subCatModal" title="Add">
+                            <span class="fa fa-plus fa-fw"></span>
+                        </button>
+                        <button type="button" class="btn-link pull-right" title="Refresh">
+                            <span class="fa fa-refresh fa-fw"></span>
+                        </button>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Parent Category Name</th>
+                                        <th>Sub-Category Name</th>
+                                        <th>Created By</th>
+                                        <th>Last Updated</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Mark</td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                        <td>Edit | Delete</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Mark</td>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>@fat</td>
+                                        <td>Edit | Delete</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Mark</td>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                        <td>Edit | Delete</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--custom javascript-->
+    <script src="js/custom/Categories.js"></script>
+
+</asp:Content>
+
