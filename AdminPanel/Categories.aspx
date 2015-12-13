@@ -16,12 +16,12 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="inputEmail">Category Name</label>
-                            <input type="email" class="form-control" id="inputEmail" placeholder="" />
+                            <label for="txtCatName">Category Name</label>
+                            <input type="text" class="form-control" id="txtCatName" placeholder="" />
                         </div>
                         <div class="form-group">
-                            <label for="inputPassword">Category Icon</label>
-                            <input type="password" class="form-control" id="inputPassword" placeholder="" readonly="readonly" />
+                            <label for="txtCatIcon">Category Icon</label>
+                            <input type="text" class="form-control" id="txtCatIcon" placeholder="" />
                         </div>
                         <button type="button" class="btn btn-primary">Save</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -44,8 +44,8 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="inputEmail">Sub-Category Name</label>
-                            <select class="form-control">
+                            <label for="ddlParentCat">Sub-Category Name</label>
+                            <select id="ddlParentCat" class="form-control">
                                 <option value="1">Cat 1</option>
                                 <option value="2">Cat 2</option>
                                 <option value="3">Cat 3</option>
@@ -53,12 +53,12 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail">Sub-Category Name</label>
-                            <input type="email" class="form-control" id="inputEmail" placeholder="" />
+                            <label for="txtSubCatName">Sub-Category Name</label>
+                            <input type="email" class="form-control" id="txtSubCatName" placeholder="" />
                         </div>
                         <div class="form-group">
-                            <label for="inputPassword">Sub-Category Icon</label>
-                            <input type="password" class="form-control" id="inputPassword" placeholder="" readonly="readonly" />
+                            <label for="txtSubCatIcon">Sub-Category Icon</label>
+                            <input type="password" class="form-control" id="txtSubCatIcon" placeholder="" readonly="readonly" />
                         </div>
                         <button type="button" class="btn btn-primary">Save</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -90,7 +90,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-hover">
+                            <table id="tblCategories" class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -146,7 +146,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-hover">
+                            <table id="tblSubCategories" class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th>#</th>
