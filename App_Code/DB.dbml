@@ -1,5 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dubizzle" Class="DBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=mc-91;Initial Catalog=dubizzle;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="dubizzleConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ads" Member="ads">
+    <Type Name="ad">
+      <Column Name="ad_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="category_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="subcat_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="location_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="condition_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="posted_by" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="posted_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="expire_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="views" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="deleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="blocked" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.categories" Member="categories">
     <Type Name="category">
       <Column Name="category_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -32,4 +50,30 @@
       <Column Name="config_val" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Function Name="dbo.GetCategories" Method="GetCategories">
+    <ElementType Name="GetCategoriesResult">
+      <Column Name="SR" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CATEGORY_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CATEGORY_NAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="PHOTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CREATED_BY" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CREATED_DATE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="MODIFIED_BY" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MODIFIED_DATE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetSubCategories" Method="GetSubCategories">
+    <ElementType Name="GetSubCategoriesResult">
+      <Column Name="SR" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CATEGORY_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SUB_CATEGORY_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CATEGORY_NAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="SUB_CATEGORY_NAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="PHOTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CREATED_BY" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CREATED_DATE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="MODIFIED_BY" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MODIFIED_DATE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

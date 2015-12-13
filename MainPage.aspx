@@ -29,26 +29,41 @@
     <div class="cls_service_wrapper">
         <div class="container">
             <div class="row">
+
                 <div class="col-sm-9 main">
-                    <%--<asp:Repeater ID="rptcategories" runat="server">
+
+                    <!--Block:Start-->
+                    <!--Categories-->
+                    <asp:Repeater ID="rptCat" runat="server">
                         <ItemTemplate>
-                            <div class="feature_icon">
-                                <span><i class=<%#Eval()%></i></span>
-                                <span><i class="fa fa-car"></i></span>
-                                <h3>Moters</h3>
+                            <div class="col-md-4">
+                                <div class="feature_icon">
+                                    <span><i class="fa fa-car"></i></span>
+                                    <a href="View.aspx?cat=<%#Eval("ID")%>">
+                                        <h3><%#Eval("NAME")%></h3>
+                                    </a>
+                                </div>
+                                <ul>
+                                    <!--Sub Categories-->
+                                    <asp:Repeater ID="rptSubCat" runat="server">
+                                        <ItemTemplate>
+                                            <li>
+                                                <a href="View.aspx?cat=<%#Eval("ID")%>&subcat=<%#Eval("ID")%>"><%#Eval("NAME")%></a>
+                                                <span><%#Eval("COUNT")%></span>
+                                            </li>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                </ul>
+                                <!--Place Ad Button-->
+                                <div class="place">
+                                    <a href="#">Place an Ad</a>
+                                </div>
                             </div>
-                            <ul>
-                                <li><a href="/motors/used-cars/">Used Cars for Sale</a> <span>7420 </span></li>
-                                <li><a href="/motors/auto-accessories-parts/">Auto Accessories &amp; Parts</a> <span>1275 </span></li>
-                                <li><a href="/motors/boats/">Boats</a> <span>496 </span></li>
-                                <li><a href="/motors/heavy-vehicles/">Heavy Vehicles</a> <span>353 </span></li>
-                                <li><a href="/motors/motorcycles/">Motorcycles</a> <span>472 </span></li>
-                            </ul>
-                            <div class="place"><a href="#">Place an Ad</a></div>
                         </ItemTemplate>
-                    </asp:Repeater>--%>
+                    </asp:Repeater>
+                    <!--Block:End-->
 
-                    <div class="col-md-4">
+                    <%--<div class="col-md-4">
                         <div class="feature_icon">
                             <span><i class="fa fa-car"></i></span>
                             <h3>Moters</h3>
@@ -172,8 +187,9 @@
 
                         </ul>
                         <div class="place"><a href="#">Place an Ad</a></div>
-                    </div>
+                    </div>--%>
                 </div>
+
                 <div class="col-md-3">
                     <div class="firstbox">
                         <div class="bdr">

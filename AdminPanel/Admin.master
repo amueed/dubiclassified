@@ -5,8 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Admin Panel</title>
+
     <!-- Bootstrap Core CSS -->
-    <link href="plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <%--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />--%>
 
     <!-- MetisMenu CSS -->
@@ -19,7 +20,7 @@
     <link href="css/sb-admin-2.css" rel="stylesheet" />
 
     <!-- Custom Fonts -->
-    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <%--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />--%>
 
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -364,12 +365,10 @@
         </nav>
     </div>
     <!-- /#wrapper -->
-    <asp:ContentPlaceHolder ID="body" runat="server">
-
-    </asp:ContentPlaceHolder>
 
     <!-- jQuery -->
     <script src="plugins/jquery/dist/jquery.min.js"></script>
+    <%--<script src="js/components/jquery-1.11.3.min.js"></script>--%>
     <%--<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>--%>
 
     <!-- Bootstrap Core JavaScript -->
@@ -381,6 +380,10 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/components/sb-admin-2.js"></script>
+
+
+    <asp:ContentPlaceHolder ID="body" runat="server">
+    </asp:ContentPlaceHolder>
 
 </body>
 </html>
