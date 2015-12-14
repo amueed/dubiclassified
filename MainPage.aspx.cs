@@ -32,22 +32,12 @@ public partial class MainPage : System.Web.UI.Page
         {
             using (var db = GetObjCon())
             {
-                string query = @"SELECT
-                category_id AS CATEGORY_ID,
-                category_name AS CATEGORY_NAME
-                FROM categories
-                WHERE ISNULL(parent_id, '') = ''
-                AND ISNULL(deleted, 0) = 0
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "GetMainPageData";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = db;
 
-                SELECT
-                parent_id AS CATEGORY_ID,
-                category_id AS SUB_CATEGORY_ID,
-                category_name AS SUB_CATEGORY_NAME
-                FROM categories
-                WHERE ISNULL(parent_id, '') <> ''
-                AND ISNULL(deleted, 0) = 0";
-
-                SqlDataAdapter da = new SqlDataAdapter(query, db);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(ds);
 
                 ds.Relations.Add(new DataRelation("CategoriesRelation", ds.Tables[0].Columns["CATEGORY_ID"], ds.Tables[1].Columns["CATEGORY_ID"]));

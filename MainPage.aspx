@@ -41,19 +41,23 @@
                                     <span><i class="fa fa-car"></i></span>
                                     <a href="View.aspx?cat=<%#Eval("CATEGORY_ID")%>">
                                         <h3><%#Eval("CATEGORY_NAME")%></h3>
+                                        <%--<span><%#Eval("C_COUNT")%></span>--%>
                                     </a>
                                 </div>
-                                <ul>
-                                    <!--Sub Categories-->
-                                    <asp:Repeater ID="rptSubCat" runat="server">
-                                        <ItemTemplate>
-                                            <li>
-                                                <a href="View.aspx?cat=<%#Eval("CATEGORY_ID")%>&subcat=<%#Eval("SUB_CATEGORY_ID")%>"><%#Eval("SUB_CATEGORY_NAME")%></a>
-                                                <span><%#Eval("CATEGORY_ID")%></span>
-                                            </li>
-                                        </ItemTemplate>
-                                    </asp:Repeater>
-                                </ul>
+
+                                <div style="height:150px;">
+                                    <ul>
+                                        <!--Sub Categories-->
+                                        <asp:Repeater ID="rptSubCat" runat="server">
+                                            <ItemTemplate>
+                                                <li>
+                                                    <a href="View.aspx?cat=<%#Eval("CATEGORY_ID")%>&subcat=<%#Eval("SUB_CATEGORY_ID")%>"><%#Eval("SUB_CATEGORY_NAME")%></a>
+                                                    <span class="pull-right"><%#Eval("SC_COUNT")%></span>
+                                                </li>
+                                            </ItemTemplate>
+                                        </asp:Repeater>
+                                    </ul>
+                                </div>
                                 <!--Place Ad Button-->
                                 <div class="place">
                                     <a href="#">Place an Ad</a>
