@@ -34,13 +34,13 @@
 
                     <!--Block:Start-->
                     <!--Categories-->
-                    <asp:Repeater ID="rptCat" runat="server">
+                    <asp:Repeater ID="rptCat" runat="server" OnItemDataBound="rptCat_ItemDataBound">
                         <ItemTemplate>
                             <div class="col-md-4">
                                 <div class="feature_icon">
                                     <span><i class="fa fa-car"></i></span>
-                                    <a href="View.aspx?cat=<%#Eval("ID")%>">
-                                        <h3><%#Eval("NAME")%></h3>
+                                    <a href="View.aspx?cat=<%#Eval("CATEGORY_ID")%>">
+                                        <h3><%#Eval("CATEGORY_NAME")%></h3>
                                     </a>
                                 </div>
                                 <ul>
@@ -48,8 +48,8 @@
                                     <asp:Repeater ID="rptSubCat" runat="server">
                                         <ItemTemplate>
                                             <li>
-                                                <a href="View.aspx?cat=<%#Eval("ID")%>&subcat=<%#Eval("ID")%>"><%#Eval("NAME")%></a>
-                                                <span><%#Eval("COUNT")%></span>
+                                                <a href="View.aspx?cat=<%#Eval("CATEGORY_ID")%>&subcat=<%#Eval("SUB_CATEGORY_ID")%>"><%#Eval("SUB_CATEGORY_NAME")%></a>
+                                                <span><%#Eval("CATEGORY_ID")%></span>
                                             </li>
                                         </ItemTemplate>
                                     </asp:Repeater>
