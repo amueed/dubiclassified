@@ -53,6 +53,7 @@
                                                 <li>Kilometers: <b>95000</b></li>
                                                 <li>Color: <b>White</b></li>
                                                 <li>Doors: <b>2 door</b></li>
+                                                <li>Views: <b><%#Eval("VISITOR")%></b></li>
                                             </ul>
                                         </div>
                                     </div>
