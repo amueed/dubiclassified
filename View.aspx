@@ -27,71 +27,53 @@
                         <img src="images/slider/looking.jpg" />
                     </div>
                 </div>
+                <!--Ads View Section-->
                 <div class="col-sm-9 main">
                     <div class="row">
-                        <div>
-                            <div class="col-md-12">
-                                <h5 style="margin-top: 0; padding-bottom: 10px">BMW X5 4.8 first owner well maintain no accid...</h5>
-                            </div>
-                            <div class="col-sm-4">
-                                <img src="images/slider/car1.jpg"/>
-                            </div>
-                            <div class="col-sm-5">
-                                <div class="box-small-txt">
-                                    <b>Used Cars for Sale ‪>‪ Porsche ‪>‪ Carrera / 911</b>
+                        <!--Dynamic Load of Ads-->
+                        <asp:Repeater ID="rptAdsView" runat="server">
+                            <ItemTemplate>
+                                <div>
+                                    <div class="col-md-12">
+                                        <%--<h5 style="margin-top: 0; padding-bottom: 10px">BWM Car for sale</h5>--%>
+                                        <h5 style="margin-top: 0; padding-bottom: 10px"><%#Eval("CATEGORY")%></h5>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <img src="images/slider/car1.jpg" />
+                                        <%--<img src="<%#Eval("IMG_URL")%>" />--%>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <div class="box-small-txt">
+                                            <%--<b>Used Cars for Sale ‪>‪ Porsche ‪>‪ Carrera / 911</b>--%>
+                                            <b><%#Eval("TITLE")%></b>
+                                            <%--<span>30 November 2015</span>--%>
+                                            <span><%#Eval("POSTED_DATE")%></span>
+                                            <ul>
+                                                <li>Year: <b>2013</b></li>
+                                                <li>Kilometers: <b>95000</b></li>
+                                                <li>Color: <b>White</b></li>
+                                                <li>Doors: <b>2 door</b></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="cost">
+                                            <%--<span>AED 255,000</span>--%>
+                                            <span>AED <%#Eval("PRICE")%></span>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="col-md-12">
+                                        <%--<div class="text-2">Located : UAE ‪>‪ Abu Dhabi ‪>‪ Al Shawamekh ‪>‪ Motor World</div>--%>
+                                        <div class="text-2">Location: <%#Eval("LOCATION")%></div>
+                                        <%--<div class="text-2 pull-right"><label>Views: </label><label><%#Eval("VISITOR")%></label></div>--%>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
 
-                                    <span>30 November 2015</span>
-                                    <ul>
-                                        <li>Year: <b>2013</b></li>
-                                        <li>Kilometers: <b>95000</b></li>
-                                        <li>Color: <b>White</b></li>
-                                        <li>Doors: <b>2 door</b></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="cost">
-                                    <span>AED 255,000</span>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="col-md-12">
-                                <div class="text-2">Located : UAE ‪>‪ Abu Dhabi ‪>‪ Al Shawamekh ‪>‪ Motor World</div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div>
-                            <div class="col-md-12">
-                                <h5 style="margin-top: 0; padding-bottom: 10px">BMW X5 4.8 first owner well maintain no accid...</h5>
-                            </div>
-                            <div class="col-sm-4">
-                                <img src="images/slider/car1.jpg">
-                            </div>
-                            <div class="col-sm-5">
-                                <div class="box-small-txt">
-                                    <b>Used Cars for Sale ‪>‪ Porsche ‪>‪ Carrera / 911</b>
-
-                                    <span>30 November 2015</span>
-                                    <ul>
-                                        <li>Year: <b>2013</b></li>
-                                        <li>Kilometers: <b>95000</b></li>
-                                        <li>Color: <b>White</b></li>
-                                        <li>Doors: <b>2 door</b></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="cost">
-                                    <span>AED 255,000</span>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="col-md-12">
-                                <div class="text-2">Located : UAE ‪>‪ Abu Dhabi ‪>‪ Al Shawamekh ‪>‪ Motor World</div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div>
+                        <%--<div>
                             <div class="col-md-12">
                                 <h5 style="margin-top: 0; padding-bottom: 10px">BMW X5 4.8 first owner well maintain no accid...</h5>
                             </div>
@@ -153,6 +135,37 @@
                             </div>
                             <div class="clearfix"></div>
                         </div>
+                        <div>
+                            <div class="col-md-12">
+                                <h5 style="margin-top: 0; padding-bottom: 10px">BMW X5 4.8 first owner well maintain no accid...</h5>
+                            </div>
+                            <div class="col-sm-4">
+                                <img src="images/slider/car1.jpg">
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="box-small-txt">
+                                    <b>Used Cars for Sale ‪>‪ Porsche ‪>‪ Carrera / 911</b>
+
+                                    <span>30 November 2015</span>
+                                    <ul>
+                                        <li>Year: <b>2013</b></li>
+                                        <li>Kilometers: <b>95000</b></li>
+                                        <li>Color: <b>White</b></li>
+                                        <li>Doors: <b>2 door</b></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="cost">
+                                    <span>AED 255,000</span>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-md-12">
+                                <div class="text-2">Located : UAE ‪>‪ Abu Dhabi ‪>‪ Al Shawamekh ‪>‪ Motor World</div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>--%>
                     </div>
                 </div>
             </div>

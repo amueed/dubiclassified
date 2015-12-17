@@ -9,32 +9,49 @@ using System.Data.SqlClient;
 
 public partial class Main : System.Web.UI.MasterPage
 {
-    SqlConnection con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["CS"].ToString());
-
+    static string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["CS"].ToString();
+    //DataSet ds = new DataSet();
+    DataTable dt;
     protected void Page_Load(object sender, EventArgs e)
     {
-        LoadWebConfig();
-        //try
-        //{
-        //    if (Request.Cookies["UserLocation"].Value == null)
-        //    {
-        //        Response.Redirect("~/Index.aspx");
-        //    }
-        //    
-        //}
-        //catch (Exception ex)
-        //{
-        //    Console.WriteLine(ex.Message);
-        //}
+        //when user redirect from Index.aspx page, store location in session
+        string locID = Convert.ToString(Request.QueryString["loc"]);
+        if (!string.IsNullOrEmpty(locID))
+        {
+            Session["loc"] = locID;
+        }
+
+        //if session values is empty user will redirect to the Index.aspx page
+        if (Session["loc"] == null || Session["loc"] == "")
+        {
+            Response.Redirect("~/Index.aspx");
+        }
+        //else do rest functionality
+        else
+        {
+            LoadWebConfig();
+            LoadLocations();
+
+            string ID = Session["loc"].ToString();
+            var li = ddlLoc.Items.FindByValue(ID);
+            li.Selected = true;
+        }
+    }
+    private static SqlConnection GetObjCon()
+    {
+        return new SqlConnection(conStr);
     }
     public void LoadWebConfig()
     {
         try
         {
-            DataTable dt = new DataTable();
-            string query = "SELECT * FROM web_config";
-            SqlDataAdapter da = new SqlDataAdapter(query, con);
-            da.Fill(dt);
+            using (var db = GetObjCon())
+            {
+                dt = new DataTable();
+                string query = "SELECT * FROM web_config";
+                SqlDataAdapter da = new SqlDataAdapter(query, db);
+                da.Fill(dt);
+            }
 
             foreach (DataRow row in dt.Rows)
             {
@@ -60,6 +77,32 @@ public partial class Main : System.Web.UI.MasterPage
                         break;
                 }
             }
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
+        finally
+        {
+
+        }
+    }
+
+    public void LoadLocations()
+    {
+        try
+        {
+            using (var db = GetObjCon())
+            {
+                dt = new DataTable();
+                string query = "SELECT location_id AS ID,location_name AS NAME FROM locations WHERE ISNULL(deleted,0)=0";
+                SqlDataAdapter da = new SqlDataAdapter(query, db);
+                da.Fill(dt);
+            }
+            ddlLoc.DataValueField = "ID";
+            ddlLoc.DataTextField = "NAME";
+            ddlLoc.DataSource = dt;
+            ddlLoc.DataBind();
         }
         catch (Exception ex)
         {

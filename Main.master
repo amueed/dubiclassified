@@ -31,7 +31,9 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="call_us_no">
-                                    <p><i class="fa fa-mobile"></i>App On Your Phone</p>
+                                    <%--<p><i class="fa fa-mobile"></i>App On Your Phone</p>--%>
+                                    <select id="ddlLoc" class="form-control" runat="server">
+                                    </select>
                                 </div>
                                 <div class="top-right">
                                     <ul>
