@@ -45,7 +45,7 @@
                                     </a>
                                 </div>
 
-                                <div style="height:150px;">
+                                <div style="height: 150px;">
                                     <ul>
                                         <!--Sub Categories-->
                                         <asp:Repeater ID="rptSubCat" runat="server">

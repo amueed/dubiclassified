@@ -13,7 +13,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="MobileOptimized" content="320" />
 
-    <link rel="icon" type="image/ico" href="images/favicon.ico" />
+    <%--<link rel="icon" type="image/ico" href="images/favicon.ico" />--%>
 
     <link href="css/main.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="css/colors/default.css" id="colors" />
@@ -66,22 +66,16 @@
                                         <div class="domain-search">
                                             <form class="form-domain">
                                                 <div class="search-input">
-                                                    <input class="form-control input-domain" placeholder="Search" type="text" />
+                                                    <input class="form-control input-domain" placeholder="Type Search Text" type="text" />
                                                     <div class="domain-extension">
-                                                        <select class="form-control" style="border: none; border-left: 1px solid; border-color: #CACAD9; border-radius: 0;">
-                                                            <option value=".com" selected="selected">Electronic</option>
-                                                            <option value=".org">Furtunure</option>
-                                                            <option value=".net">Jobs</option>
-                                                            <option value=".info">Vehicle</option>
-                                                            <option value=".in">Moter</option>
-                                                            <option value=".asia">Buildings</option>
+                                                        <select id="ddlCategories" class="form-control" style="border: none; border-left: 1px solid; border-color: #CACAD9; border-radius: 0;" runat="server">
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <button class="btn btn-success btn-block"><i class="fa fa-search"></i></button>
+                                                <button type="button" class="btn btn-success btn-block"><i class="fa fa-search"></i></button>
                                             </form>
                                             <div class="promo-btn">
-                                                <a class="btn btn-default btn-block b" href="#fakelink">
+                                                <a class="btn btn-default btn-block b" href="Post.aspx">
                                                     <strong class="text-info">
                                                         <span style="color: #fff;">Place Your Ad </span>
                                                     </strong>

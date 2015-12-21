@@ -31,10 +31,7 @@ public partial class Main : System.Web.UI.MasterPage
         {
             LoadWebConfig();
             LoadLocations();
-
-            string ID = Session["loc"].ToString();
-            var li = ddlLoc.Items.FindByValue(ID);
-            li.Selected = true;
+            LoadCategories();
         }
     }
     private static SqlConnection GetObjCon()
@@ -103,6 +100,41 @@ public partial class Main : System.Web.UI.MasterPage
             ddlLoc.DataTextField = "NAME";
             ddlLoc.DataSource = dt;
             ddlLoc.DataBind();
+
+            string ID = Session["loc"].ToString();
+            var li = ddlLoc.Items.FindByValue(ID);
+            li.Selected = true;
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
+        finally
+        {
+
+        }
+    }
+    public void LoadCategories()
+    {
+        try
+        {
+            using (var db = GetObjCon())
+            {
+                dt = new DataTable();
+                string query = "SELECT category_id AS ID, category_name AS NAME FROM categories WHERE ISNULL(parent_id,'')='' AND ISNULL(deleted,0)=0";
+                SqlDataAdapter da = new SqlDataAdapter(query, db);
+                da.Fill(dt);
+            }
+
+            
+
+            ddlCategories.DataValueField = "ID";
+            ddlCategories.DataTextField = "NAME";
+            ddlCategories.DataSource = dt;
+            ddlCategories.DataBind();
+
+            ListItem item = new ListItem("--Select Category--", "0");
+            ddlCategories.Items.Insert(0, item);
         }
         catch (Exception ex)
         {
