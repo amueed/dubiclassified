@@ -66,7 +66,8 @@
                                     <div class="clearfix"></div>
                                     <div class="col-md-12">
                                         <%--<div class="text-2">Located : UAE ‪>‪ Abu Dhabi ‪>‪ Al Shawamekh ‪>‪ Motor World</div>--%>
-                                        <div class="text-2">Location: <%#Eval("LOCATION")%></div>
+                                        <div class="text-2">Location: <%#Eval("LOCATION")%><label class="pull-right"><a href="Details.aspx?ad=<%#Eval("ID")%>">View</a></label></div>
+                                        
                                         <%--<div class="text-2 pull-right"><label>Views: </label><label><%#Eval("VISITOR")%></label></div>--%>
                                     </div>
                                     <div class="clearfix"></div>

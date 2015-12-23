@@ -79,10 +79,6 @@ public partial class Main : System.Web.UI.MasterPage
         {
             Response.Write(ex.Message);
         }
-        finally
-        {
-
-        }
     }
 
     public void LoadLocations()

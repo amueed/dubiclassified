@@ -180,6 +180,10 @@
 	display: inline-block;
 }
 }
+ @media(max-width:768px){
+.login{ width:90%}
+ 
+}
  @media(max-width:605px){
  .colorfull-row{ display:none}
  }
