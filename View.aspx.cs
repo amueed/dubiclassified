@@ -28,7 +28,7 @@ public partial class View : System.Web.UI.Page
             {
                 dt = new DataTable();
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "GetAdsList";
+                cmd.CommandText = "User_GetAdsList";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = db;
 

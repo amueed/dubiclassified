@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.Services;
 
 public partial class Post : System.Web.UI.Page
 {
@@ -17,6 +18,10 @@ public partial class Post : System.Web.UI.Page
         GetLocations();
         GetCategories();
         GetConditions();
+    }
+    private static DBDataContext GetObjDB()
+    {
+        return new DBDataContext();
     }
     private static SqlConnection GetObjCon()
     {
@@ -50,7 +55,6 @@ public partial class Post : System.Web.UI.Page
             Response.Write(ex.Message);
         }
     }
-
     public void GetCategories()
     {
         try
@@ -72,6 +76,38 @@ public partial class Post : System.Web.UI.Page
                 ddlAdCategory.DataBind();
                 ListItem li = new ListItem("--Select Categories--", "0");
                 ddlAdCategory.Items.Insert(0, li);
+            }
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
+    }
+    public void GetSubCategories(string categoryID)
+    {
+        try
+        {
+            using (var db = GetObjCon())
+            {
+                dt = new DataTable();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "User_GetSubCategories";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = db;
+
+                SqlParameter param = new SqlParameter("@CATEGORY_ID", categoryID);
+
+                cmd.Parameters.Add(param);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+
+                ddlAdSubCategory.DataTextField = "NAME";
+                ddlAdSubCategory.DataValueField = "ID";
+                ddlAdSubCategory.DataSource = dt;
+                ddlAdSubCategory.DataBind();
+                ListItem li = new ListItem("--Select Sub-Categories--", "0");
+                ddlAdSubCategory.Items.Insert(0, li);
             }
         }
         catch (Exception ex)
@@ -106,5 +142,24 @@ public partial class Post : System.Web.UI.Page
         {
             Response.Write(ex.Message);
         }
+    }
+    
+    //WebMethods
+    [WebMethod]
+    public static List<User_GetSubCategoriesResult> LoadSubCategories(string categoryID)
+    {
+        try
+        {
+            using (var db = GetObjDB())
+            {
+                var result = (from x in db.User_GetSubCategories(categoryID) select x).ToList();
+                return result;
+            }
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+
     }
 }

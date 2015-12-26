@@ -73,6 +73,19 @@
                     <h3 class="page-header">Category Management</h3>
                 </div>
             </div>
+            <%--            <div class="row">
+                <div>
+                    <div class="form-inline">
+                        <label for="txtCatName">Category Name</label>
+                        <input type="text" class="form-control" id="txtCatName" placeholder="" />
+                        <label for="txtCatIcon">Category Icon</label>
+                        <input type="text" class="form-control" id="txtCatIcon" placeholder="" />
+
+                        <button type="button" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-default">Cancel</button>
+                    </div>
+                </div>
+            </div>--%>
             <!--Category Panel-->
             <div class="row">
                 <div class="col-lg-12">

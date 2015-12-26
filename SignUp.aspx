@@ -14,29 +14,28 @@
                     </div>
                     <div class="login">
                         <div class="form-group">
-                            <input type="text" id="txtFName" placeholder="First Name" class="form-control" />
+                            <input type="text" id="txtFName" placeholder="First Name" class="form-control" runat="server" />
                         </div>
                         <div class="form-group">
-                            <input type="text" id="txtLName" placeholder="Last Name" class="form-control" />
+                            <input type="text" id="txtLName" placeholder="Last Name" class="form-control" runat="server" />
                         </div>
                         <div class="form-group">
-                            <input type="text" id="txtEmail" placeholder="Email (e.g: name@company.com)" class="form-control" />
+                            <input type="text" id="txtEmail" placeholder="Email (e.g: name@company.com)" class="form-control" runat="server" />
                         </div>
                         <div class="form-group">
-                            <input type="text" id="txtContact" placeholder="Contact No. (e.g: 03326041449)" class="form-control" />
+                            <input type="text" id="txtContact" placeholder="Contact No. (e.g: 03326041449)" class="form-control" runat="server" />
                         </div>
                         <div class="form-group">
-                            <input type="text" id="txtUsername" placeholder="User Name" class="form-control" />
+                            <input type="text" id="txtUsername" placeholder="User Name" class="form-control" runat="server" />
                         </div>
                         <div class="form-group">
-                            <input type="password" id="txtPassword" placeholder="Password" class="form-control" />
+                            <input type="password" id="txtPassword" placeholder="Password" class="form-control" runat="server" />
                         </div>
                         <div class="form-group">
-                            <input type="password" id="txtCPassword" placeholder="Confirm Password" class="form-control" />
+                            <input type="password" id="txtCPassword" placeholder="Confirm Password" class="form-control" runat="server" />
                         </div>
                         <div class="form-group">
-                            <input type="button" value="Submit" id="btnSubmit" class="btn btn-primary coolthing_submit" />
-
+                            <input type="button" value="Submit" id="btnSubmit" class="btn btn-primary coolthing_submit" runat="server"/>
                         </div>
                         <div class="form-group">
                             <a class="btn-link pull-right" href="UserLogin.aspx">Already Have an Account? Login Here!</a>

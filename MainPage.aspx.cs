@@ -33,7 +33,7 @@ public partial class MainPage : System.Web.UI.Page
             using (var db = GetObjCon())
             {
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "GetMainPageData";
+                cmd.CommandText = "User_GetMainPageData";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = db;
 
