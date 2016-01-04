@@ -101,9 +101,6 @@
                         </div>
                         <div class="panel-body">
 
-                            <asp:GridView ID="GridView1" runat="server">
-                            </asp:GridView>
-
                             <div class="table-responsive">
                                 <table id="tblCategories" class="table table-hover">
                                     <thead>
@@ -210,9 +207,9 @@
     <!--javascript for data table-->
     <script src="plugins/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="plugins/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
-    
+
     <!--custom javascript-->
     <script src="js/custom/Categories.js"></script>
-    
+
 </asp:Content>
 

@@ -37,15 +37,14 @@ function GetCategoriesSuccess(data) {
             html += "<td style='display:none'>" + categories[i].CATEGORY_ID + "</td>";
             html += "<td>" + categories[i].CATEGORY_NAME + "</td>";
             html += "<td>" + categories[i].CREATED_BY + "</td>";
-            html += "<td>" + categories[i].CREATED_DATE + "</td>";
+            //html += "<td>" + categories[i].CREATED_DATE + "</td>";
+            //html += "<td>" + categories[i].MODIFIED_BY + "</td>";
+            html += "<td>" + categories[i].MODIFIED_DATE + "</td>";
             html += "<td><span onclick=''>Edit</span> | <span onclick=''>Delete</span></td>";
             html += "</tr>";
         }
         debugger;
         $("#tblCategories tbody").html(html);
-        $('#tblCategories').DataTable({
-            responsive: true
-        });
     }
     else {
         $("#tblCategories tbody").html("<tr><td colspan='10'><strong>No Record Found</strong></td></tr>");
@@ -81,15 +80,14 @@ function GetSubCategoriesSuccess(data) {
             html += "<td>" + subCategories[i].CATEGORY_NAME + "</td>";
             html += "<td>" + subCategories[i].SUB_CATEGORY_NAME + "</td>";
             html += "<td>" + subCategories[i].CREATED_BY + "</td>";
-            html += "<td>" + subCategories[i].CREATED_DATE + "</td>";
+            //html += "<td>" + subCategories[i].CREATED_DATE + "</td>";
+            //html += "<td>" + subCategories[i].MODIFIED_BY + "</td>";
+            html += "<td>" + subCategories[i].MODIFIED_DATE + "</td>";
             html += "<td><span onclick=''>Edit</span> | <span onclick=''>Delete</span></td>";
             html += "</tr>";
         }
         debugger;
         $("#tblSubCategories tbody").html(html);
-        $('#tblSubCategories').DataTable({
-            responsive: true
-        });
     }
     else {
         $("#tblSubCategories tbody").html("<tr><td colspan='10'><strong>No Record Found</strong></td></tr>");

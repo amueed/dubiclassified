@@ -30,17 +30,16 @@ function GetLocationsSuccess(data) {
             html += "<td style='display:none'>" + locations[i].ID + "</td>";
             html += "<td>" + locations[i].NAME + "</td>";
             html += "<td>" + locations[i].CREATED_BY + "</td>";
-            html += "<td>" + locations[i].CREATED_DATE + "</td>";
+            //html += "<td>" + locations[i].CREATED_DATE + "</td>";
+            //html += "<td>" + locations[i].MODIFIED_BY + "</td>";
+            html += "<td>" + locations[i].MODIFIED_DATE + "</td>";
             html += "<td><span onclick=''>Edit</span> | <span onclick=''>Delete</span></td>";
             html += "</tr>";
         }
         debugger;
-        $("#tblCategories tbody").html(html);
-        $('#tblCategories').DataTable({
-            responsive: true
-        });
+        $("#tblLocations tbody").html(html);
     }
     else {
-        $("#tblCategories tbody").html("<tr><td colspan='10'><strong>No Record Found</strong></td></tr>");
+        $("#tblLocations tbody").html("<tr><td colspan='10'><strong>No Record Found</strong></td></tr>");
     }
 }
