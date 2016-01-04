@@ -173,7 +173,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <%--<tr>
                                             <td>1</td>
                                             <td>Mark</td>
                                             <td>Mark</td>
@@ -196,7 +196,7 @@
                                             <td>the Bird</td>
                                             <td>@twitter</td>
                                             <td>Edit | Delete</td>
-                                        </tr>
+                                        </tr>--%>
                                     </tbody>
                                 </table>
                             </div>
@@ -206,10 +206,13 @@
             </div>
         </div>
     </form>
-    <!--custom javascript-->
-    <script src="js/custom/Categories.js"></script>
+
     <!--javascript for data table-->
     <script src="plugins/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="plugins/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+    
+    <!--custom javascript-->
+    <script src="js/custom/Categories.js"></script>
+    
 </asp:Content>
 

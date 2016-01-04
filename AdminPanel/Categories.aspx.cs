@@ -20,13 +20,13 @@ public partial class AdminPanel_Categories : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static List<GetCategoriesResult> GetCategories()
+    public static List<Admin_GetCategoriesResult> GetCategories()
     {
         try
         {
             using (var db = GetObjDB())
             {
-                var result = from x in db.GetCategories() select x;
+                var result = from x in db.Admin_GetCategories() select x;
                 return result.ToList();
             }
         }
@@ -38,13 +38,13 @@ public partial class AdminPanel_Categories : System.Web.UI.Page
     }
 
     [WebMethod]
-    public static List<GetSubCategoriesResult> GetSubCategories()
+    public static List<Admin_GetSubCategoriesResult> GetSubCategories()
     {
         try
         {
             using ( var db = GetObjDB())
             {
-                var result = from x in db.GetSubCategories() select x;
+                var result = from x in db.Admin_GetSubCategories() select x;
                 return result.ToList();
             }
         }

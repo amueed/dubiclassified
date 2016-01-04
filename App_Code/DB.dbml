@@ -1,5 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dubizzle" Class="DBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=irfan\sqlexpress;Initial Catalog=dubizzle;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="dubizzleConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=mc-91;Initial Catalog=dubizzle;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="dubizzleConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ads" Member="ads">
+    <Type Name="ad">
+      <Column Name="ad_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="price_fixed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="category_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="subcat_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="location_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="condition_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="posted_by" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="posted_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="expire_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="contact_no" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="views" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="deleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="blocked" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="ad_ad" Member="ad2" ThisKey="ad_id" OtherKey="ad_id" Type="ad" Cardinality="One" />
+      <Association Name="ad_ad" Member="ad1" ThisKey="ad_id" OtherKey="ad_id" Type="ad" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.ads_img" Member="ads_imgs">
     <Type Name="ads_img">
       <Column Name="ad_img_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -65,89 +87,11 @@
       <Column Name="config_val" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.ads" Member="ads">
-    <Type Name="ad">
-      <Column Name="ad_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="title" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="description" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
-      <Column Name="price" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="price_fixed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="category_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="subcat_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="location_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="condition_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="posted_by" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="posted_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="expire_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="contact_no" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="views" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="deleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="blocked" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="ad_ad" Member="ad2" ThisKey="ad_id" OtherKey="ad_id" Type="ad" Cardinality="One" />
-      <Association Name="ad_ad" Member="ad1" ThisKey="ad_id" OtherKey="ad_id" Type="ad" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Function Name="dbo.GetCategories" Method="GetCategories">
-    <ElementType Name="GetCategoriesResult">
-      <Column Name="SR" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="CATEGORY_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CATEGORY_NAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="PHOTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="CREATED_BY" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="CREATED_DATE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="MODIFIED_BY" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="MODIFIED_DATE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.GetSubCategories" Method="GetSubCategories">
-    <ElementType Name="GetSubCategoriesResult">
-      <Column Name="SR" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="CATEGORY_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="SUB_CATEGORY_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CATEGORY_NAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="SUB_CATEGORY_NAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="PHOTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="CREATED_BY" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="CREATED_DATE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="MODIFIED_BY" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="MODIFIED_DATE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.User_GetAdsList" Method="User_GetAdsList">
-    <ElementType Name="User_GetAdsListResult">
-      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TITLE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="PRICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CONDITION" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="CATEGORY" Type="System.String" DbType="VarChar(43)" CanBeNull="true" />
-      <Column Name="LOCATION" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="POSTED_DATE" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
-      <Column Name="VISITOR" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.User_GetCategories" Method="User_GetCategories">
-    <ElementType Name="User_GetCategoriesResult">
+  <Function Name="dbo.User_GetSubCategories" Method="User_GetSubCategories">
+    <Parameter Name="CATEGORY_ID" Parameter="cATEGORY_ID" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="User_GetSubCategoriesResult">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="NAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.User_GetConditions" Method="User_GetConditions">
-    <ElementType Name="User_GetConditionsResult">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="NAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.User_GetLocations" Method="User_GetLocations">
-    <ElementType Name="User_GetLocationsResult">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="NAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.User_GetMainPageData" Method="User_GetMainPageData">
-    <ElementType Name="User_GetMainPageDataResult">
-      <Column Name="CATEGORY_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CATEGORY_NAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="C_COUNT" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.User_GetSingleAdDetails" Method="User_GetSingleAdDetails">
@@ -164,11 +108,83 @@
       <Column Name="VISITOR" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.User_GetSubCategories" Method="User_GetSubCategories">
-    <Parameter Name="CATEGORY_ID" Parameter="cATEGORY_ID" Type="System.String" DbType="VarChar(20)" />
-    <ElementType Name="User_GetSubCategoriesResult">
+  <Function Name="dbo.User_GetMainPageData" Method="User_GetMainPageData">
+    <ElementType Name="User_GetMainPageDataResult">
+      <Column Name="CATEGORY_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CATEGORY_NAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="C_COUNT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.User_GetLocations" Method="User_GetLocations">
+    <ElementType Name="User_GetLocationsResult">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="NAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
     </ElementType>
+  </Function>
+  <Function Name="dbo.User_GetConditions" Method="User_GetConditions">
+    <ElementType Name="User_GetConditionsResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.User_GetCategories" Method="User_GetCategories">
+    <ElementType Name="User_GetCategoriesResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.User_GetAdsList" Method="User_GetAdsList">
+    <ElementType Name="User_GetAdsListResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TITLE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PRICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CONDITION" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="CATEGORY" Type="System.String" DbType="VarChar(43)" CanBeNull="true" />
+      <Column Name="LOCATION" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="POSTED_DATE" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="VISITOR" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Admin_GetSubCategories" Method="Admin_GetSubCategories">
+    <ElementType Name="Admin_GetSubCategoriesResult">
+      <Column Name="SR" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CATEGORY_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SUB_CATEGORY_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CATEGORY_NAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="SUB_CATEGORY_NAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="PHOTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CREATED_BY" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CREATED_DATE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="MODIFIED_BY" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MODIFIED_DATE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Admin_GetLocations" Method="Admin_GetLocations">
+    <ElementType Name="Admin_GetLocationsResult">
+      <Column Name="SR" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="PHOTO_URL" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CREATED_BY" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CREATED_DATE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="MODIFIED_BY" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MODIFIED_DATE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Admin_GetCategories" Method="Admin_GetCategories">
+    <ElementType Name="Admin_GetCategoriesResult">
+      <Column Name="SR" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CATEGORY_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CATEGORY_NAME" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="PHOTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CREATED_BY" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CREATED_DATE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="MODIFIED_BY" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MODIFIED_DATE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_GetRelativeDuration" Method="fn_GetRelativeDuration" IsComposable="true">
+    <Parameter Name="date" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.String" />
   </Function>
 </Database>

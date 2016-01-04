@@ -29,6 +29,9 @@ public partial class DBDataContext : System.Data.Linq.DataContext
 	
   #region Extensibility Method Definitions
   partial void OnCreated();
+  partial void Insertad(ad instance);
+  partial void Updatead(ad instance);
+  partial void Deletead(ad instance);
   partial void Insertcategory(category instance);
   partial void Updatecategory(category instance);
   partial void Deletecategory(category instance);
@@ -41,9 +44,6 @@ public partial class DBDataContext : System.Data.Linq.DataContext
   partial void Insertweb_config(web_config instance);
   partial void Updateweb_config(web_config instance);
   partial void Deleteweb_config(web_config instance);
-  partial void Insertad(ad instance);
-  partial void Updatead(ad instance);
-  partial void Deletead(ad instance);
   #endregion
 	
 	public DBDataContext() : 
@@ -74,6 +74,14 @@ public partial class DBDataContext : System.Data.Linq.DataContext
 			base(connection, mappingSource)
 	{
 		OnCreated();
+	}
+	
+	public System.Data.Linq.Table<ad> ads
+	{
+		get
+		{
+			return this.GetTable<ad>();
+		}
 	}
 	
 	public System.Data.Linq.Table<ads_img> ads_imgs
@@ -124,61 +132,11 @@ public partial class DBDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<ad> ads
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.User_GetSubCategories")]
+	public ISingleResult<User_GetSubCategoriesResult> User_GetSubCategories([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CATEGORY_ID", DbType="VarChar(20)")] string cATEGORY_ID)
 	{
-		get
-		{
-			return this.GetTable<ad>();
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetCategories")]
-	public ISingleResult<GetCategoriesResult> GetCategories()
-	{
-		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-		return ((ISingleResult<GetCategoriesResult>)(result.ReturnValue));
-	}
-	
-	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetSubCategories")]
-	public ISingleResult<GetSubCategoriesResult> GetSubCategories()
-	{
-		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-		return ((ISingleResult<GetSubCategoriesResult>)(result.ReturnValue));
-	}
-	
-	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.User_GetAdsList")]
-	public ISingleResult<User_GetAdsListResult> User_GetAdsList()
-	{
-		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-		return ((ISingleResult<User_GetAdsListResult>)(result.ReturnValue));
-	}
-	
-	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.User_GetCategories")]
-	public ISingleResult<User_GetCategoriesResult> User_GetCategories()
-	{
-		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-		return ((ISingleResult<User_GetCategoriesResult>)(result.ReturnValue));
-	}
-	
-	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.User_GetConditions")]
-	public ISingleResult<User_GetConditionsResult> User_GetConditions()
-	{
-		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-		return ((ISingleResult<User_GetConditionsResult>)(result.ReturnValue));
-	}
-	
-	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.User_GetLocations")]
-	public ISingleResult<User_GetLocationsResult> User_GetLocations()
-	{
-		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-		return ((ISingleResult<User_GetLocationsResult>)(result.ReturnValue));
-	}
-	
-	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.User_GetMainPageData")]
-	public ISingleResult<User_GetMainPageDataResult> User_GetMainPageData()
-	{
-		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-		return ((ISingleResult<User_GetMainPageDataResult>)(result.ReturnValue));
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cATEGORY_ID);
+		return ((ISingleResult<User_GetSubCategoriesResult>)(result.ReturnValue));
 	}
 	
 	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.User_GetSingleAdDetails")]
@@ -188,11 +146,561 @@ public partial class DBDataContext : System.Data.Linq.DataContext
 		return ((ISingleResult<User_GetSingleAdDetailsResult>)(result.ReturnValue));
 	}
 	
-	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.User_GetSubCategories")]
-	public ISingleResult<User_GetSubCategoriesResult> User_GetSubCategories([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CATEGORY_ID", DbType="VarChar(20)")] string cATEGORY_ID)
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.User_GetMainPageData")]
+	public ISingleResult<User_GetMainPageDataResult> User_GetMainPageData()
 	{
-		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cATEGORY_ID);
-		return ((ISingleResult<User_GetSubCategoriesResult>)(result.ReturnValue));
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+		return ((ISingleResult<User_GetMainPageDataResult>)(result.ReturnValue));
+	}
+	
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.User_GetLocations")]
+	public ISingleResult<User_GetLocationsResult> User_GetLocations()
+	{
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+		return ((ISingleResult<User_GetLocationsResult>)(result.ReturnValue));
+	}
+	
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.User_GetConditions")]
+	public ISingleResult<User_GetConditionsResult> User_GetConditions()
+	{
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+		return ((ISingleResult<User_GetConditionsResult>)(result.ReturnValue));
+	}
+	
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.User_GetCategories")]
+	public ISingleResult<User_GetCategoriesResult> User_GetCategories()
+	{
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+		return ((ISingleResult<User_GetCategoriesResult>)(result.ReturnValue));
+	}
+	
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.User_GetAdsList")]
+	public ISingleResult<User_GetAdsListResult> User_GetAdsList()
+	{
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+		return ((ISingleResult<User_GetAdsListResult>)(result.ReturnValue));
+	}
+	
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Admin_GetSubCategories")]
+	public ISingleResult<Admin_GetSubCategoriesResult> Admin_GetSubCategories()
+	{
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+		return ((ISingleResult<Admin_GetSubCategoriesResult>)(result.ReturnValue));
+	}
+	
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Admin_GetLocations")]
+	public ISingleResult<Admin_GetLocationsResult> Admin_GetLocations()
+	{
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+		return ((ISingleResult<Admin_GetLocationsResult>)(result.ReturnValue));
+	}
+	
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Admin_GetCategories")]
+	public ISingleResult<Admin_GetCategoriesResult> Admin_GetCategories()
+	{
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+		return ((ISingleResult<Admin_GetCategoriesResult>)(result.ReturnValue));
+	}
+	
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.fn_GetRelativeDuration", IsComposable=true)]
+	public string fn_GetRelativeDuration([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> date)
+	{
+		return ((string)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), date).ReturnValue));
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ads")]
+public partial class ad : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _ad_id;
+	
+	private string _title;
+	
+	private string _description;
+	
+	private int _price;
+	
+	private System.Nullable<bool> _price_fixed;
+	
+	private int _category_id;
+	
+	private int _subcat_id;
+	
+	private int _location_id;
+	
+	private System.Nullable<int> _condition_id;
+	
+	private string _posted_by;
+	
+	private System.Nullable<System.DateTime> _posted_date;
+	
+	private System.Nullable<System.DateTime> _expire_date;
+	
+	private System.Nullable<int> _contact_no;
+	
+	private System.Nullable<short> _views;
+	
+	private System.Nullable<bool> _deleted;
+	
+	private System.Nullable<bool> _blocked;
+	
+	private EntityRef<ad> _ad2;
+	
+	private EntityRef<ad> _ad1;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onad_idChanging(int value);
+    partial void Onad_idChanged();
+    partial void OntitleChanging(string value);
+    partial void OntitleChanged();
+    partial void OndescriptionChanging(string value);
+    partial void OndescriptionChanged();
+    partial void OnpriceChanging(int value);
+    partial void OnpriceChanged();
+    partial void Onprice_fixedChanging(System.Nullable<bool> value);
+    partial void Onprice_fixedChanged();
+    partial void Oncategory_idChanging(int value);
+    partial void Oncategory_idChanged();
+    partial void Onsubcat_idChanging(int value);
+    partial void Onsubcat_idChanged();
+    partial void Onlocation_idChanging(int value);
+    partial void Onlocation_idChanged();
+    partial void Oncondition_idChanging(System.Nullable<int> value);
+    partial void Oncondition_idChanged();
+    partial void Onposted_byChanging(string value);
+    partial void Onposted_byChanged();
+    partial void Onposted_dateChanging(System.Nullable<System.DateTime> value);
+    partial void Onposted_dateChanged();
+    partial void Onexpire_dateChanging(System.Nullable<System.DateTime> value);
+    partial void Onexpire_dateChanged();
+    partial void Oncontact_noChanging(System.Nullable<int> value);
+    partial void Oncontact_noChanged();
+    partial void OnviewsChanging(System.Nullable<short> value);
+    partial void OnviewsChanged();
+    partial void OndeletedChanging(System.Nullable<bool> value);
+    partial void OndeletedChanged();
+    partial void OnblockedChanging(System.Nullable<bool> value);
+    partial void OnblockedChanged();
+    #endregion
+	
+	public ad()
+	{
+		this._ad2 = default(EntityRef<ad>);
+		this._ad1 = default(EntityRef<ad>);
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ad_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int ad_id
+	{
+		get
+		{
+			return this._ad_id;
+		}
+		set
+		{
+			if ((this._ad_id != value))
+			{
+				if (this._ad1.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onad_idChanging(value);
+				this.SendPropertyChanging();
+				this._ad_id = value;
+				this.SendPropertyChanged("ad_id");
+				this.Onad_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_title", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string title
+	{
+		get
+		{
+			return this._title;
+		}
+		set
+		{
+			if ((this._title != value))
+			{
+				this.OntitleChanging(value);
+				this.SendPropertyChanging();
+				this._title = value;
+				this.SendPropertyChanged("title");
+				this.OntitleChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description", DbType="VarChar(1000) NOT NULL", CanBeNull=false)]
+	public string description
+	{
+		get
+		{
+			return this._description;
+		}
+		set
+		{
+			if ((this._description != value))
+			{
+				this.OndescriptionChanging(value);
+				this.SendPropertyChanging();
+				this._description = value;
+				this.SendPropertyChanged("description");
+				this.OndescriptionChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price", DbType="Int NOT NULL")]
+	public int price
+	{
+		get
+		{
+			return this._price;
+		}
+		set
+		{
+			if ((this._price != value))
+			{
+				this.OnpriceChanging(value);
+				this.SendPropertyChanging();
+				this._price = value;
+				this.SendPropertyChanged("price");
+				this.OnpriceChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price_fixed", DbType="Bit")]
+	public System.Nullable<bool> price_fixed
+	{
+		get
+		{
+			return this._price_fixed;
+		}
+		set
+		{
+			if ((this._price_fixed != value))
+			{
+				this.Onprice_fixedChanging(value);
+				this.SendPropertyChanging();
+				this._price_fixed = value;
+				this.SendPropertyChanged("price_fixed");
+				this.Onprice_fixedChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_category_id", DbType="Int NOT NULL")]
+	public int category_id
+	{
+		get
+		{
+			return this._category_id;
+		}
+		set
+		{
+			if ((this._category_id != value))
+			{
+				this.Oncategory_idChanging(value);
+				this.SendPropertyChanging();
+				this._category_id = value;
+				this.SendPropertyChanged("category_id");
+				this.Oncategory_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_subcat_id", DbType="Int NOT NULL")]
+	public int subcat_id
+	{
+		get
+		{
+			return this._subcat_id;
+		}
+		set
+		{
+			if ((this._subcat_id != value))
+			{
+				this.Onsubcat_idChanging(value);
+				this.SendPropertyChanging();
+				this._subcat_id = value;
+				this.SendPropertyChanged("subcat_id");
+				this.Onsubcat_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_location_id", DbType="Int NOT NULL")]
+	public int location_id
+	{
+		get
+		{
+			return this._location_id;
+		}
+		set
+		{
+			if ((this._location_id != value))
+			{
+				this.Onlocation_idChanging(value);
+				this.SendPropertyChanging();
+				this._location_id = value;
+				this.SendPropertyChanged("location_id");
+				this.Onlocation_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_condition_id", DbType="Int")]
+	public System.Nullable<int> condition_id
+	{
+		get
+		{
+			return this._condition_id;
+		}
+		set
+		{
+			if ((this._condition_id != value))
+			{
+				this.Oncondition_idChanging(value);
+				this.SendPropertyChanging();
+				this._condition_id = value;
+				this.SendPropertyChanged("condition_id");
+				this.Oncondition_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_posted_by", DbType="VarChar(20)")]
+	public string posted_by
+	{
+		get
+		{
+			return this._posted_by;
+		}
+		set
+		{
+			if ((this._posted_by != value))
+			{
+				this.Onposted_byChanging(value);
+				this.SendPropertyChanging();
+				this._posted_by = value;
+				this.SendPropertyChanged("posted_by");
+				this.Onposted_byChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_posted_date", DbType="DateTime")]
+	public System.Nullable<System.DateTime> posted_date
+	{
+		get
+		{
+			return this._posted_date;
+		}
+		set
+		{
+			if ((this._posted_date != value))
+			{
+				this.Onposted_dateChanging(value);
+				this.SendPropertyChanging();
+				this._posted_date = value;
+				this.SendPropertyChanged("posted_date");
+				this.Onposted_dateChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_expire_date", DbType="DateTime")]
+	public System.Nullable<System.DateTime> expire_date
+	{
+		get
+		{
+			return this._expire_date;
+		}
+		set
+		{
+			if ((this._expire_date != value))
+			{
+				this.Onexpire_dateChanging(value);
+				this.SendPropertyChanging();
+				this._expire_date = value;
+				this.SendPropertyChanged("expire_date");
+				this.Onexpire_dateChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contact_no", DbType="Int")]
+	public System.Nullable<int> contact_no
+	{
+		get
+		{
+			return this._contact_no;
+		}
+		set
+		{
+			if ((this._contact_no != value))
+			{
+				this.Oncontact_noChanging(value);
+				this.SendPropertyChanging();
+				this._contact_no = value;
+				this.SendPropertyChanged("contact_no");
+				this.Oncontact_noChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_views", DbType="SmallInt")]
+	public System.Nullable<short> views
+	{
+		get
+		{
+			return this._views;
+		}
+		set
+		{
+			if ((this._views != value))
+			{
+				this.OnviewsChanging(value);
+				this.SendPropertyChanging();
+				this._views = value;
+				this.SendPropertyChanged("views");
+				this.OnviewsChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_deleted", DbType="Bit")]
+	public System.Nullable<bool> deleted
+	{
+		get
+		{
+			return this._deleted;
+		}
+		set
+		{
+			if ((this._deleted != value))
+			{
+				this.OndeletedChanging(value);
+				this.SendPropertyChanging();
+				this._deleted = value;
+				this.SendPropertyChanged("deleted");
+				this.OndeletedChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_blocked", DbType="Bit")]
+	public System.Nullable<bool> blocked
+	{
+		get
+		{
+			return this._blocked;
+		}
+		set
+		{
+			if ((this._blocked != value))
+			{
+				this.OnblockedChanging(value);
+				this.SendPropertyChanging();
+				this._blocked = value;
+				this.SendPropertyChanged("blocked");
+				this.OnblockedChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ad_ad", Storage="_ad2", ThisKey="ad_id", OtherKey="ad_id", IsUnique=true, IsForeignKey=false)]
+	public ad ad2
+	{
+		get
+		{
+			return this._ad2.Entity;
+		}
+		set
+		{
+			ad previousValue = this._ad2.Entity;
+			if (((previousValue != value) 
+						|| (this._ad2.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._ad2.Entity = null;
+					previousValue.ad1 = null;
+				}
+				this._ad2.Entity = value;
+				if ((value != null))
+				{
+					value.ad1 = this;
+				}
+				this.SendPropertyChanged("ad2");
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ad_ad", Storage="_ad1", ThisKey="ad_id", OtherKey="ad_id", IsForeignKey=true)]
+	public ad ad1
+	{
+		get
+		{
+			return this._ad1.Entity;
+		}
+		set
+		{
+			ad previousValue = this._ad1.Entity;
+			if (((previousValue != value) 
+						|| (this._ad1.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._ad1.Entity = null;
+					previousValue.ad2 = null;
+				}
+				this._ad1.Entity = value;
+				if ((value != null))
+				{
+					value.ad2 = this;
+					this._ad_id = value.ad_id;
+				}
+				else
+				{
+					this._ad_id = default(int);
+				}
+				this.SendPropertyChanged("ad1");
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
 	}
 }
 
@@ -1236,1001 +1744,14 @@ public partial class web_config : INotifyPropertyChanging, INotifyPropertyChange
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ads")]
-public partial class ad : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _ad_id;
-	
-	private string _title;
-	
-	private string _description;
-	
-	private int _price;
-	
-	private System.Nullable<bool> _price_fixed;
-	
-	private int _category_id;
-	
-	private int _subcat_id;
-	
-	private int _location_id;
-	
-	private System.Nullable<int> _condition_id;
-	
-	private string _posted_by;
-	
-	private System.Nullable<System.DateTime> _posted_date;
-	
-	private System.Nullable<System.DateTime> _expire_date;
-	
-	private System.Nullable<int> _contact_no;
-	
-	private System.Nullable<short> _views;
-	
-	private System.Nullable<bool> _deleted;
-	
-	private System.Nullable<bool> _blocked;
-	
-	private EntityRef<ad> _ad2;
-	
-	private EntityRef<ad> _ad1;
-	
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onad_idChanging(int value);
-    partial void Onad_idChanged();
-    partial void OntitleChanging(string value);
-    partial void OntitleChanged();
-    partial void OndescriptionChanging(string value);
-    partial void OndescriptionChanged();
-    partial void OnpriceChanging(int value);
-    partial void OnpriceChanged();
-    partial void Onprice_fixedChanging(System.Nullable<bool> value);
-    partial void Onprice_fixedChanged();
-    partial void Oncategory_idChanging(int value);
-    partial void Oncategory_idChanged();
-    partial void Onsubcat_idChanging(int value);
-    partial void Onsubcat_idChanged();
-    partial void Onlocation_idChanging(int value);
-    partial void Onlocation_idChanged();
-    partial void Oncondition_idChanging(System.Nullable<int> value);
-    partial void Oncondition_idChanged();
-    partial void Onposted_byChanging(string value);
-    partial void Onposted_byChanged();
-    partial void Onposted_dateChanging(System.Nullable<System.DateTime> value);
-    partial void Onposted_dateChanged();
-    partial void Onexpire_dateChanging(System.Nullable<System.DateTime> value);
-    partial void Onexpire_dateChanged();
-    partial void Oncontact_noChanging(System.Nullable<int> value);
-    partial void Oncontact_noChanged();
-    partial void OnviewsChanging(System.Nullable<short> value);
-    partial void OnviewsChanged();
-    partial void OndeletedChanging(System.Nullable<bool> value);
-    partial void OndeletedChanged();
-    partial void OnblockedChanging(System.Nullable<bool> value);
-    partial void OnblockedChanged();
-    #endregion
-	
-	public ad()
-	{
-		this._ad2 = default(EntityRef<ad>);
-		this._ad1 = default(EntityRef<ad>);
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ad_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int ad_id
-	{
-		get
-		{
-			return this._ad_id;
-		}
-		set
-		{
-			if ((this._ad_id != value))
-			{
-				if (this._ad1.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.Onad_idChanging(value);
-				this.SendPropertyChanging();
-				this._ad_id = value;
-				this.SendPropertyChanged("ad_id");
-				this.Onad_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_title", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-	public string title
-	{
-		get
-		{
-			return this._title;
-		}
-		set
-		{
-			if ((this._title != value))
-			{
-				this.OntitleChanging(value);
-				this.SendPropertyChanging();
-				this._title = value;
-				this.SendPropertyChanged("title");
-				this.OntitleChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description", DbType="VarChar(1000) NOT NULL", CanBeNull=false)]
-	public string description
-	{
-		get
-		{
-			return this._description;
-		}
-		set
-		{
-			if ((this._description != value))
-			{
-				this.OndescriptionChanging(value);
-				this.SendPropertyChanging();
-				this._description = value;
-				this.SendPropertyChanged("description");
-				this.OndescriptionChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price", DbType="Int NOT NULL")]
-	public int price
-	{
-		get
-		{
-			return this._price;
-		}
-		set
-		{
-			if ((this._price != value))
-			{
-				this.OnpriceChanging(value);
-				this.SendPropertyChanging();
-				this._price = value;
-				this.SendPropertyChanged("price");
-				this.OnpriceChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price_fixed", DbType="Bit")]
-	public System.Nullable<bool> price_fixed
-	{
-		get
-		{
-			return this._price_fixed;
-		}
-		set
-		{
-			if ((this._price_fixed != value))
-			{
-				this.Onprice_fixedChanging(value);
-				this.SendPropertyChanging();
-				this._price_fixed = value;
-				this.SendPropertyChanged("price_fixed");
-				this.Onprice_fixedChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_category_id", DbType="Int NOT NULL")]
-	public int category_id
-	{
-		get
-		{
-			return this._category_id;
-		}
-		set
-		{
-			if ((this._category_id != value))
-			{
-				this.Oncategory_idChanging(value);
-				this.SendPropertyChanging();
-				this._category_id = value;
-				this.SendPropertyChanged("category_id");
-				this.Oncategory_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_subcat_id", DbType="Int NOT NULL")]
-	public int subcat_id
-	{
-		get
-		{
-			return this._subcat_id;
-		}
-		set
-		{
-			if ((this._subcat_id != value))
-			{
-				this.Onsubcat_idChanging(value);
-				this.SendPropertyChanging();
-				this._subcat_id = value;
-				this.SendPropertyChanged("subcat_id");
-				this.Onsubcat_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_location_id", DbType="Int NOT NULL")]
-	public int location_id
-	{
-		get
-		{
-			return this._location_id;
-		}
-		set
-		{
-			if ((this._location_id != value))
-			{
-				this.Onlocation_idChanging(value);
-				this.SendPropertyChanging();
-				this._location_id = value;
-				this.SendPropertyChanged("location_id");
-				this.Onlocation_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_condition_id", DbType="Int")]
-	public System.Nullable<int> condition_id
-	{
-		get
-		{
-			return this._condition_id;
-		}
-		set
-		{
-			if ((this._condition_id != value))
-			{
-				this.Oncondition_idChanging(value);
-				this.SendPropertyChanging();
-				this._condition_id = value;
-				this.SendPropertyChanged("condition_id");
-				this.Oncondition_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_posted_by", DbType="VarChar(20)")]
-	public string posted_by
-	{
-		get
-		{
-			return this._posted_by;
-		}
-		set
-		{
-			if ((this._posted_by != value))
-			{
-				this.Onposted_byChanging(value);
-				this.SendPropertyChanging();
-				this._posted_by = value;
-				this.SendPropertyChanged("posted_by");
-				this.Onposted_byChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_posted_date", DbType="DateTime")]
-	public System.Nullable<System.DateTime> posted_date
-	{
-		get
-		{
-			return this._posted_date;
-		}
-		set
-		{
-			if ((this._posted_date != value))
-			{
-				this.Onposted_dateChanging(value);
-				this.SendPropertyChanging();
-				this._posted_date = value;
-				this.SendPropertyChanged("posted_date");
-				this.Onposted_dateChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_expire_date", DbType="DateTime")]
-	public System.Nullable<System.DateTime> expire_date
-	{
-		get
-		{
-			return this._expire_date;
-		}
-		set
-		{
-			if ((this._expire_date != value))
-			{
-				this.Onexpire_dateChanging(value);
-				this.SendPropertyChanging();
-				this._expire_date = value;
-				this.SendPropertyChanged("expire_date");
-				this.Onexpire_dateChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contact_no", DbType="Int")]
-	public System.Nullable<int> contact_no
-	{
-		get
-		{
-			return this._contact_no;
-		}
-		set
-		{
-			if ((this._contact_no != value))
-			{
-				this.Oncontact_noChanging(value);
-				this.SendPropertyChanging();
-				this._contact_no = value;
-				this.SendPropertyChanged("contact_no");
-				this.Oncontact_noChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_views", DbType="SmallInt")]
-	public System.Nullable<short> views
-	{
-		get
-		{
-			return this._views;
-		}
-		set
-		{
-			if ((this._views != value))
-			{
-				this.OnviewsChanging(value);
-				this.SendPropertyChanging();
-				this._views = value;
-				this.SendPropertyChanged("views");
-				this.OnviewsChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_deleted", DbType="Bit")]
-	public System.Nullable<bool> deleted
-	{
-		get
-		{
-			return this._deleted;
-		}
-		set
-		{
-			if ((this._deleted != value))
-			{
-				this.OndeletedChanging(value);
-				this.SendPropertyChanging();
-				this._deleted = value;
-				this.SendPropertyChanged("deleted");
-				this.OndeletedChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_blocked", DbType="Bit")]
-	public System.Nullable<bool> blocked
-	{
-		get
-		{
-			return this._blocked;
-		}
-		set
-		{
-			if ((this._blocked != value))
-			{
-				this.OnblockedChanging(value);
-				this.SendPropertyChanging();
-				this._blocked = value;
-				this.SendPropertyChanged("blocked");
-				this.OnblockedChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ad_ad", Storage="_ad2", ThisKey="ad_id", OtherKey="ad_id", IsUnique=true, IsForeignKey=false)]
-	public ad ad2
-	{
-		get
-		{
-			return this._ad2.Entity;
-		}
-		set
-		{
-			ad previousValue = this._ad2.Entity;
-			if (((previousValue != value) 
-						|| (this._ad2.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._ad2.Entity = null;
-					previousValue.ad1 = null;
-				}
-				this._ad2.Entity = value;
-				if ((value != null))
-				{
-					value.ad1 = this;
-				}
-				this.SendPropertyChanged("ad2");
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ad_ad", Storage="_ad1", ThisKey="ad_id", OtherKey="ad_id", IsForeignKey=true)]
-	public ad ad1
-	{
-		get
-		{
-			return this._ad1.Entity;
-		}
-		set
-		{
-			ad previousValue = this._ad1.Entity;
-			if (((previousValue != value) 
-						|| (this._ad1.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._ad1.Entity = null;
-					previousValue.ad2 = null;
-				}
-				this._ad1.Entity = value;
-				if ((value != null))
-				{
-					value.ad2 = this;
-					this._ad_id = value.ad_id;
-				}
-				else
-				{
-					this._ad_id = default(int);
-				}
-				this.SendPropertyChanged("ad1");
-			}
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-}
-
-public partial class GetCategoriesResult
-{
-	
-	private System.Nullable<long> _SR;
-	
-	private int _CATEGORY_ID;
-	
-	private string _CATEGORY_NAME;
-	
-	private string _PHOTO;
-	
-	private string _CREATED_BY;
-	
-	private string _CREATED_DATE;
-	
-	private string _MODIFIED_BY;
-	
-	private string _MODIFIED_DATE;
-	
-	public GetCategoriesResult()
-	{
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SR", DbType="BigInt")]
-	public System.Nullable<long> SR
-	{
-		get
-		{
-			return this._SR;
-		}
-		set
-		{
-			if ((this._SR != value))
-			{
-				this._SR = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_ID", DbType="Int NOT NULL")]
-	public int CATEGORY_ID
-	{
-		get
-		{
-			return this._CATEGORY_ID;
-		}
-		set
-		{
-			if ((this._CATEGORY_ID != value))
-			{
-				this._CATEGORY_ID = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-	public string CATEGORY_NAME
-	{
-		get
-		{
-			return this._CATEGORY_NAME;
-		}
-		set
-		{
-			if ((this._CATEGORY_NAME != value))
-			{
-				this._CATEGORY_NAME = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PHOTO", DbType="VarChar(100)")]
-	public string PHOTO
-	{
-		get
-		{
-			return this._PHOTO;
-		}
-		set
-		{
-			if ((this._PHOTO != value))
-			{
-				this._PHOTO = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_BY", DbType="VarChar(20)")]
-	public string CREATED_BY
-	{
-		get
-		{
-			return this._CREATED_BY;
-		}
-		set
-		{
-			if ((this._CREATED_BY != value))
-			{
-				this._CREATED_BY = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_DATE", DbType="VarChar(30)")]
-	public string CREATED_DATE
-	{
-		get
-		{
-			return this._CREATED_DATE;
-		}
-		set
-		{
-			if ((this._CREATED_DATE != value))
-			{
-				this._CREATED_DATE = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MODIFIED_BY", DbType="VarChar(20)")]
-	public string MODIFIED_BY
-	{
-		get
-		{
-			return this._MODIFIED_BY;
-		}
-		set
-		{
-			if ((this._MODIFIED_BY != value))
-			{
-				this._MODIFIED_BY = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MODIFIED_DATE", DbType="VarChar(30)")]
-	public string MODIFIED_DATE
-	{
-		get
-		{
-			return this._MODIFIED_DATE;
-		}
-		set
-		{
-			if ((this._MODIFIED_DATE != value))
-			{
-				this._MODIFIED_DATE = value;
-			}
-		}
-	}
-}
-
-public partial class GetSubCategoriesResult
-{
-	
-	private System.Nullable<long> _SR;
-	
-	private int _CATEGORY_ID;
-	
-	private int _SUB_CATEGORY_ID;
-	
-	private string _CATEGORY_NAME;
-	
-	private string _SUB_CATEGORY_NAME;
-	
-	private string _PHOTO;
-	
-	private string _CREATED_BY;
-	
-	private string _CREATED_DATE;
-	
-	private string _MODIFIED_BY;
-	
-	private string _MODIFIED_DATE;
-	
-	public GetSubCategoriesResult()
-	{
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SR", DbType="BigInt")]
-	public System.Nullable<long> SR
-	{
-		get
-		{
-			return this._SR;
-		}
-		set
-		{
-			if ((this._SR != value))
-			{
-				this._SR = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_ID", DbType="Int NOT NULL")]
-	public int CATEGORY_ID
-	{
-		get
-		{
-			return this._CATEGORY_ID;
-		}
-		set
-		{
-			if ((this._CATEGORY_ID != value))
-			{
-				this._CATEGORY_ID = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SUB_CATEGORY_ID", DbType="Int NOT NULL")]
-	public int SUB_CATEGORY_ID
-	{
-		get
-		{
-			return this._SUB_CATEGORY_ID;
-		}
-		set
-		{
-			if ((this._SUB_CATEGORY_ID != value))
-			{
-				this._SUB_CATEGORY_ID = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-	public string CATEGORY_NAME
-	{
-		get
-		{
-			return this._CATEGORY_NAME;
-		}
-		set
-		{
-			if ((this._CATEGORY_NAME != value))
-			{
-				this._CATEGORY_NAME = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SUB_CATEGORY_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-	public string SUB_CATEGORY_NAME
-	{
-		get
-		{
-			return this._SUB_CATEGORY_NAME;
-		}
-		set
-		{
-			if ((this._SUB_CATEGORY_NAME != value))
-			{
-				this._SUB_CATEGORY_NAME = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PHOTO", DbType="VarChar(100)")]
-	public string PHOTO
-	{
-		get
-		{
-			return this._PHOTO;
-		}
-		set
-		{
-			if ((this._PHOTO != value))
-			{
-				this._PHOTO = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_BY", DbType="VarChar(20)")]
-	public string CREATED_BY
-	{
-		get
-		{
-			return this._CREATED_BY;
-		}
-		set
-		{
-			if ((this._CREATED_BY != value))
-			{
-				this._CREATED_BY = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_DATE", DbType="VarChar(30)")]
-	public string CREATED_DATE
-	{
-		get
-		{
-			return this._CREATED_DATE;
-		}
-		set
-		{
-			if ((this._CREATED_DATE != value))
-			{
-				this._CREATED_DATE = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MODIFIED_BY", DbType="VarChar(20)")]
-	public string MODIFIED_BY
-	{
-		get
-		{
-			return this._MODIFIED_BY;
-		}
-		set
-		{
-			if ((this._MODIFIED_BY != value))
-			{
-				this._MODIFIED_BY = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MODIFIED_DATE", DbType="VarChar(30)")]
-	public string MODIFIED_DATE
-	{
-		get
-		{
-			return this._MODIFIED_DATE;
-		}
-		set
-		{
-			if ((this._MODIFIED_DATE != value))
-			{
-				this._MODIFIED_DATE = value;
-			}
-		}
-	}
-}
-
-public partial class User_GetAdsListResult
-{
-	
-	private System.Nullable<int> _ID;
-	
-	private string _TITLE;
-	
-	private System.Nullable<int> _PRICE;
-	
-	private string _CONDITION;
-	
-	private string _CATEGORY;
-	
-	private string _LOCATION;
-	
-	private string _POSTED_DATE;
-	
-	private System.Nullable<short> _VISITOR;
-	
-	public User_GetAdsListResult()
-	{
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int")]
-	public System.Nullable<int> ID
-	{
-		get
-		{
-			return this._ID;
-		}
-		set
-		{
-			if ((this._ID != value))
-			{
-				this._ID = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TITLE", DbType="VarChar(50)")]
-	public string TITLE
-	{
-		get
-		{
-			return this._TITLE;
-		}
-		set
-		{
-			if ((this._TITLE != value))
-			{
-				this._TITLE = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRICE", DbType="Int")]
-	public System.Nullable<int> PRICE
-	{
-		get
-		{
-			return this._PRICE;
-		}
-		set
-		{
-			if ((this._PRICE != value))
-			{
-				this._PRICE = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CONDITION", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-	public string CONDITION
-	{
-		get
-		{
-			return this._CONDITION;
-		}
-		set
-		{
-			if ((this._CONDITION != value))
-			{
-				this._CONDITION = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY", DbType="VarChar(43)")]
-	public string CATEGORY
-	{
-		get
-		{
-			return this._CATEGORY;
-		}
-		set
-		{
-			if ((this._CATEGORY != value))
-			{
-				this._CATEGORY = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION", DbType="VarChar(20)")]
-	public string LOCATION
-	{
-		get
-		{
-			return this._LOCATION;
-		}
-		set
-		{
-			if ((this._LOCATION != value))
-			{
-				this._LOCATION = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSTED_DATE", DbType="VarChar(8000)")]
-	public string POSTED_DATE
-	{
-		get
-		{
-			return this._POSTED_DATE;
-		}
-		set
-		{
-			if ((this._POSTED_DATE != value))
-			{
-				this._POSTED_DATE = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VISITOR", DbType="SmallInt")]
-	public System.Nullable<short> VISITOR
-	{
-		get
-		{
-			return this._VISITOR;
-		}
-		set
-		{
-			if ((this._VISITOR != value))
-			{
-				this._VISITOR = value;
-			}
-		}
-	}
-}
-
-public partial class User_GetCategoriesResult
+public partial class User_GetSubCategoriesResult
 {
 	
 	private int _ID;
 	
 	private string _NAME;
 	
-	public User_GetCategoriesResult()
+	public User_GetSubCategoriesResult()
 	{
 	}
 	
@@ -2262,156 +1783,6 @@ public partial class User_GetCategoriesResult
 			if ((this._NAME != value))
 			{
 				this._NAME = value;
-			}
-		}
-	}
-}
-
-public partial class User_GetConditionsResult
-{
-	
-	private int _ID;
-	
-	private string _NAME;
-	
-	public User_GetConditionsResult()
-	{
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
-	public int ID
-	{
-		get
-		{
-			return this._ID;
-		}
-		set
-		{
-			if ((this._ID != value))
-			{
-				this._ID = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-	public string NAME
-	{
-		get
-		{
-			return this._NAME;
-		}
-		set
-		{
-			if ((this._NAME != value))
-			{
-				this._NAME = value;
-			}
-		}
-	}
-}
-
-public partial class User_GetLocationsResult
-{
-	
-	private int _ID;
-	
-	private string _NAME;
-	
-	public User_GetLocationsResult()
-	{
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
-	public int ID
-	{
-		get
-		{
-			return this._ID;
-		}
-		set
-		{
-			if ((this._ID != value))
-			{
-				this._ID = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-	public string NAME
-	{
-		get
-		{
-			return this._NAME;
-		}
-		set
-		{
-			if ((this._NAME != value))
-			{
-				this._NAME = value;
-			}
-		}
-	}
-}
-
-public partial class User_GetMainPageDataResult
-{
-	
-	private int _CATEGORY_ID;
-	
-	private string _CATEGORY_NAME;
-	
-	private System.Nullable<int> _C_COUNT;
-	
-	public User_GetMainPageDataResult()
-	{
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_ID", DbType="Int NOT NULL")]
-	public int CATEGORY_ID
-	{
-		get
-		{
-			return this._CATEGORY_ID;
-		}
-		set
-		{
-			if ((this._CATEGORY_ID != value))
-			{
-				this._CATEGORY_ID = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-	public string CATEGORY_NAME
-	{
-		get
-		{
-			return this._CATEGORY_NAME;
-		}
-		set
-		{
-			if ((this._CATEGORY_NAME != value))
-			{
-				this._CATEGORY_NAME = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_COUNT", DbType="Int")]
-	public System.Nullable<int> C_COUNT
-	{
-		get
-		{
-			return this._C_COUNT;
-		}
-		set
-		{
-			if ((this._C_COUNT != value))
-			{
-				this._C_COUNT = value;
 			}
 		}
 	}
@@ -2605,14 +1976,76 @@ public partial class User_GetSingleAdDetailsResult
 	}
 }
 
-public partial class User_GetSubCategoriesResult
+public partial class User_GetMainPageDataResult
+{
+	
+	private int _CATEGORY_ID;
+	
+	private string _CATEGORY_NAME;
+	
+	private System.Nullable<int> _C_COUNT;
+	
+	public User_GetMainPageDataResult()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_ID", DbType="Int NOT NULL")]
+	public int CATEGORY_ID
+	{
+		get
+		{
+			return this._CATEGORY_ID;
+		}
+		set
+		{
+			if ((this._CATEGORY_ID != value))
+			{
+				this._CATEGORY_ID = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+	public string CATEGORY_NAME
+	{
+		get
+		{
+			return this._CATEGORY_NAME;
+		}
+		set
+		{
+			if ((this._CATEGORY_NAME != value))
+			{
+				this._CATEGORY_NAME = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C_COUNT", DbType="Int")]
+	public System.Nullable<int> C_COUNT
+	{
+		get
+		{
+			return this._C_COUNT;
+		}
+		set
+		{
+			if ((this._C_COUNT != value))
+			{
+				this._C_COUNT = value;
+			}
+		}
+	}
+}
+
+public partial class User_GetLocationsResult
 {
 	
 	private int _ID;
 	
 	private string _NAME;
 	
-	public User_GetSubCategoriesResult()
+	public User_GetLocationsResult()
 	{
 	}
 	
@@ -2644,6 +2077,738 @@ public partial class User_GetSubCategoriesResult
 			if ((this._NAME != value))
 			{
 				this._NAME = value;
+			}
+		}
+	}
+}
+
+public partial class User_GetConditionsResult
+{
+	
+	private int _ID;
+	
+	private string _NAME;
+	
+	public User_GetConditionsResult()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+	public int ID
+	{
+		get
+		{
+			return this._ID;
+		}
+		set
+		{
+			if ((this._ID != value))
+			{
+				this._ID = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+	public string NAME
+	{
+		get
+		{
+			return this._NAME;
+		}
+		set
+		{
+			if ((this._NAME != value))
+			{
+				this._NAME = value;
+			}
+		}
+	}
+}
+
+public partial class User_GetCategoriesResult
+{
+	
+	private int _ID;
+	
+	private string _NAME;
+	
+	public User_GetCategoriesResult()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+	public int ID
+	{
+		get
+		{
+			return this._ID;
+		}
+		set
+		{
+			if ((this._ID != value))
+			{
+				this._ID = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+	public string NAME
+	{
+		get
+		{
+			return this._NAME;
+		}
+		set
+		{
+			if ((this._NAME != value))
+			{
+				this._NAME = value;
+			}
+		}
+	}
+}
+
+public partial class User_GetAdsListResult
+{
+	
+	private System.Nullable<int> _ID;
+	
+	private string _TITLE;
+	
+	private System.Nullable<int> _PRICE;
+	
+	private string _CONDITION;
+	
+	private string _CATEGORY;
+	
+	private string _LOCATION;
+	
+	private string _POSTED_DATE;
+	
+	private System.Nullable<short> _VISITOR;
+	
+	public User_GetAdsListResult()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int")]
+	public System.Nullable<int> ID
+	{
+		get
+		{
+			return this._ID;
+		}
+		set
+		{
+			if ((this._ID != value))
+			{
+				this._ID = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TITLE", DbType="VarChar(50)")]
+	public string TITLE
+	{
+		get
+		{
+			return this._TITLE;
+		}
+		set
+		{
+			if ((this._TITLE != value))
+			{
+				this._TITLE = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRICE", DbType="Int")]
+	public System.Nullable<int> PRICE
+	{
+		get
+		{
+			return this._PRICE;
+		}
+		set
+		{
+			if ((this._PRICE != value))
+			{
+				this._PRICE = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CONDITION", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+	public string CONDITION
+	{
+		get
+		{
+			return this._CONDITION;
+		}
+		set
+		{
+			if ((this._CONDITION != value))
+			{
+				this._CONDITION = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY", DbType="VarChar(43)")]
+	public string CATEGORY
+	{
+		get
+		{
+			return this._CATEGORY;
+		}
+		set
+		{
+			if ((this._CATEGORY != value))
+			{
+				this._CATEGORY = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION", DbType="VarChar(20)")]
+	public string LOCATION
+	{
+		get
+		{
+			return this._LOCATION;
+		}
+		set
+		{
+			if ((this._LOCATION != value))
+			{
+				this._LOCATION = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSTED_DATE", DbType="VarChar(8000)")]
+	public string POSTED_DATE
+	{
+		get
+		{
+			return this._POSTED_DATE;
+		}
+		set
+		{
+			if ((this._POSTED_DATE != value))
+			{
+				this._POSTED_DATE = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VISITOR", DbType="SmallInt")]
+	public System.Nullable<short> VISITOR
+	{
+		get
+		{
+			return this._VISITOR;
+		}
+		set
+		{
+			if ((this._VISITOR != value))
+			{
+				this._VISITOR = value;
+			}
+		}
+	}
+}
+
+public partial class Admin_GetSubCategoriesResult
+{
+	
+	private System.Nullable<long> _SR;
+	
+	private int _CATEGORY_ID;
+	
+	private int _SUB_CATEGORY_ID;
+	
+	private string _CATEGORY_NAME;
+	
+	private string _SUB_CATEGORY_NAME;
+	
+	private string _PHOTO;
+	
+	private string _CREATED_BY;
+	
+	private string _CREATED_DATE;
+	
+	private string _MODIFIED_BY;
+	
+	private string _MODIFIED_DATE;
+	
+	public Admin_GetSubCategoriesResult()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SR", DbType="BigInt")]
+	public System.Nullable<long> SR
+	{
+		get
+		{
+			return this._SR;
+		}
+		set
+		{
+			if ((this._SR != value))
+			{
+				this._SR = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_ID", DbType="Int NOT NULL")]
+	public int CATEGORY_ID
+	{
+		get
+		{
+			return this._CATEGORY_ID;
+		}
+		set
+		{
+			if ((this._CATEGORY_ID != value))
+			{
+				this._CATEGORY_ID = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SUB_CATEGORY_ID", DbType="Int NOT NULL")]
+	public int SUB_CATEGORY_ID
+	{
+		get
+		{
+			return this._SUB_CATEGORY_ID;
+		}
+		set
+		{
+			if ((this._SUB_CATEGORY_ID != value))
+			{
+				this._SUB_CATEGORY_ID = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+	public string CATEGORY_NAME
+	{
+		get
+		{
+			return this._CATEGORY_NAME;
+		}
+		set
+		{
+			if ((this._CATEGORY_NAME != value))
+			{
+				this._CATEGORY_NAME = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SUB_CATEGORY_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+	public string SUB_CATEGORY_NAME
+	{
+		get
+		{
+			return this._SUB_CATEGORY_NAME;
+		}
+		set
+		{
+			if ((this._SUB_CATEGORY_NAME != value))
+			{
+				this._SUB_CATEGORY_NAME = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PHOTO", DbType="VarChar(100)")]
+	public string PHOTO
+	{
+		get
+		{
+			return this._PHOTO;
+		}
+		set
+		{
+			if ((this._PHOTO != value))
+			{
+				this._PHOTO = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_BY", DbType="VarChar(20)")]
+	public string CREATED_BY
+	{
+		get
+		{
+			return this._CREATED_BY;
+		}
+		set
+		{
+			if ((this._CREATED_BY != value))
+			{
+				this._CREATED_BY = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_DATE", DbType="VarChar(30)")]
+	public string CREATED_DATE
+	{
+		get
+		{
+			return this._CREATED_DATE;
+		}
+		set
+		{
+			if ((this._CREATED_DATE != value))
+			{
+				this._CREATED_DATE = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MODIFIED_BY", DbType="VarChar(20)")]
+	public string MODIFIED_BY
+	{
+		get
+		{
+			return this._MODIFIED_BY;
+		}
+		set
+		{
+			if ((this._MODIFIED_BY != value))
+			{
+				this._MODIFIED_BY = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MODIFIED_DATE", DbType="VarChar(30)")]
+	public string MODIFIED_DATE
+	{
+		get
+		{
+			return this._MODIFIED_DATE;
+		}
+		set
+		{
+			if ((this._MODIFIED_DATE != value))
+			{
+				this._MODIFIED_DATE = value;
+			}
+		}
+	}
+}
+
+public partial class Admin_GetLocationsResult
+{
+	
+	private System.Nullable<long> _SR;
+	
+	private int _ID;
+	
+	private string _NAME;
+	
+	private string _PHOTO_URL;
+	
+	private string _CREATED_BY;
+	
+	private string _CREATED_DATE;
+	
+	private string _MODIFIED_BY;
+	
+	private string _MODIFIED_DATE;
+	
+	public Admin_GetLocationsResult()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SR", DbType="BigInt")]
+	public System.Nullable<long> SR
+	{
+		get
+		{
+			return this._SR;
+		}
+		set
+		{
+			if ((this._SR != value))
+			{
+				this._SR = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+	public int ID
+	{
+		get
+		{
+			return this._ID;
+		}
+		set
+		{
+			if ((this._ID != value))
+			{
+				this._ID = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+	public string NAME
+	{
+		get
+		{
+			return this._NAME;
+		}
+		set
+		{
+			if ((this._NAME != value))
+			{
+				this._NAME = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PHOTO_URL", DbType="VarChar(100)")]
+	public string PHOTO_URL
+	{
+		get
+		{
+			return this._PHOTO_URL;
+		}
+		set
+		{
+			if ((this._PHOTO_URL != value))
+			{
+				this._PHOTO_URL = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_BY", DbType="VarChar(20)")]
+	public string CREATED_BY
+	{
+		get
+		{
+			return this._CREATED_BY;
+		}
+		set
+		{
+			if ((this._CREATED_BY != value))
+			{
+				this._CREATED_BY = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_DATE", DbType="VarChar(30)")]
+	public string CREATED_DATE
+	{
+		get
+		{
+			return this._CREATED_DATE;
+		}
+		set
+		{
+			if ((this._CREATED_DATE != value))
+			{
+				this._CREATED_DATE = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MODIFIED_BY", DbType="VarChar(20)")]
+	public string MODIFIED_BY
+	{
+		get
+		{
+			return this._MODIFIED_BY;
+		}
+		set
+		{
+			if ((this._MODIFIED_BY != value))
+			{
+				this._MODIFIED_BY = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MODIFIED_DATE", DbType="VarChar(30)")]
+	public string MODIFIED_DATE
+	{
+		get
+		{
+			return this._MODIFIED_DATE;
+		}
+		set
+		{
+			if ((this._MODIFIED_DATE != value))
+			{
+				this._MODIFIED_DATE = value;
+			}
+		}
+	}
+}
+
+public partial class Admin_GetCategoriesResult
+{
+	
+	private System.Nullable<long> _SR;
+	
+	private int _CATEGORY_ID;
+	
+	private string _CATEGORY_NAME;
+	
+	private string _PHOTO;
+	
+	private string _CREATED_BY;
+	
+	private string _CREATED_DATE;
+	
+	private string _MODIFIED_BY;
+	
+	private string _MODIFIED_DATE;
+	
+	public Admin_GetCategoriesResult()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SR", DbType="BigInt")]
+	public System.Nullable<long> SR
+	{
+		get
+		{
+			return this._SR;
+		}
+		set
+		{
+			if ((this._SR != value))
+			{
+				this._SR = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_ID", DbType="Int NOT NULL")]
+	public int CATEGORY_ID
+	{
+		get
+		{
+			return this._CATEGORY_ID;
+		}
+		set
+		{
+			if ((this._CATEGORY_ID != value))
+			{
+				this._CATEGORY_ID = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+	public string CATEGORY_NAME
+	{
+		get
+		{
+			return this._CATEGORY_NAME;
+		}
+		set
+		{
+			if ((this._CATEGORY_NAME != value))
+			{
+				this._CATEGORY_NAME = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PHOTO", DbType="VarChar(100)")]
+	public string PHOTO
+	{
+		get
+		{
+			return this._PHOTO;
+		}
+		set
+		{
+			if ((this._PHOTO != value))
+			{
+				this._PHOTO = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_BY", DbType="VarChar(20)")]
+	public string CREATED_BY
+	{
+		get
+		{
+			return this._CREATED_BY;
+		}
+		set
+		{
+			if ((this._CREATED_BY != value))
+			{
+				this._CREATED_BY = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_DATE", DbType="VarChar(30)")]
+	public string CREATED_DATE
+	{
+		get
+		{
+			return this._CREATED_DATE;
+		}
+		set
+		{
+			if ((this._CREATED_DATE != value))
+			{
+				this._CREATED_DATE = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MODIFIED_BY", DbType="VarChar(20)")]
+	public string MODIFIED_BY
+	{
+		get
+		{
+			return this._MODIFIED_BY;
+		}
+		set
+		{
+			if ((this._MODIFIED_BY != value))
+			{
+				this._MODIFIED_BY = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MODIFIED_DATE", DbType="VarChar(30)")]
+	public string MODIFIED_DATE
+	{
+		get
+		{
+			return this._MODIFIED_DATE;
+		}
+		set
+		{
+			if ((this._MODIFIED_DATE != value))
+			{
+				this._MODIFIED_DATE = value;
 			}
 		}
 	}

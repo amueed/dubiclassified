@@ -271,6 +271,9 @@
                             <a href="Dashboard.aspx"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
                         </li>
                         <li>
+                            <a href="Locations.aspx"><i class="fa fa-location-arrow fa-fw"></i>Locations</a>
+                        </li>
+                        <li>
                             <a href="Categories.aspx"><i class="fa fa-tags fa-fw"></i>Categories</a>
                         </li>
                         <li>
