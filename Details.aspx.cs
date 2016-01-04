@@ -27,7 +27,7 @@ public partial class Details : System.Web.UI.Page
             {
                 dt = new DataTable();
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "GetSingleAdDetails";
+                cmd.CommandText = "User_GetSingleAdDetails";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = db;
 
