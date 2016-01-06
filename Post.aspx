@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Post.aspx.cs" Inherits="Post" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <script src="//cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>
+    <%--<script src="//cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="Server">
 
@@ -15,61 +15,54 @@
                     </div>
                     <div class="login">
                         <div class="form-group ">
-                            <label>Location:</label>
-                            <%--<asp:DropDownList ID="ddlAdLocation" CssClass="form-control" runat="server"></asp:DropDownList>--%>
-                            <select id="ddlAdLocation" class="form-control" runat="server">
-                            </select>
+                            <label>Location:<span style="color:red; font-size:16px">*</span></label>
+                            <asp:DropDownList ID="ddlAdLocation" CssClass="form-control" runat="server"></asp:DropDownList>
                         </div>
                         <div class="form-group ">
-                            <label>Category:</label>
-                            <%--<asp:DropDownList ID="ddlAdCategory" CssClass="form-control" runat="server"></asp:DropDownList>--%>
-                            <select id="ddlAdCategory" class="form-control" onchange="GetSubCategories();" runat="server">
-                            </select>
-                        </div>
-                        <div class="form-group ">
-                            <label>Sub-Category:</label>
-                            <%--<asp:DropDownList ID="ddlAdSubCategory" CssClass="form-control" runat="server"></asp:DropDownList>--%>
-                            <select id="ddlAdSubCategory" class="form-control" runat="server">
-                            </select>
-                        </div>
-                        <div class="form-group ">
-                            <label>Title:</label>
-                            <input type="text" id="txtTitle" placeholder="Ad Title" class="form-control" />
+                            <label>Category:<span style="color:red; font-size:16px">*</span></label>
+                            <asp:DropDownList ID="ddlAdCategory" CssClass="form-control" onchange="GetSubCategories();" runat="server"></asp:DropDownList>
                         </div>
                         <div class="form-group">
-                            <label>Description:</label>
-                            <textarea id="txtDesc" name="editior" class="form-control" rows="5" placeholder="Description for your ad. (max 1000 words)"></textarea>
-                            <script>
-                                CKEDITOR.replace('editior');
-                            </script>
+                            <label>Sub-Category:<span style="color:red; font-size:16px">*</span></label>
+                            <asp:DropDownList ID="ddlAdSubCategory" CssClass="form-control" runat="server"></asp:DropDownList>
+                        </div>
+                        <div class="form-group">
+                            <label>Title:<span style="color:red; font-size:16px">*</span></label>
+                            <input type="text" id="txtTitle" placeholder="Ad Title" class="form-control" runat="server"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Description:<span style="color:red; font-size:16px">*</span></label>
+                            <textarea id="txtDesc" name="editior" class="form-control" rows="5" placeholder="Description for your ad. (max 1000 words)" runat="server"></textarea>
                         </div>
                         <div class="form-group ">
-                            <label>Price:</label>
-                            <input type="text" id="txtPrice" placeholder="Price" class="form-control" />
+                            <label>Price:<span style="color:red; font-size:16px">*</span></label>
+                            <input type="text" id="txtPrice" placeholder="Price" class="form-control" runat="server"/>
 
                         </div>
                         <div class="form-group">
                             <label>
-                                <input type="radio" name="priceType" value="Negotiable" checked="checked" />Negotiable</label>
+                                <asp:RadioButton ID="rdbNeg" runat="server" Checked="true" GroupName="priceType" />Negotiable</label>
                             <label>
-                                <input type="radio" name="priceType" value="Fixed" />Fixed</label>
+                                <asp:RadioButton ID="rdbFixed" runat="server" GroupName="priceType" />Fixed</label>
                         </div>
                         <div class="form-group">
-                            <label>Condition:</label>
-                            <%--<asp:DropDownList ID="ddlCondition" CssClass="form-control" runat="server"></asp:DropDownList>--%>
-                            <select id="ddlCondition" class="form-control" runat="server">
-                            </select>
+                            <label>Condition:<span style="color:red; font-size:16px">*</span></label>
+                            <asp:DropDownList ID="ddlCondition" CssClass="form-control" runat="server"></asp:DropDownList>
                         </div>
                         <div class="form-group ">
-                            <label>Contact No:</label>
-                            <input type="text" id="txtContact" placeholder="Contact No. (e.g: 03326041449)" class="form-control" />
+                            <label>Contact No:<span style="color:red; font-size:16px">*</span></label>
+                            <input type="text" id="txtContact" class="form-control" placeholder="Contact No. (e.g: 03326041449)" runat="server"/>
                         </div>
                         <div class="form-group ">
-                            <label>Add Images:</label>
-                            <input type="file" id="fuImg" class="form-control" multiple="multiple" runat="server" />
+                            <label>Add Images:<span style="color:#d7d7d7">(Max. 10)</span></label>
+                            <asp:FileUpload ID="fuImg" AllowMultiple="true" CssClass="form-control" runat="server" />
                         </div>
                         <div class="form-group">
-                            <input type="button" value="Submit" id="btnSubmit" class="btn btn-primary coolthing_submit" />
+                            <%--<input type="button" value="Post" id="btnSubmit" class="btn btn-primary coolthing_submit" />--%>
+                            <asp:Button ID="btnPost" runat="server" Text="Post" CssClass="btn btn-primary coolthing_submit" OnClick="btnPost_Click"/>
+                        </div>
+                        <div class="form-group">
+                            <span style="color:red; font-size:16px">*</span><label>Mandatory Fileds</label>
                         </div>
                     </div>
                 </div>

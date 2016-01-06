@@ -143,7 +143,7 @@ public partial class Post : System.Web.UI.Page
             Response.Write(ex.Message);
         }
     }
-    
+
     //WebMethods
     [WebMethod]
     public static List<User_GetSubCategoriesResult> LoadSubCategories(string categoryID)
@@ -161,5 +161,76 @@ public partial class Post : System.Web.UI.Page
             throw;
         }
 
+    }
+    protected void btnPost_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            using (var db = GetObjCon())
+            {
+                string location = "";
+                string category = "";
+                string subCategory = "";
+                string title = "";
+                string desc = "";
+                bool isFixedPrice = false;
+                string condition = "";
+                string contact = "";
+
+                string postedBy = "";
+                DateTime postedDate = DateTime.Now;
+                DateTime expiryDate = Convert.ToDateTime((DateTime.Now).Day + 30);
+                bool deleted = false;
+                bool blocked = false;
+                int views = 0;
+
+                location = ddlAdLocation.SelectedItem.Value.ToString();
+                category = ddlAdCategory.SelectedItem.Value.ToString();
+                subCategory = ddlAdSubCategory.SelectedItem.Value.ToString();
+                title = txtTitle.Value;
+                desc = txtDesc.Value;
+                if (rdbFixed.Checked == true)
+                {
+                    isFixedPrice = true;
+                }
+                else if (rdbNeg.Checked == true)
+                {
+                    isFixedPrice = false;
+                }
+                else
+                {
+                    isFixedPrice = false;
+                }
+                condition = ddlCondition.SelectedItem.Value.ToString();
+                contact = txtContact.Value;
+
+
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.CommandText = @"INSERT INTO ads (title, description, price, price_fixed, category_id, subcat_id, location_id, condition_id, posted_by, posted_date, expire_date, contact_no, views, deleted, blocked) 
+                                    VALUES (@TITLE,@DESC,@PRICE,@PRICE_FIXED,@CATEGORY,@SUBCATEGORY,@LOCATION,@CONDITION,@POSTED_BY,@POSTED_DATE,@EXPIRY_DATE,@CONTACT,@VIEWS,@DELETED,@BLOCKED)";
+                cmd.CommandType = CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@TITLE", "");
+                cmd.Parameters.AddWithValue("@TITLE", "");
+                cmd.Parameters.AddWithValue("@TITLE", "");
+                cmd.Parameters.AddWithValue("@TITLE", "");
+                cmd.Parameters.AddWithValue("@TITLE", "");
+                cmd.Parameters.AddWithValue("@TITLE", "");
+                cmd.Parameters.AddWithValue("@TITLE", "");
+                cmd.Parameters.AddWithValue("@TITLE", "");
+                cmd.Parameters.AddWithValue("@TITLE", "");
+                cmd.Parameters.AddWithValue("@TITLE", "");
+                cmd.Parameters.AddWithValue("@TITLE", "");
+                cmd.Parameters.AddWithValue("@TITLE", "");
+
+                cmd.Connection = db;
+
+            }
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
     }
 }
