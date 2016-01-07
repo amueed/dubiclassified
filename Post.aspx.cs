@@ -176,6 +176,7 @@ public partial class Post : System.Web.UI.Page
                 bool isFixedPrice = false;
                 string condition = "";
                 string contact = "";
+                string price = "";
 
                 string postedBy = "";
                 DateTime postedDate = DateTime.Now;
@@ -203,29 +204,31 @@ public partial class Post : System.Web.UI.Page
                 }
                 condition = ddlCondition.SelectedItem.Value.ToString();
                 contact = txtContact.Value;
+                price = txtPrice.Value;
 
 
                 SqlCommand cmd = new SqlCommand();
-
-                cmd.CommandText = @"INSERT INTO ads (title, description, price, price_fixed, category_id, subcat_id, location_id, condition_id, posted_by, posted_date, expire_date, contact_no, views, deleted, blocked) 
-                                    VALUES (@TITLE,@DESC,@PRICE,@PRICE_FIXED,@CATEGORY,@SUBCATEGORY,@LOCATION,@CONDITION,@POSTED_BY,@POSTED_DATE,@EXPIRY_DATE,@CONTACT,@VIEWS,@DELETED,@BLOCKED)";
+                cmd.CommandText = @"INSERT INTO ads (title, description, price, price_fixed, category_id, subcat_id, location_id, condition_id, posted_by, posted_date, expire_date, contact_no, views, deleted, blocked) VALUES (@TITLE,@DESC,@PRICE,@PRICE_FIXED,@CATEGORY,@SUBCATEGORY,@LOCATION,@CONDITION,@POSTED_BY,@POSTED_DATE,@EXPIRY_DATE,@CONTACT,@VIEWS,@DELETED,@BLOCKED)";
                 cmd.CommandType = CommandType.Text;
-
-                cmd.Parameters.AddWithValue("@TITLE", "");
-                cmd.Parameters.AddWithValue("@TITLE", "");
-                cmd.Parameters.AddWithValue("@TITLE", "");
-                cmd.Parameters.AddWithValue("@TITLE", "");
-                cmd.Parameters.AddWithValue("@TITLE", "");
-                cmd.Parameters.AddWithValue("@TITLE", "");
-                cmd.Parameters.AddWithValue("@TITLE", "");
-                cmd.Parameters.AddWithValue("@TITLE", "");
-                cmd.Parameters.AddWithValue("@TITLE", "");
-                cmd.Parameters.AddWithValue("@TITLE", "");
-                cmd.Parameters.AddWithValue("@TITLE", "");
-                cmd.Parameters.AddWithValue("@TITLE", "");
-
                 cmd.Connection = db;
 
+                cmd.Parameters.AddWithValue("@TITLE", title);
+                cmd.Parameters.AddWithValue("@DESC", desc);
+                cmd.Parameters.AddWithValue("@PRICE", price);
+                cmd.Parameters.AddWithValue("@PRICE_FIXED", isFixedPrice);
+                cmd.Parameters.AddWithValue("@CATEGORY", category);
+                cmd.Parameters.AddWithValue("@SUBCATEGORY", subCategory);
+                cmd.Parameters.AddWithValue("@LOCATION", location);
+                cmd.Parameters.AddWithValue("@CONDITION", condition);
+                cmd.Parameters.AddWithValue("@POSTED_BY", postedBy);
+                cmd.Parameters.AddWithValue("@POSTED_DATE", postedDate);
+                cmd.Parameters.AddWithValue("@EXPIRY_DATE", expiryDate);
+                cmd.Parameters.AddWithValue("@CONTACT", contact);
+                cmd.Parameters.AddWithValue("@VIEWS", views);
+                cmd.Parameters.AddWithValue("@DELETED", deleted);
+                cmd.Parameters.AddWithValue("@BLOCKED", blocked);
+
+                int result = cmd.ExecuteNonQuery();
             }
         }
         catch (Exception ex)
