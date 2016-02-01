@@ -101,16 +101,16 @@
                                         <li>
                                             <a>About Us</a>
                                             <ul class="sub-menu">
-                                                <li><a href="about_us_v1.html">About Us Version-1</a></li>
-                                                <li><a href="about_us_v2.html">About Us Version-2</a></li>
+                                                <li><a href="#">About Us Version-1</a></li>
+                                                <li><a href="#">About Us Version-2</a></li>
                                             </ul>
                                         </li>
                                         <li>
                                             <a>Shop Pages</a>
                                             <ul class="sub-menu">
-                                                <li><a href="shop.html">Shop</a></li>
-                                                <li><a href="shop-sidebar.html">Shop Sidebar</a></li>
-                                                <li><a href="shop-product.html">Shop Product</a></li>
+                                                <li><a href="#">Shop</a></li>
+                                                <li><a href="#">Shop Sidebar</a></li>
+                                                <li><a href="#">Shop Product</a></li>
                                             </ul>
                                         </li>
                                         <li>
@@ -203,47 +203,16 @@
                                 </li>
                                 <li class="mega-menu">
                                     <a href="#">Property for Rent</a>
-                                    <div class="mega-menu-wrapper">
-                                        <div class="col-lg-6 col-md-6 col-sm-6">
-                                            <div class="mega-menu-content">
-                                                <h2>THIS IS A MEGA MENU</h2>
-                                                <p>Pellentesque egoists sed tortor egestas pretium. Nam eget fermentum tellus, et fermentum diam. Splash hendrerit, diam non commodo laoreet, est elit volu mauris, vel vehicula nisl orci id nibh convallis condimentum.</p>
-                                                <a href="#">
-                                                    <img src="images/img.jpg" alt="" /></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-6">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <ul>
-                                                        <li><a href="#">Responsive Design</a></li>
-                                                        <li><a href="#">Bootstrap 3</a></li>
-                                                        <li><a href="#">Boxed & Wide Versions</a></li>
-                                                        <li><a href="#">Retina Ready</a></li>
-                                                        <li><a href="#">Parallax Effect</a></li>
-                                                        <li><a href="#">CSS Animations</a></li>
-                                                        <li><a href="#">Cross-Browser Compatible</a></li>
-                                                        <li><a href="#">Clean Code</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <ul>
-                                                        <li><a href="#">Fullwidth Video</a></li>
-                                                        <li><a href="#">Shortcodes</a></li>
-                                                        <li><a href="#">Mega Menu</a></li>
-                                                        <li><a href="#">Unlimited Color Options</a></li>
-                                                        <li><a href="#">Intelligent Page Builder</a></li>
-                                                        <li><a href="#">PSD Files Included</a></li>
-                                                        <li><a href="#">Documentation</a></li>
-                                                        <li><a href="#">Free Life Support</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <ul class="sub-menu">
+                                        <li><a href="blog-medium-image.html">blog medium image</a></li>
+                                        <li><a href="blog-medium-image-zigzag.html">blog medium image zigzag</a></li>
+                                        <li><a href="blog-large-image.html">blog large image</a></li>
+                                        <li><a href="blog-boxes.html">blog boxes</a></li>
+                                        <li><a href="blog-single-post.html">blog Single Post</a></li>
+                                    </ul>
                                 </li>
-                                <li><a href="shortcode.html">Jobs</a></li>
-                                <li><a href="shortcode.html">Community</a></li>
+                                <li><a href="shortcode.html">About Us</a></li>
+                                <li><a href="shortcode.html">Contact Us</a></li>
                             </ul>
                         </div>
                     </div>

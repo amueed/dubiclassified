@@ -180,7 +180,7 @@ public partial class Post : System.Web.UI.Page
 
                 string postedBy = "";
                 DateTime postedDate = DateTime.Now;
-                DateTime expiryDate = Convert.ToDateTime((DateTime.Now).Day + 30);
+                DateTime expiryDate = postedDate.AddDays(30);
                 bool deleted = false;
                 bool blocked = false;
                 int views = 0;

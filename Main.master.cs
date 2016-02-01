@@ -14,17 +14,17 @@ public partial class Main : System.Web.UI.MasterPage
     DataTable dt;
     protected void Page_Load(object sender, EventArgs e)
     {
-        //when user redirect from Index.aspx page, store location in session
+        //when user redirect from Default.aspx page, store location in session
         string locID = Convert.ToString(Request.QueryString["loc"]);
         if (!string.IsNullOrEmpty(locID))
         {
             Session["loc"] = locID;
         }
 
-        //if session values is empty user will redirect to the Index.aspx page
+        //if session values is empty user will redirect to the Default.aspx page
         if (Session["loc"] == null || Session["loc"] == "")
         {
-            Response.Redirect("~/Index.aspx");
+            Response.Redirect("~/Default.aspx");
         }
         //else do rest functionality
         else
@@ -121,8 +121,6 @@ public partial class Main : System.Web.UI.MasterPage
                 SqlDataAdapter da = new SqlDataAdapter(query, db);
                 da.Fill(dt);
             }
-
-            
 
             ddlCategories.DataValueField = "ID";
             ddlCategories.DataTextField = "NAME";

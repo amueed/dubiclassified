@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="Locations" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="Locations" %>
 
 <!DOCTYPE html>
 
@@ -63,9 +63,9 @@
         </div>
         <div class="container">
             <div class="banner2">
-                <p>Looking for other countries? dubizzle is now OLX in the rest of the Middle East and North Africa</p>
+                <p>Select any state of your choice and start buying & selling!</p>
                 <div class="banner3">
-                    <img src="images/olx-logo.png">
+                    <%--<img src="images/olx-logo.png">--%>
                 </div>
             </div>
         </div>
