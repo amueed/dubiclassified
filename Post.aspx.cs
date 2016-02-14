@@ -164,9 +164,10 @@ public partial class Post : System.Web.UI.Page
     }
     protected void btnPost_Click(object sender, EventArgs e)
     {
+        var db = GetObjCon();
         try
         {
-            using (var db = GetObjCon())
+            using (db)
             {
                 string location = "";
                 string category = "";
@@ -228,12 +229,17 @@ public partial class Post : System.Web.UI.Page
                 cmd.Parameters.AddWithValue("@DELETED", deleted);
                 cmd.Parameters.AddWithValue("@BLOCKED", blocked);
 
+                db.Open();
                 int result = cmd.ExecuteNonQuery();
             }
         }
         catch (Exception ex)
         {
             Response.Write(ex.Message);
+        }
+        finally
+        {
+            db.Close();
         }
     }
 }
