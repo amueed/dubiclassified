@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AdminLogin.aspx.cs" Inherits="AdminPanel_AdminLogin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AdminLogin.aspx.cs" Inherits="AdminPanel_AdminLogin" ViewStateMode="Disabled" %>
 
 <!DOCTYPE html>
 
@@ -29,22 +29,20 @@
                         <h3 class="panel-title">Please Sign In</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form">
+                        <form role="form" runat="server">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus="autofocus" />
+                                    <input id="txtUsername" class="form-control" placeholder="Username" type="text" autofocus="autofocus" runat="server" />
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="" />
+                                    <input id="txtPassword" class="form-control" placeholder="Password" type="password" autofocus="autofocus" runat="server" />
                                 </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me" />Remember Me
-                                   
-                                    </label>
+                                <div class="form-group">
+                                    <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn btn-lg btn-success btn-block" OnClick="btnLogin_Click" OnClientClick="return ValidateInput();" />
                                 </div>
-                                <!-- Change this to a button or input when using this as a form -->
-                                <button class="btn btn-lg btn-success btn-block">Login</button>
+                                <div class="form-group">
+                                    <label id="lblMsg" runat="server" style="display: none;"></label>
+                                </div>
                             </fieldset>
                         </form>
                     </div>
@@ -66,6 +64,9 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/components/sb-admin-2.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="/AdminPanel/js/custom/AdminLogin.js"></script>
 
 </body>
 </html>

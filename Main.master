@@ -211,8 +211,8 @@
                                         <li><a href="blog-single-post.html">blog Single Post</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="shortcode.html">About Us</a></li>
-                                <li><a href="shortcode.html">Contact Us</a></li>
+                                <li><a href="AboutUs.aspx">About Us</a></li>
+                                <li><a href="ContactUs.aspx">Contact Us</a></li>
                             </ul>
                         </div>
                     </div>

@@ -32,7 +32,6 @@ public partial class AdminPanel_Categories : System.Web.UI.Page
         }
         catch (Exception)
         {
-
             throw;
         }
     }
@@ -50,7 +49,6 @@ public partial class AdminPanel_Categories : System.Web.UI.Page
         }
         catch (Exception)
         {
-
             throw;
         }
     }
