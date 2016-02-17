@@ -115,34 +115,6 @@ public partial class Post : System.Web.UI.Page
             Response.Write(ex.Message);
         }
     }
-    public void GetConditions()
-    {
-        try
-        {
-            using (var db = GetObjCon())
-            {
-                dt = new DataTable();
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "User_GetConditions";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = db;
-
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-
-                ddlCondition.DataTextField = "NAME";
-                ddlCondition.DataValueField = "ID";
-                ddlCondition.DataSource = dt;
-                ddlCondition.DataBind();
-                ListItem li = new ListItem("--Select Condition--", "0");
-                ddlCondition.Items.Insert(0, li);
-            }
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
-    }
 
     //WebMethods
     [WebMethod]
@@ -164,31 +136,28 @@ public partial class Post : System.Web.UI.Page
     }
     protected void btnPost_Click(object sender, EventArgs e)
     {
-        var db = GetObjCon();
+        //var db = GetObjCon();
+        var db = GetObjDB();
         try
         {
             using (db)
             {
-                string location = "";
-                string category = "";
-                string subCategory = "";
-                string title = "";
-                string desc = "";
-                bool isFixedPrice = false;
-                string condition = "";
-                string contact = "";
-                string price = "";
-
-                string postedBy = "";
+                int location;
+                int category;
+                int subCategory;
+                string title;
+                string desc;
+                bool isFixedPrice;
+                string condition;
+                string contact;
+                long price;
+                string postedBy;
                 DateTime postedDate = DateTime.Now;
                 DateTime expiryDate = postedDate.AddDays(30);
-                bool deleted = false;
-                bool blocked = false;
-                int views = 0;
 
-                location = ddlAdLocation.SelectedItem.Value.ToString();
-                category = ddlAdCategory.SelectedItem.Value.ToString();
-                subCategory = ddlAdSubCategory.SelectedItem.Value.ToString();
+                location = Convert.ToInt16(ddlAdLocation.SelectedItem.Value);
+                category = Convert.ToInt16(ddlAdCategory.SelectedItem.Value);
+                subCategory = Convert.ToInt16(ddlAdSubCategory.SelectedItem.Value);
                 title = txtTitle.Value;
                 desc = txtDesc.Value;
                 if (rdbFixed.Checked == true)
@@ -203,34 +172,29 @@ public partial class Post : System.Web.UI.Page
                 {
                     isFixedPrice = false;
                 }
-                condition = ddlCondition.SelectedItem.Value.ToString();
+                condition = ddlCondition.SelectedItem.Value;
                 contact = txtContact.Value;
-                price = txtPrice.Value;
+                price = Convert.ToInt64(txtPrice.Value);
+                postedBy = "user1";
+                postedDate = DateTime.Now;
+                expiryDate = postedDate.AddDays(30);
 
-
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = @"INSERT INTO ads (title, description, price, price_fixed, category_id, subcat_id, location_id, condition_id, posted_by, posted_date, expire_date, contact_no, views, deleted, blocked) VALUES (@TITLE,@DESC,@PRICE,@PRICE_FIXED,@CATEGORY,@SUBCATEGORY,@LOCATION,@CONDITION,@POSTED_BY,@POSTED_DATE,@EXPIRY_DATE,@CONTACT,@VIEWS,@DELETED,@BLOCKED)";
-                cmd.CommandType = CommandType.Text;
-                cmd.Connection = db;
-
-                cmd.Parameters.AddWithValue("@TITLE", title);
-                cmd.Parameters.AddWithValue("@DESC", desc);
-                cmd.Parameters.AddWithValue("@PRICE", price);
-                cmd.Parameters.AddWithValue("@PRICE_FIXED", isFixedPrice);
-                cmd.Parameters.AddWithValue("@CATEGORY", category);
-                cmd.Parameters.AddWithValue("@SUBCATEGORY", subCategory);
-                cmd.Parameters.AddWithValue("@LOCATION", location);
-                cmd.Parameters.AddWithValue("@CONDITION", condition);
-                cmd.Parameters.AddWithValue("@POSTED_BY", postedBy);
-                cmd.Parameters.AddWithValue("@POSTED_DATE", postedDate);
-                cmd.Parameters.AddWithValue("@EXPIRY_DATE", expiryDate);
-                cmd.Parameters.AddWithValue("@CONTACT", contact);
-                cmd.Parameters.AddWithValue("@VIEWS", views);
-                cmd.Parameters.AddWithValue("@DELETED", deleted);
-                cmd.Parameters.AddWithValue("@BLOCKED", blocked);
-
-                db.Open();
-                int result = cmd.ExecuteNonQuery();
+                ad _obj = new ad();
+                _obj.location_id = location;
+                _obj.category_id = category;
+                _obj.subcat_id = subCategory;
+                _obj.title = title;
+                _obj.description = desc;
+                _obj.price_fixed = isFixedPrice;
+                _obj.condition = condition;
+                _obj.contact_no = contact;
+                _obj.price = price;
+                _obj.posted_by = postedBy;
+                _obj.posted_date = postedDate;
+                _obj.expire_date = expiryDate;
+                _obj.views = 0;
+                db.GetTable<ad>().InsertOnSubmit(_obj);
+                db.SubmitChanges();
             }
         }
         catch (Exception ex)
@@ -239,7 +203,7 @@ public partial class Post : System.Web.UI.Page
         }
         finally
         {
-            db.Close();
+            //db.Close();
         }
     }
 }

@@ -29,25 +29,31 @@ public partial class DBDataContext : System.Data.Linq.DataContext
 	
   #region Extensibility Method Definitions
   partial void OnCreated();
+  partial void Insertadmin(admin instance);
+  partial void Updateadmin(admin instance);
+  partial void Deleteadmin(admin instance);
   partial void Insertad(ad instance);
   partial void Updatead(ad instance);
   partial void Deletead(ad instance);
+  partial void Insertads_img(ads_img instance);
+  partial void Updateads_img(ads_img instance);
+  partial void Deleteads_img(ads_img instance);
   partial void Insertcategory(category instance);
   partial void Updatecategory(category instance);
   partial void Deletecategory(category instance);
-  partial void Insertcondition(condition instance);
-  partial void Updatecondition(condition instance);
-  partial void Deletecondition(condition instance);
   partial void Insertlocation(location instance);
   partial void Updatelocation(location instance);
   partial void Deletelocation(location instance);
+  partial void Insertuser(user instance);
+  partial void Updateuser(user instance);
+  partial void Deleteuser(user instance);
   partial void Insertweb_config(web_config instance);
   partial void Updateweb_config(web_config instance);
   partial void Deleteweb_config(web_config instance);
   #endregion
 	
 	public DBDataContext() : 
-			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["dubizzleConnectionString"].ConnectionString, mappingSource)
+			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["dubizzleConnectionString1"].ConnectionString, mappingSource)
 	{
 		OnCreated();
 	}
@@ -76,6 +82,14 @@ public partial class DBDataContext : System.Data.Linq.DataContext
 		OnCreated();
 	}
 	
+	public System.Data.Linq.Table<admin> admins
+	{
+		get
+		{
+			return this.GetTable<admin>();
+		}
+	}
+	
 	public System.Data.Linq.Table<ad> ads
 	{
 		get
@@ -97,14 +111,6 @@ public partial class DBDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<category>();
-		}
-	}
-	
-	public System.Data.Linq.Table<condition> conditions
-	{
-		get
-		{
-			return this.GetTable<condition>();
 		}
 	}
 	
@@ -160,13 +166,6 @@ public partial class DBDataContext : System.Data.Linq.DataContext
 		return ((ISingleResult<User_GetLocationsResult>)(result.ReturnValue));
 	}
 	
-	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.User_GetConditions")]
-	public ISingleResult<User_GetConditionsResult> User_GetConditions()
-	{
-		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-		return ((ISingleResult<User_GetConditionsResult>)(result.ReturnValue));
-	}
-	
 	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.User_GetCategories")]
 	public ISingleResult<User_GetCategoriesResult> User_GetCategories()
 	{
@@ -201,11 +200,283 @@ public partial class DBDataContext : System.Data.Linq.DataContext
 		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 		return ((ISingleResult<Admin_GetCategoriesResult>)(result.ReturnValue));
 	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.admins")]
+public partial class admin : INotifyPropertyChanging, INotifyPropertyChanged
+{
 	
-	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.fn_GetRelativeDuration", IsComposable=true)]
-	public string fn_GetRelativeDuration([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> date)
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private long _admin_id;
+	
+	private string _username;
+	
+	private string _password;
+	
+	private System.DateTime _password_change_date;
+	
+	private string _first_name;
+	
+	private string _last_name;
+	
+	private string _email;
+	
+	private System.DateTime _created_date;
+	
+	private System.DateTime _modified_date;
+	
+	private bool _deleted;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onadmin_idChanging(long value);
+    partial void Onadmin_idChanged();
+    partial void OnusernameChanging(string value);
+    partial void OnusernameChanged();
+    partial void OnpasswordChanging(string value);
+    partial void OnpasswordChanged();
+    partial void Onpassword_change_dateChanging(System.DateTime value);
+    partial void Onpassword_change_dateChanged();
+    partial void Onfirst_nameChanging(string value);
+    partial void Onfirst_nameChanged();
+    partial void Onlast_nameChanging(string value);
+    partial void Onlast_nameChanged();
+    partial void OnemailChanging(string value);
+    partial void OnemailChanged();
+    partial void Oncreated_dateChanging(System.DateTime value);
+    partial void Oncreated_dateChanged();
+    partial void Onmodified_dateChanging(System.DateTime value);
+    partial void Onmodified_dateChanged();
+    partial void OndeletedChanging(bool value);
+    partial void OndeletedChanged();
+    #endregion
+	
+	public admin()
 	{
-		return ((string)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), date).ReturnValue));
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_admin_id", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public long admin_id
+	{
+		get
+		{
+			return this._admin_id;
+		}
+		set
+		{
+			if ((this._admin_id != value))
+			{
+				this.Onadmin_idChanging(value);
+				this.SendPropertyChanging();
+				this._admin_id = value;
+				this.SendPropertyChanged("admin_id");
+				this.Onadmin_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_username", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string username
+	{
+		get
+		{
+			return this._username;
+		}
+		set
+		{
+			if ((this._username != value))
+			{
+				this.OnusernameChanging(value);
+				this.SendPropertyChanging();
+				this._username = value;
+				this.SendPropertyChanged("username");
+				this.OnusernameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string password
+	{
+		get
+		{
+			return this._password;
+		}
+		set
+		{
+			if ((this._password != value))
+			{
+				this.OnpasswordChanging(value);
+				this.SendPropertyChanging();
+				this._password = value;
+				this.SendPropertyChanged("password");
+				this.OnpasswordChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password_change_date", DbType="DateTime NOT NULL")]
+	public System.DateTime password_change_date
+	{
+		get
+		{
+			return this._password_change_date;
+		}
+		set
+		{
+			if ((this._password_change_date != value))
+			{
+				this.Onpassword_change_dateChanging(value);
+				this.SendPropertyChanging();
+				this._password_change_date = value;
+				this.SendPropertyChanged("password_change_date");
+				this.Onpassword_change_dateChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_first_name", DbType="VarChar(50)")]
+	public string first_name
+	{
+		get
+		{
+			return this._first_name;
+		}
+		set
+		{
+			if ((this._first_name != value))
+			{
+				this.Onfirst_nameChanging(value);
+				this.SendPropertyChanging();
+				this._first_name = value;
+				this.SendPropertyChanged("first_name");
+				this.Onfirst_nameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_last_name", DbType="VarChar(50)")]
+	public string last_name
+	{
+		get
+		{
+			return this._last_name;
+		}
+		set
+		{
+			if ((this._last_name != value))
+			{
+				this.Onlast_nameChanging(value);
+				this.SendPropertyChanging();
+				this._last_name = value;
+				this.SendPropertyChanged("last_name");
+				this.Onlast_nameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+	public string email
+	{
+		get
+		{
+			return this._email;
+		}
+		set
+		{
+			if ((this._email != value))
+			{
+				this.OnemailChanging(value);
+				this.SendPropertyChanging();
+				this._email = value;
+				this.SendPropertyChanged("email");
+				this.OnemailChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_created_date", DbType="DateTime NOT NULL")]
+	public System.DateTime created_date
+	{
+		get
+		{
+			return this._created_date;
+		}
+		set
+		{
+			if ((this._created_date != value))
+			{
+				this.Oncreated_dateChanging(value);
+				this.SendPropertyChanging();
+				this._created_date = value;
+				this.SendPropertyChanged("created_date");
+				this.Oncreated_dateChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_modified_date", DbType="DateTime NOT NULL")]
+	public System.DateTime modified_date
+	{
+		get
+		{
+			return this._modified_date;
+		}
+		set
+		{
+			if ((this._modified_date != value))
+			{
+				this.Onmodified_dateChanging(value);
+				this.SendPropertyChanging();
+				this._modified_date = value;
+				this.SendPropertyChanged("modified_date");
+				this.Onmodified_dateChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_deleted", DbType="Bit NOT NULL")]
+	public bool deleted
+	{
+		get
+		{
+			return this._deleted;
+		}
+		set
+		{
+			if ((this._deleted != value))
+			{
+				this.OndeletedChanging(value);
+				this.SendPropertyChanging();
+				this._deleted = value;
+				this.SendPropertyChanged("deleted");
+				this.OndeletedChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
 	}
 }
 
@@ -215,13 +486,13 @@ public partial class ad : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 	
-	private int _ad_id;
+	private long _ad_id;
 	
 	private string _title;
 	
 	private string _description;
 	
-	private int _price;
+	private long _price;
 	
 	private System.Nullable<bool> _price_fixed;
 	
@@ -231,37 +502,35 @@ public partial class ad : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private int _location_id;
 	
-	private System.Nullable<int> _condition_id;
+	private string _condition;
 	
 	private string _posted_by;
 	
-	private System.Nullable<System.DateTime> _posted_date;
+	private System.DateTime _posted_date;
 	
 	private System.Nullable<System.DateTime> _expire_date;
 	
-	private System.Nullable<int> _contact_no;
+	private string _contact_no;
 	
-	private System.Nullable<short> _views;
+	private System.Nullable<long> _views;
 	
-	private System.Nullable<bool> _deleted;
+	private bool _deleted;
 	
-	private System.Nullable<bool> _blocked;
+	private bool _blocked;
 	
-	private EntityRef<ad> _ad2;
-	
-	private EntityRef<ad> _ad1;
+	private System.Nullable<bool> _approved;
 	
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onad_idChanging(int value);
+    partial void Onad_idChanging(long value);
     partial void Onad_idChanged();
     partial void OntitleChanging(string value);
     partial void OntitleChanged();
     partial void OndescriptionChanging(string value);
     partial void OndescriptionChanged();
-    partial void OnpriceChanging(int value);
+    partial void OnpriceChanging(long value);
     partial void OnpriceChanged();
     partial void Onprice_fixedChanging(System.Nullable<bool> value);
     partial void Onprice_fixedChanged();
@@ -271,33 +540,33 @@ public partial class ad : INotifyPropertyChanging, INotifyPropertyChanged
     partial void Onsubcat_idChanged();
     partial void Onlocation_idChanging(int value);
     partial void Onlocation_idChanged();
-    partial void Oncondition_idChanging(System.Nullable<int> value);
-    partial void Oncondition_idChanged();
+    partial void OnconditionChanging(string value);
+    partial void OnconditionChanged();
     partial void Onposted_byChanging(string value);
     partial void Onposted_byChanged();
-    partial void Onposted_dateChanging(System.Nullable<System.DateTime> value);
+    partial void Onposted_dateChanging(System.DateTime value);
     partial void Onposted_dateChanged();
     partial void Onexpire_dateChanging(System.Nullable<System.DateTime> value);
     partial void Onexpire_dateChanged();
-    partial void Oncontact_noChanging(System.Nullable<int> value);
+    partial void Oncontact_noChanging(string value);
     partial void Oncontact_noChanged();
-    partial void OnviewsChanging(System.Nullable<short> value);
+    partial void OnviewsChanging(System.Nullable<long> value);
     partial void OnviewsChanged();
-    partial void OndeletedChanging(System.Nullable<bool> value);
+    partial void OndeletedChanging(bool value);
     partial void OndeletedChanged();
-    partial void OnblockedChanging(System.Nullable<bool> value);
+    partial void OnblockedChanging(bool value);
     partial void OnblockedChanged();
+    partial void OnapprovedChanging(System.Nullable<bool> value);
+    partial void OnapprovedChanged();
     #endregion
 	
 	public ad()
 	{
-		this._ad2 = default(EntityRef<ad>);
-		this._ad1 = default(EntityRef<ad>);
 		OnCreated();
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ad_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int ad_id
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ad_id", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public long ad_id
 	{
 		get
 		{
@@ -307,10 +576,6 @@ public partial class ad : INotifyPropertyChanging, INotifyPropertyChanged
 		{
 			if ((this._ad_id != value))
 			{
-				if (this._ad1.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
 				this.Onad_idChanging(value);
 				this.SendPropertyChanging();
 				this._ad_id = value;
@@ -360,8 +625,8 @@ public partial class ad : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price", DbType="Int NOT NULL")]
-	public int price
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_price", DbType="BigInt NOT NULL")]
+	public long price
 	{
 		get
 		{
@@ -460,27 +725,27 @@ public partial class ad : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_condition_id", DbType="Int")]
-	public System.Nullable<int> condition_id
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_condition", DbType="VarChar(50)")]
+	public string condition
 	{
 		get
 		{
-			return this._condition_id;
+			return this._condition;
 		}
 		set
 		{
-			if ((this._condition_id != value))
+			if ((this._condition != value))
 			{
-				this.Oncondition_idChanging(value);
+				this.OnconditionChanging(value);
 				this.SendPropertyChanging();
-				this._condition_id = value;
-				this.SendPropertyChanged("condition_id");
-				this.Oncondition_idChanged();
+				this._condition = value;
+				this.SendPropertyChanged("condition");
+				this.OnconditionChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_posted_by", DbType="VarChar(20)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_posted_by", DbType="VarChar(50)")]
 	public string posted_by
 	{
 		get
@@ -500,8 +765,8 @@ public partial class ad : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_posted_date", DbType="DateTime")]
-	public System.Nullable<System.DateTime> posted_date
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_posted_date", DbType="DateTime NOT NULL")]
+	public System.DateTime posted_date
 	{
 		get
 		{
@@ -540,8 +805,8 @@ public partial class ad : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contact_no", DbType="Int")]
-	public System.Nullable<int> contact_no
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contact_no", DbType="VarChar(50)")]
+	public string contact_no
 	{
 		get
 		{
@@ -560,8 +825,8 @@ public partial class ad : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_views", DbType="SmallInt")]
-	public System.Nullable<short> views
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_views", DbType="BigInt")]
+	public System.Nullable<long> views
 	{
 		get
 		{
@@ -580,8 +845,8 @@ public partial class ad : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_deleted", DbType="Bit")]
-	public System.Nullable<bool> deleted
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_deleted", DbType="Bit NOT NULL")]
+	public bool deleted
 	{
 		get
 		{
@@ -600,8 +865,8 @@ public partial class ad : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_blocked", DbType="Bit")]
-	public System.Nullable<bool> blocked
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_blocked", DbType="Bit NOT NULL")]
+	public bool blocked
 	{
 		get
 		{
@@ -620,65 +885,22 @@ public partial class ad : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ad_ad", Storage="_ad2", ThisKey="ad_id", OtherKey="ad_id", IsUnique=true, IsForeignKey=false)]
-	public ad ad2
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_approved", DbType="Bit")]
+	public System.Nullable<bool> approved
 	{
 		get
 		{
-			return this._ad2.Entity;
+			return this._approved;
 		}
 		set
 		{
-			ad previousValue = this._ad2.Entity;
-			if (((previousValue != value) 
-						|| (this._ad2.HasLoadedOrAssignedValue == false)))
+			if ((this._approved != value))
 			{
+				this.OnapprovedChanging(value);
 				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._ad2.Entity = null;
-					previousValue.ad1 = null;
-				}
-				this._ad2.Entity = value;
-				if ((value != null))
-				{
-					value.ad1 = this;
-				}
-				this.SendPropertyChanged("ad2");
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ad_ad", Storage="_ad1", ThisKey="ad_id", OtherKey="ad_id", IsForeignKey=true)]
-	public ad ad1
-	{
-		get
-		{
-			return this._ad1.Entity;
-		}
-		set
-		{
-			ad previousValue = this._ad1.Entity;
-			if (((previousValue != value) 
-						|| (this._ad1.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._ad1.Entity = null;
-					previousValue.ad2 = null;
-				}
-				this._ad1.Entity = value;
-				if ((value != null))
-				{
-					value.ad2 = this;
-					this._ad_id = value.ad_id;
-				}
-				else
-				{
-					this._ad_id = default(int);
-				}
-				this.SendPropertyChanged("ad1");
+				this._approved = value;
+				this.SendPropertyChanged("approved");
+				this.OnapprovedChanged();
 			}
 		}
 	}
@@ -705,23 +927,40 @@ public partial class ad : INotifyPropertyChanging, INotifyPropertyChanged
 }
 
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ads_img")]
-public partial class ads_img
+public partial class ads_img : INotifyPropertyChanging, INotifyPropertyChanged
 {
 	
-	private int _ad_img_id;
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 	
-	private int _ad_id;
+	private long _ad_img_id;
+	
+	private long _ad_id;
 	
 	private string _url;
 	
 	private System.Nullable<bool> _deleted;
 	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onad_img_idChanging(long value);
+    partial void Onad_img_idChanged();
+    partial void Onad_idChanging(long value);
+    partial void Onad_idChanged();
+    partial void OnurlChanging(string value);
+    partial void OnurlChanged();
+    partial void OndeletedChanging(System.Nullable<bool> value);
+    partial void OndeletedChanged();
+    #endregion
+	
 	public ads_img()
 	{
+		OnCreated();
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ad_img_id", DbType="Int NOT NULL")]
-	public int ad_img_id
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ad_img_id", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public long ad_img_id
 	{
 		get
 		{
@@ -731,13 +970,17 @@ public partial class ads_img
 		{
 			if ((this._ad_img_id != value))
 			{
+				this.Onad_img_idChanging(value);
+				this.SendPropertyChanging();
 				this._ad_img_id = value;
+				this.SendPropertyChanged("ad_img_id");
+				this.Onad_img_idChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ad_id", DbType="Int NOT NULL")]
-	public int ad_id
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ad_id", DbType="BigInt NOT NULL")]
+	public long ad_id
 	{
 		get
 		{
@@ -747,12 +990,16 @@ public partial class ads_img
 		{
 			if ((this._ad_id != value))
 			{
+				this.Onad_idChanging(value);
+				this.SendPropertyChanging();
 				this._ad_id = value;
+				this.SendPropertyChanged("ad_id");
+				this.Onad_idChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_url", DbType="VarChar(MAX)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_url", DbType="VarChar(500)")]
 	public string url
 	{
 		get
@@ -763,7 +1010,11 @@ public partial class ads_img
 		{
 			if ((this._url != value))
 			{
+				this.OnurlChanging(value);
+				this.SendPropertyChanging();
 				this._url = value;
+				this.SendPropertyChanged("url");
+				this.OnurlChanged();
 			}
 		}
 	}
@@ -779,8 +1030,32 @@ public partial class ads_img
 		{
 			if ((this._deleted != value))
 			{
+				this.OndeletedChanging(value);
+				this.SendPropertyChanging();
 				this._deleted = value;
+				this.SendPropertyChanged("deleted");
+				this.OndeletedChanged();
 			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }
@@ -799,13 +1074,13 @@ public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private string _created_by;
 	
-	private System.Nullable<System.DateTime> _created_date;
+	private System.DateTime _created_date;
 	
 	private string _modified_by;
 	
-	private System.Nullable<System.DateTime> _modified_date;
+	private System.DateTime _modified_date;
 	
-	private System.Nullable<bool> _deleted;
+	private bool _deleted;
 	
 	private System.Nullable<int> _parent_id;
 	
@@ -821,13 +1096,13 @@ public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
     partial void Oncategory_photoChanged();
     partial void Oncreated_byChanging(string value);
     partial void Oncreated_byChanged();
-    partial void Oncreated_dateChanging(System.Nullable<System.DateTime> value);
+    partial void Oncreated_dateChanging(System.DateTime value);
     partial void Oncreated_dateChanged();
     partial void Onmodified_byChanging(string value);
     partial void Onmodified_byChanged();
-    partial void Onmodified_dateChanging(System.Nullable<System.DateTime> value);
+    partial void Onmodified_dateChanging(System.DateTime value);
     partial void Onmodified_dateChanged();
-    partial void OndeletedChanging(System.Nullable<bool> value);
+    partial void OndeletedChanging(bool value);
     partial void OndeletedChanged();
     partial void Onparent_idChanging(System.Nullable<int> value);
     partial void Onparent_idChanged();
@@ -858,7 +1133,7 @@ public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_category_name", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_category_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 	public string category_name
 	{
 		get
@@ -898,7 +1173,7 @@ public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_created_by", DbType="VarChar(20)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_created_by", DbType="VarChar(50)")]
 	public string created_by
 	{
 		get
@@ -918,8 +1193,8 @@ public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_created_date", DbType="DateTime")]
-	public System.Nullable<System.DateTime> created_date
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_created_date", DbType="DateTime NOT NULL")]
+	public System.DateTime created_date
 	{
 		get
 		{
@@ -938,7 +1213,7 @@ public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_modified_by", DbType="VarChar(20)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_modified_by", DbType="VarChar(50)")]
 	public string modified_by
 	{
 		get
@@ -958,8 +1233,8 @@ public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_modified_date", DbType="DateTime")]
-	public System.Nullable<System.DateTime> modified_date
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_modified_date", DbType="DateTime NOT NULL")]
+	public System.DateTime modified_date
 	{
 		get
 		{
@@ -978,8 +1253,8 @@ public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_deleted", DbType="Bit")]
-	public System.Nullable<bool> deleted
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_deleted", DbType="Bit NOT NULL")]
+	public bool deleted
 	{
 		get
 		{
@@ -1039,92 +1314,6 @@ public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.condition")]
-public partial class condition : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _condition_id;
-	
-	private string _title;
-	
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Oncondition_idChanging(int value);
-    partial void Oncondition_idChanged();
-    partial void OntitleChanging(string value);
-    partial void OntitleChanged();
-    #endregion
-	
-	public condition()
-	{
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_condition_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int condition_id
-	{
-		get
-		{
-			return this._condition_id;
-		}
-		set
-		{
-			if ((this._condition_id != value))
-			{
-				this.Oncondition_idChanging(value);
-				this.SendPropertyChanging();
-				this._condition_id = value;
-				this.SendPropertyChanged("condition_id");
-				this.Oncondition_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_title", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-	public string title
-	{
-		get
-		{
-			return this._title;
-		}
-		set
-		{
-			if ((this._title != value))
-			{
-				this.OntitleChanging(value);
-				this.SendPropertyChanging();
-				this._title = value;
-				this.SendPropertyChanged("title");
-				this.OntitleChanged();
-			}
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-}
-
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.locations")]
 public partial class location : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -1139,13 +1328,13 @@ public partial class location : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private string _created_by;
 	
-	private System.Nullable<System.DateTime> _created_date;
+	private System.DateTime _created_date;
 	
 	private string _modified_by;
 	
-	private System.Nullable<System.DateTime> _modified_date;
+	private System.DateTime _modified_date;
 	
-	private System.Nullable<bool> _deleted;
+	private bool _deleted;
 	
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1159,13 +1348,13 @@ public partial class location : INotifyPropertyChanging, INotifyPropertyChanged
     partial void Onlocation_photoChanged();
     partial void Oncreated_byChanging(string value);
     partial void Oncreated_byChanged();
-    partial void Oncreated_dateChanging(System.Nullable<System.DateTime> value);
+    partial void Oncreated_dateChanging(System.DateTime value);
     partial void Oncreated_dateChanged();
     partial void Onmodified_byChanging(string value);
     partial void Onmodified_byChanged();
-    partial void Onmodified_dateChanging(System.Nullable<System.DateTime> value);
+    partial void Onmodified_dateChanging(System.DateTime value);
     partial void Onmodified_dateChanged();
-    partial void OndeletedChanging(System.Nullable<bool> value);
+    partial void OndeletedChanging(bool value);
     partial void OndeletedChanged();
     #endregion
 	
@@ -1194,7 +1383,7 @@ public partial class location : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_location_name", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_location_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 	public string location_name
 	{
 		get
@@ -1234,7 +1423,7 @@ public partial class location : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_created_by", DbType="VarChar(20)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_created_by", DbType="VarChar(50)")]
 	public string created_by
 	{
 		get
@@ -1254,8 +1443,8 @@ public partial class location : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_created_date", DbType="DateTime")]
-	public System.Nullable<System.DateTime> created_date
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_created_date", DbType="DateTime NOT NULL")]
+	public System.DateTime created_date
 	{
 		get
 		{
@@ -1274,7 +1463,7 @@ public partial class location : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_modified_by", DbType="VarChar(20)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_modified_by", DbType="VarChar(50)")]
 	public string modified_by
 	{
 		get
@@ -1294,8 +1483,8 @@ public partial class location : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_modified_date", DbType="DateTime")]
-	public System.Nullable<System.DateTime> modified_date
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_modified_date", DbType="DateTime NOT NULL")]
+	public System.DateTime modified_date
 	{
 		get
 		{
@@ -1314,8 +1503,8 @@ public partial class location : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_deleted", DbType="Bit")]
-	public System.Nullable<bool> deleted
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_deleted", DbType="Bit NOT NULL")]
+	public bool deleted
 	{
 		get
 		{
@@ -1356,16 +1545,18 @@ public partial class location : INotifyPropertyChanging, INotifyPropertyChanged
 }
 
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.users")]
-public partial class user
+public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
 {
 	
-	private int _user_id;
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private long _user_id;
 	
 	private string _username;
 	
 	private string _password;
 	
-	private System.Nullable<System.DateTime> _password_change_date;
+	private System.DateTime _password_change_date;
 	
 	private string _first_name;
 	
@@ -1373,28 +1564,73 @@ public partial class user
 	
 	private string _email;
 	
-	private int _contact_no;
+	private string _contact_no;
 	
 	private System.Nullable<System.DateTime> _last_active_date;
 	
-	private System.Nullable<System.DateTime> _created_date;
+	private System.DateTime _created_date;
 	
-	private System.Nullable<bool> _deleted;
+	private System.DateTime _modified_date;
 	
-	private System.Nullable<bool> _blocked;
+	private bool _deleted;
 	
-	private System.Nullable<bool> _active;
+	private bool _blocked;
+	
+	private bool _active;
 	
 	private string _activation_code;
 	
-	private System.Nullable<int> _ads_limit;
+	private int _ads_limit;
+	
+	private string _comments;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onuser_idChanging(long value);
+    partial void Onuser_idChanged();
+    partial void OnusernameChanging(string value);
+    partial void OnusernameChanged();
+    partial void OnpasswordChanging(string value);
+    partial void OnpasswordChanged();
+    partial void Onpassword_change_dateChanging(System.DateTime value);
+    partial void Onpassword_change_dateChanged();
+    partial void Onfirst_nameChanging(string value);
+    partial void Onfirst_nameChanged();
+    partial void Onlast_nameChanging(string value);
+    partial void Onlast_nameChanged();
+    partial void OnemailChanging(string value);
+    partial void OnemailChanged();
+    partial void Oncontact_noChanging(string value);
+    partial void Oncontact_noChanged();
+    partial void Onlast_active_dateChanging(System.Nullable<System.DateTime> value);
+    partial void Onlast_active_dateChanged();
+    partial void Oncreated_dateChanging(System.DateTime value);
+    partial void Oncreated_dateChanged();
+    partial void Onmodified_dateChanging(System.DateTime value);
+    partial void Onmodified_dateChanged();
+    partial void OndeletedChanging(bool value);
+    partial void OndeletedChanged();
+    partial void OnblockedChanging(bool value);
+    partial void OnblockedChanged();
+    partial void OnactiveChanging(bool value);
+    partial void OnactiveChanged();
+    partial void Onactivation_codeChanging(string value);
+    partial void Onactivation_codeChanged();
+    partial void Onads_limitChanging(int value);
+    partial void Onads_limitChanged();
+    partial void OncommentsChanging(string value);
+    partial void OncommentsChanged();
+    #endregion
 	
 	public user()
 	{
+		OnCreated();
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int NOT NULL")]
-	public int user_id
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public long user_id
 	{
 		get
 		{
@@ -1404,7 +1640,11 @@ public partial class user
 		{
 			if ((this._user_id != value))
 			{
+				this.Onuser_idChanging(value);
+				this.SendPropertyChanging();
 				this._user_id = value;
+				this.SendPropertyChanged("user_id");
+				this.Onuser_idChanged();
 			}
 		}
 	}
@@ -1420,7 +1660,11 @@ public partial class user
 		{
 			if ((this._username != value))
 			{
+				this.OnusernameChanging(value);
+				this.SendPropertyChanging();
 				this._username = value;
+				this.SendPropertyChanged("username");
+				this.OnusernameChanged();
 			}
 		}
 	}
@@ -1436,13 +1680,17 @@ public partial class user
 		{
 			if ((this._password != value))
 			{
+				this.OnpasswordChanging(value);
+				this.SendPropertyChanging();
 				this._password = value;
+				this.SendPropertyChanged("password");
+				this.OnpasswordChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password_change_date", DbType="DateTime")]
-	public System.Nullable<System.DateTime> password_change_date
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password_change_date", DbType="DateTime NOT NULL")]
+	public System.DateTime password_change_date
 	{
 		get
 		{
@@ -1452,7 +1700,11 @@ public partial class user
 		{
 			if ((this._password_change_date != value))
 			{
+				this.Onpassword_change_dateChanging(value);
+				this.SendPropertyChanging();
 				this._password_change_date = value;
+				this.SendPropertyChanged("password_change_date");
+				this.Onpassword_change_dateChanged();
 			}
 		}
 	}
@@ -1468,7 +1720,11 @@ public partial class user
 		{
 			if ((this._first_name != value))
 			{
+				this.Onfirst_nameChanging(value);
+				this.SendPropertyChanging();
 				this._first_name = value;
+				this.SendPropertyChanged("first_name");
+				this.Onfirst_nameChanged();
 			}
 		}
 	}
@@ -1484,7 +1740,11 @@ public partial class user
 		{
 			if ((this._last_name != value))
 			{
+				this.Onlast_nameChanging(value);
+				this.SendPropertyChanging();
 				this._last_name = value;
+				this.SendPropertyChanged("last_name");
+				this.Onlast_nameChanged();
 			}
 		}
 	}
@@ -1500,13 +1760,17 @@ public partial class user
 		{
 			if ((this._email != value))
 			{
+				this.OnemailChanging(value);
+				this.SendPropertyChanging();
 				this._email = value;
+				this.SendPropertyChanged("email");
+				this.OnemailChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contact_no", DbType="Int NOT NULL")]
-	public int contact_no
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contact_no", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+	public string contact_no
 	{
 		get
 		{
@@ -1516,7 +1780,11 @@ public partial class user
 		{
 			if ((this._contact_no != value))
 			{
+				this.Oncontact_noChanging(value);
+				this.SendPropertyChanging();
 				this._contact_no = value;
+				this.SendPropertyChanged("contact_no");
+				this.Oncontact_noChanged();
 			}
 		}
 	}
@@ -1532,13 +1800,17 @@ public partial class user
 		{
 			if ((this._last_active_date != value))
 			{
+				this.Onlast_active_dateChanging(value);
+				this.SendPropertyChanging();
 				this._last_active_date = value;
+				this.SendPropertyChanged("last_active_date");
+				this.Onlast_active_dateChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_created_date", DbType="DateTime")]
-	public System.Nullable<System.DateTime> created_date
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_created_date", DbType="DateTime NOT NULL")]
+	public System.DateTime created_date
 	{
 		get
 		{
@@ -1548,13 +1820,37 @@ public partial class user
 		{
 			if ((this._created_date != value))
 			{
+				this.Oncreated_dateChanging(value);
+				this.SendPropertyChanging();
 				this._created_date = value;
+				this.SendPropertyChanged("created_date");
+				this.Oncreated_dateChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_deleted", DbType="Bit")]
-	public System.Nullable<bool> deleted
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_modified_date", DbType="DateTime NOT NULL")]
+	public System.DateTime modified_date
+	{
+		get
+		{
+			return this._modified_date;
+		}
+		set
+		{
+			if ((this._modified_date != value))
+			{
+				this.Onmodified_dateChanging(value);
+				this.SendPropertyChanging();
+				this._modified_date = value;
+				this.SendPropertyChanged("modified_date");
+				this.Onmodified_dateChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_deleted", DbType="Bit NOT NULL")]
+	public bool deleted
 	{
 		get
 		{
@@ -1564,13 +1860,17 @@ public partial class user
 		{
 			if ((this._deleted != value))
 			{
+				this.OndeletedChanging(value);
+				this.SendPropertyChanging();
 				this._deleted = value;
+				this.SendPropertyChanged("deleted");
+				this.OndeletedChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_blocked", DbType="Bit")]
-	public System.Nullable<bool> blocked
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_blocked", DbType="Bit NOT NULL")]
+	public bool blocked
 	{
 		get
 		{
@@ -1580,13 +1880,17 @@ public partial class user
 		{
 			if ((this._blocked != value))
 			{
+				this.OnblockedChanging(value);
+				this.SendPropertyChanging();
 				this._blocked = value;
+				this.SendPropertyChanged("blocked");
+				this.OnblockedChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_active", DbType="Bit")]
-	public System.Nullable<bool> active
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_active", DbType="Bit NOT NULL")]
+	public bool active
 	{
 		get
 		{
@@ -1596,12 +1900,16 @@ public partial class user
 		{
 			if ((this._active != value))
 			{
+				this.OnactiveChanging(value);
+				this.SendPropertyChanging();
 				this._active = value;
+				this.SendPropertyChanged("active");
+				this.OnactiveChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_activation_code", DbType="VarChar(MAX)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_activation_code", DbType="VarChar(100)")]
 	public string activation_code
 	{
 		get
@@ -1612,13 +1920,17 @@ public partial class user
 		{
 			if ((this._activation_code != value))
 			{
+				this.Onactivation_codeChanging(value);
+				this.SendPropertyChanging();
 				this._activation_code = value;
+				this.SendPropertyChanged("activation_code");
+				this.Onactivation_codeChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ads_limit", DbType="Int")]
-	public System.Nullable<int> ads_limit
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ads_limit", DbType="Int NOT NULL")]
+	public int ads_limit
 	{
 		get
 		{
@@ -1628,8 +1940,52 @@ public partial class user
 		{
 			if ((this._ads_limit != value))
 			{
+				this.Onads_limitChanging(value);
+				this.SendPropertyChanging();
 				this._ads_limit = value;
+				this.SendPropertyChanged("ads_limit");
+				this.Onads_limitChanged();
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_comments", DbType="VarChar(500)")]
+	public string comments
+	{
+		get
+		{
+			return this._comments;
+		}
+		set
+		{
+			if ((this._comments != value))
+			{
+				this.OncommentsChanging(value);
+				this.SendPropertyChanging();
+				this._comments = value;
+				this.SendPropertyChanged("comments");
+				this.OncommentsChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }
@@ -1771,7 +2127,7 @@ public partial class User_GetSubCategoriesResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 	public string NAME
 	{
 		get
@@ -1791,7 +2147,7 @@ public partial class User_GetSubCategoriesResult
 public partial class User_GetSingleAdDetailsResult
 {
 	
-	private System.Nullable<int> _ID;
+	private long _ID;
 	
 	private string _TITLE;
 	
@@ -1801,7 +2157,7 @@ public partial class User_GetSingleAdDetailsResult
 	
 	private string _CONDITION;
 	
-	private System.Nullable<int> _CONTACT;
+	private string _CONTACT;
 	
 	private string _LOC;
 	
@@ -1809,14 +2165,14 @@ public partial class User_GetSingleAdDetailsResult
 	
 	private string _POSTED_BY;
 	
-	private System.Nullable<short> _VISITOR;
+	private System.Nullable<long> _VISITOR;
 	
 	public User_GetSingleAdDetailsResult()
 	{
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int")]
-	public System.Nullable<int> ID
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="BigInt NOT NULL")]
+	public long ID
 	{
 		get
 		{
@@ -1831,7 +2187,7 @@ public partial class User_GetSingleAdDetailsResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TITLE", DbType="VarChar(50)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TITLE", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 	public string TITLE
 	{
 		get
@@ -1847,7 +2203,7 @@ public partial class User_GetSingleAdDetailsResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[DESC]", Storage="_DESC", DbType="VarChar(1000)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[DESC]", Storage="_DESC", DbType="VarChar(1000) NOT NULL", CanBeNull=false)]
 	public string DESC
 	{
 		get
@@ -1879,7 +2235,7 @@ public partial class User_GetSingleAdDetailsResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CONDITION", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CONDITION", DbType="VarChar(50)")]
 	public string CONDITION
 	{
 		get
@@ -1895,8 +2251,8 @@ public partial class User_GetSingleAdDetailsResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CONTACT", DbType="Int")]
-	public System.Nullable<int> CONTACT
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CONTACT", DbType="VarChar(50)")]
+	public string CONTACT
 	{
 		get
 		{
@@ -1911,7 +2267,7 @@ public partial class User_GetSingleAdDetailsResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOC", DbType="VarChar(66)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOC", DbType="VarChar(156)")]
 	public string LOC
 	{
 		get
@@ -1943,7 +2299,7 @@ public partial class User_GetSingleAdDetailsResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSTED_BY", DbType="VarChar(20)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSTED_BY", DbType="VarChar(50)")]
 	public string POSTED_BY
 	{
 		get
@@ -1959,8 +2315,8 @@ public partial class User_GetSingleAdDetailsResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VISITOR", DbType="SmallInt")]
-	public System.Nullable<short> VISITOR
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VISITOR", DbType="BigInt")]
+	public System.Nullable<long> VISITOR
 	{
 		get
 		{
@@ -2005,7 +2361,7 @@ public partial class User_GetMainPageDataResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_NAME", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 	public string CATEGORY_NAME
 	{
 		get
@@ -2065,51 +2421,7 @@ public partial class User_GetLocationsResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-	public string NAME
-	{
-		get
-		{
-			return this._NAME;
-		}
-		set
-		{
-			if ((this._NAME != value))
-			{
-				this._NAME = value;
-			}
-		}
-	}
-}
-
-public partial class User_GetConditionsResult
-{
-	
-	private int _ID;
-	
-	private string _NAME;
-	
-	public User_GetConditionsResult()
-	{
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
-	public int ID
-	{
-		get
-		{
-			return this._ID;
-		}
-		set
-		{
-			if ((this._ID != value))
-			{
-				this._ID = value;
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 	public string NAME
 	{
 		get
@@ -2153,7 +2465,7 @@ public partial class User_GetCategoriesResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 	public string NAME
 	{
 		get
@@ -2173,11 +2485,11 @@ public partial class User_GetCategoriesResult
 public partial class User_GetAdsListResult
 {
 	
-	private System.Nullable<int> _ID;
+	private long _ID;
 	
 	private string _TITLE;
 	
-	private System.Nullable<int> _PRICE;
+	private long _PRICE;
 	
 	private string _CONDITION;
 	
@@ -2187,14 +2499,14 @@ public partial class User_GetAdsListResult
 	
 	private string _POSTED_DATE;
 	
-	private System.Nullable<short> _VISITOR;
+	private System.Nullable<long> _VISITOR;
 	
 	public User_GetAdsListResult()
 	{
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int")]
-	public System.Nullable<int> ID
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="BigInt NOT NULL")]
+	public long ID
 	{
 		get
 		{
@@ -2209,7 +2521,7 @@ public partial class User_GetAdsListResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TITLE", DbType="VarChar(50)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TITLE", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 	public string TITLE
 	{
 		get
@@ -2225,8 +2537,8 @@ public partial class User_GetAdsListResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRICE", DbType="Int")]
-	public System.Nullable<int> PRICE
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PRICE", DbType="BigInt NOT NULL")]
+	public long PRICE
 	{
 		get
 		{
@@ -2241,7 +2553,7 @@ public partial class User_GetAdsListResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CONDITION", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CONDITION", DbType="VarChar(50)")]
 	public string CONDITION
 	{
 		get
@@ -2257,7 +2569,7 @@ public partial class User_GetAdsListResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY", DbType="VarChar(43)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY", DbType="VarChar(103)")]
 	public string CATEGORY
 	{
 		get
@@ -2273,7 +2585,7 @@ public partial class User_GetAdsListResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION", DbType="VarChar(20)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LOCATION", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 	public string LOCATION
 	{
 		get
@@ -2305,8 +2617,8 @@ public partial class User_GetAdsListResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VISITOR", DbType="SmallInt")]
-	public System.Nullable<short> VISITOR
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VISITOR", DbType="BigInt")]
+	public System.Nullable<long> VISITOR
 	{
 		get
 		{
@@ -2397,7 +2709,7 @@ public partial class Admin_GetSubCategoriesResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_NAME", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 	public string CATEGORY_NAME
 	{
 		get
@@ -2413,7 +2725,7 @@ public partial class Admin_GetSubCategoriesResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SUB_CATEGORY_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SUB_CATEGORY_NAME", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 	public string SUB_CATEGORY_NAME
 	{
 		get
@@ -2445,7 +2757,7 @@ public partial class Admin_GetSubCategoriesResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_BY", DbType="VarChar(20)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_BY", DbType="VarChar(50)")]
 	public string CREATED_BY
 	{
 		get
@@ -2477,7 +2789,7 @@ public partial class Admin_GetSubCategoriesResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MODIFIED_BY", DbType="VarChar(20)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MODIFIED_BY", DbType="VarChar(50)")]
 	public string MODIFIED_BY
 	{
 		get
@@ -2565,7 +2877,7 @@ public partial class Admin_GetLocationsResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NAME", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 	public string NAME
 	{
 		get
@@ -2597,7 +2909,7 @@ public partial class Admin_GetLocationsResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_BY", DbType="VarChar(20)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_BY", DbType="VarChar(50)")]
 	public string CREATED_BY
 	{
 		get
@@ -2629,7 +2941,7 @@ public partial class Admin_GetLocationsResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MODIFIED_BY", DbType="VarChar(20)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MODIFIED_BY", DbType="VarChar(50)")]
 	public string MODIFIED_BY
 	{
 		get
@@ -2717,7 +3029,7 @@ public partial class Admin_GetCategoriesResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_NAME", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CATEGORY_NAME", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 	public string CATEGORY_NAME
 	{
 		get
@@ -2749,7 +3061,7 @@ public partial class Admin_GetCategoriesResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_BY", DbType="VarChar(20)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATED_BY", DbType="VarChar(50)")]
 	public string CREATED_BY
 	{
 		get
@@ -2781,7 +3093,7 @@ public partial class Admin_GetCategoriesResult
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MODIFIED_BY", DbType="VarChar(20)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MODIFIED_BY", DbType="VarChar(50)")]
 	public string MODIFIED_BY
 	{
 		get

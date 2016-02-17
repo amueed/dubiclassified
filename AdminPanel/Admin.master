@@ -282,6 +282,17 @@
                                 <a href="Categories.aspx"><i class="fa fa-tags fa-fw"></i>Categories</a>
                             </li>
                             <li>
+                                <a href="#"><i class="fa fa-tags fa-fw"></i>Settings</a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="Settings/WebConfigurations.aspx">Configurations</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Change Password</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
                                 <a href="#"><i class="fa fa-sitemap fa-fw"></i>Multi-Level Dropdown<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>

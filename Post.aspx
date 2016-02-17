@@ -47,7 +47,14 @@
                         </div>
                         <div class="form-group">
                             <label>Condition:<span style="color: red; font-size: 16px">*</span></label>
-                            <asp:DropDownList ID="ddlCondition" CssClass="form-control" runat="server"></asp:DropDownList>
+                            <asp:DropDownList ID="ddlCondition" CssClass="form-control" runat="server">
+                                <asp:ListItem Value="New">New</asp:ListItem>
+                                <asp:ListItem Value="Excellent">Excellent</asp:ListItem>
+                                <asp:ListItem Value="Very Good">Very Good</asp:ListItem>
+                                <asp:ListItem Value="Good">Good</asp:ListItem>
+                                <asp:ListItem Value="Average">Average</asp:ListItem>
+                                <asp:ListItem Value="Poor">Poor</asp:ListItem>
+                            </asp:DropDownList>
                         </div>
                         <div class="form-group ">
                             <label>Contact No:<span style="color: red; font-size: 16px">*</span></label>
