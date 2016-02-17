@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Post.aspx.cs" Inherits="Post" EnableEventValidation="false" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true" CodeFile="Post.aspx.cs" Inherits="Post" EnableEventValidation="false" EnableViewState="false" ViewStateMode="Disabled" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <%--<script src="//cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>--%>
@@ -14,6 +14,9 @@
                         <h2>Post an Ad for Free</h2>
                     </div>
                     <div class="login">
+                        <div class="form-group">
+                            <label id="lblMsg" runat="server" style="display: none; color: red;"></label>
+                        </div>
                         <div class="form-group ">
                             <label>Location:<span style="color: red; font-size: 16px">*</span></label>
                             <asp:DropDownList ID="ddlAdLocation" CssClass="form-control" runat="server"></asp:DropDownList>
@@ -28,11 +31,11 @@
                         </div>
                         <div class="form-group">
                             <label>Title:<span style="color: red; font-size: 16px">*</span></label>
-                            <input type="text" id="txtTitle" placeholder="Ad Title" class="form-control" runat="server" />
+                            <input type="text" id="txtTitle" placeholder="Title for your ad" class="form-control" runat="server" />
                         </div>
                         <div class="form-group">
                             <label>Description:<span style="color: red; font-size: 16px">*</span></label>
-                            <textarea id="txtDesc" name="editior" class="form-control" rows="5" placeholder="Description for your ad. (max 1000 words)" runat="server"></textarea>
+                            <textarea id="txtDesc" name="editior" class="form-control" rows="5" placeholder="Short Description for your ad. (max 1000 words)" runat="server"></textarea>
                         </div>
                         <div class="form-group ">
                             <label>Price:<span style="color: red; font-size: 16px">*</span></label>
@@ -48,6 +51,7 @@
                         <div class="form-group">
                             <label>Condition:<span style="color: red; font-size: 16px">*</span></label>
                             <asp:DropDownList ID="ddlCondition" CssClass="form-control" runat="server">
+                                <asp:ListItem Value="0">What is the condition?</asp:ListItem>
                                 <asp:ListItem Value="New">New</asp:ListItem>
                                 <asp:ListItem Value="Excellent">Excellent</asp:ListItem>
                                 <asp:ListItem Value="Very Good">Very Good</asp:ListItem>
@@ -58,7 +62,7 @@
                         </div>
                         <div class="form-group ">
                             <label>Contact No:<span style="color: red; font-size: 16px">*</span></label>
-                            <input type="text" id="txtContact" class="form-control" placeholder="Contact No. (e.g: 03326041449)" runat="server" />
+                            <input type="text" id="txtContact" class="form-control" placeholder="What is your contact number?" runat="server" />
                         </div>
                         <div class="form-group ">
                             <label>Add Images:<span style="color: #d7d7d7">(Max. 10)</span></label>
@@ -66,7 +70,7 @@
                         </div>
                         <div class="form-group">
                             <%--<input type="button" value="Post" id="btnSubmit" class="btn btn-primary coolthing_submit" />--%>
-                            <asp:Button ID="btnPost" runat="server" Text="Post" CssClass="btn btn-primary coolthing_submit" OnClick="btnPost_Click" />
+                            <asp:Button ID="btnPost" runat="server" Text="Post" CssClass="btn btn-primary coolthing_submit" OnClick="btnPost_Click" OnClientClick="return ValidateInput();" />
                         </div>
                         <div class="form-group">
                             <span style="color: red; font-size: 16px">*</span><label>Mandatory Fileds</label>

@@ -23,8 +23,8 @@ public partial class AdminPanel_AdminLogin : System.Web.UI.Page
         var db = GetObjCon();
         try
         {
-            string _username = txtUsername.Value.Replace("/\'/g", "`").Replace("/\"/g", "`");
-            string _password = txtPassword.Value.Replace("/\'/g", "`").Replace("/\"/g", "`");
+            string _username = txtUsername.Value.Replace("/\'/g", "").Replace("/\"/g", "").Replace("/\\/g", "");
+            string _password = txtPassword.Value.Replace("/\'/g", "").Replace("/\"/g", "").Replace("/\\/g", "");
             int _code = 0;
             using (db)
             {
@@ -53,20 +53,21 @@ public partial class AdminPanel_AdminLogin : System.Web.UI.Page
                 else if (_code == 404)
                 {
                     lblMsg.InnerText = "Login Failed! Invalid Username/Password.";
+                    lblMsg.Style["display"] = "block";
                 }
                 else
                 {
                     //Response.Redirect("~/AdminPanel/AdminLogin.aspx");
                     lblMsg.InnerText = "Error! Unable to Login.";
+                    lblMsg.Style["display"] = "block";
                 }
             }
-
-
         }
         catch (Exception ex)
         {
             //Response.Write(ex.Message);
             lblMsg.InnerText = ex.Message;
+            lblMsg.Style["display"] = "block";
         }
         finally
         {

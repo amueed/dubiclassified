@@ -200,6 +200,14 @@ public partial class DBDataContext : System.Data.Linq.DataContext
 		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 		return ((ISingleResult<Admin_GetCategoriesResult>)(result.ReturnValue));
 	}
+	
+	[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Admin_VerifyUser")]
+	public int Admin_VerifyUser([global::System.Data.Linq.Mapping.ParameterAttribute(Name="USERNAME", DbType="VarChar(50)")] string uSERNAME, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="PASSWORD", DbType="VarChar(50)")] string pASSWORD, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RETURN_CODE", DbType="Int")] ref System.Nullable<int> rETURN_CODE)
+	{
+		IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), uSERNAME, pASSWORD, rETURN_CODE);
+		rETURN_CODE = ((System.Nullable<int>)(result.GetParameterValue(2)));
+		return ((int)(result.ReturnValue));
+	}
 }
 
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.admins")]

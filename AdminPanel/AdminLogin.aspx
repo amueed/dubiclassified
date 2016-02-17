@@ -41,7 +41,7 @@
                                     <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn btn-lg btn-success btn-block" OnClick="btnLogin_Click" OnClientClick="return ValidateInput();" />
                                 </div>
                                 <div class="form-group">
-                                    <label id="lblMsg" runat="server" style="display: none;"></label>
+                                    <label id="lblMsg" runat="server" style="display: none; color: red;"></label>
                                 </div>
                             </fieldset>
                         </form>

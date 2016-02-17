@@ -8,14 +8,14 @@
 
     if (username == "") {
         $username.closest('div').addClass('has-error');
-        $('#lblMsg').text('Username is Required.').css('color', 'red').show();
+        $('#lblMsg').text('Username is Required.').show();
         $username.focus();
         return false;
     }
 
     if (password == "") {
         $password.closest('div').addClass('has-error');
-        $('#lblMsg').text('Password is Required.').css('color', 'red').show();
+        $('#lblMsg').text('Password is Required.').show();
         $password.focus();
         return false;
     }

@@ -186,4 +186,10 @@
       <Column Name="MODIFIED_DATE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.Admin_VerifyUser" Method="Admin_VerifyUser">
+    <Parameter Name="USERNAME" Parameter="uSERNAME" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="PASSWORD" Parameter="pASSWORD" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="RETURN_CODE" Parameter="rETURN_CODE" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>
