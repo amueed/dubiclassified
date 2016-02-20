@@ -21,10 +21,10 @@
                         </div>
                     </div>
                     <div class="jobs">
-                        <img src="images/slider/jobs.jpg" />
+                        <img src="images/slider/jobs.jpg" alt="image" />
                     </div>
                     <div class="jobs">
-                        <img src="images/slider/looking.jpg" />
+                        <img src="images/slider/looking.jpg" alt="image" />
                     </div>
                 </div>
                 <div class="col-sm-9 main">
@@ -34,7 +34,6 @@
 
                                 <h4 style="margin-top: 0; padding-bottom: 10px">
                                     <asp:Label ID="adTitle" runat="server" Text="Label"></asp:Label>
-                                    <!--Porsche carrera 911 full options under warranty and full service history in ali&sons-->
                                 </h4>
                                 <div class="sp">
                                     <span class="fa fa-money"></span>
@@ -47,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-8">
-                                <img src="images/slider/car1.jpg"/>
+                                <img src="images/slider/car1.jpg" />
                             </div>
                             <div class="col-sm-4">
                                 <div class="send">
@@ -89,4 +88,3 @@
         </div>
     </div>
 </asp:Content>
-

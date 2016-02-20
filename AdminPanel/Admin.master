@@ -263,7 +263,7 @@
                         <ul class="nav" id="side-menu">
                             <li class="sidebar-search">
                                 <div class="input-group custom-search-form">
-                                    <input type="text" class="form-control" placeholder="Search..."/>
+                                    <input type="text" class="form-control" placeholder="Search..." />
                                     <span class="input-group-btn">
                                         <button class="btn btn-default" type="button">
                                             <i class="fa fa-search"></i>
@@ -273,19 +273,22 @@
                                 <!-- /input-group -->
                             </li>
                             <li>
-                                <a href="Dashboard.aspx"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
+                                <a href="/AdminPanel/Dashboard.aspx"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
                             </li>
                             <li>
-                                <a href="Locations.aspx"><i class="fa fa-location-arrow fa-fw"></i>Locations</a>
+                                <a href="/AdminPanel/Locations.aspx"><i class="fa fa-location-arrow fa-fw"></i>Locations</a>
                             </li>
                             <li>
-                                <a href="Categories.aspx"><i class="fa fa-tags fa-fw"></i>Categories</a>
+                                <a href="/AdminPanel/Categories.aspx"><i class="fa fa-tags fa-fw"></i>Categories</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-tags fa-fw"></i>Settings</a>
+                                <a href="/AdminPanel/UserManagement.aspx"><i class="fa fa-tags fa-fw"></i>User Management</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-sitemap fa-fw"></i>Settings<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="Settings/WebConfigurations.aspx">Configurations</a>
+                                        <a href="/AdminPanel/Settings/WebConfigurations.aspx">Configurations</a>
                                     </li>
                                     <li>
                                         <a href="#">Change Password</a>
@@ -329,27 +332,25 @@
                 <!-- /.navbar-static-side -->
             </nav>
         </div>
+        <!-- /#wrapper -->
+
+        <!-- jQuery -->
+        <script src="plugins/jquery/dist/jquery.min.js"></script>
+        <%--<script src="js/components/jquery-1.11.3.min.js"></script>--%>
+        <%--<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>--%>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+        <%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>--%>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="plugins/metisMenu/dist/metisMenu.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="js/components/sb-admin-2.js"></script>
+
+        <asp:ContentPlaceHolder ID="body" runat="server">
+        </asp:ContentPlaceHolder>
     </form>
-    <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="plugins/jquery/dist/jquery.min.js"></script>
-    <%--<script src="js/components/jquery-1.11.3.min.js"></script>--%>
-    <%--<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>--%>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>
-    <%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>--%>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="plugins/metisMenu/dist/metisMenu.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/components/sb-admin-2.js"></script>
-
-
-    <asp:ContentPlaceHolder ID="body" runat="server">
-    </asp:ContentPlaceHolder>
-
 </body>
 </html>

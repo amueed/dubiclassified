@@ -4443,10 +4443,11 @@ transform:scale(0.9);
 	color: #5a657e;
 }
 .sc_tabs .panel {
-	background-color: #eceff3;
-	width: 100%;
-	float: left;
-	padding: 25px;
+	background-color: rgba(236, 239, 243, 0);
+    width: 100%;
+    float: left;
+    padding: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.14);
 }
 .sc_tabs .panel .short_tab_img {
 	float: left;
@@ -4881,4 +4882,33 @@ li{ list-style:none}
 	.banner4 li:hover a{ color:#fff}
 
 .password a{ text-decoration:underline}
+.pricearea{ background:#f5f5f5; padding:15px}
+.pricearea select{ padding:8px 25px}
+.four{ padding:30px}
+.four a { color:#0066CC}
+.d{ border: 1px solid rgba(208, 208, 208, 0.64);
+    float: left;
+    width: 100%;
+    padding: 15px; margin-bottom:15px}
+	.d:hover{ background:#F1F0F0}
+.mainform select{ padding:10px}
+.mainform input{ padding:9px}
+.h{ padding:15px 0}
+.save{ padding-top:20px}
+.save a{ background:#FF6600; padding:10px 20px; color:#fff; border-radius:4px;}
+.mainform label{ display:block}
+.ad{ border:2px solid #999; margin:30px auto; width:60%; padding:30px; text-align:center}
+.ad span{ display:block; background:#0066CC; margin-top:15px; color:#fff; padding:7px; width:150px; margin:7px auto}
+.ad span a{ color:#fff}
+.ad strong{ display:block; color:#999}
+.ad .lock { width:60px; height:60px; border:1px solid #999; margin:20px auto 30px; border-radius:100%; line-height:60px; font-size:25px}
+.rate{ background: #999; text-align:center; padding:20px; font-weight:600px; font-size:16px; color:#fff}
+.information{ background:rgba(204, 204, 204, 0.36); margin:10px 0; padding:15px}
+.information span{ display:block; font-weight:600px; font-size:18px}
+.information span+span{ font-size:14px; color:#A0A0A0}
+.information span a{     font-size: 14px;
+    color: #0059B2;
+    font-weight: 600;}
+.information img{ border-radius:100%; width:40px; height:40px}
+.information p{ padding-left:43px}
 /************************************* footer end ********************************/

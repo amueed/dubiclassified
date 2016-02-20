@@ -1,39 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 
 public partial class Details : System.Web.UI.Page
 {
-    static string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["CS"].ToString();
-    DataTable dt = new DataTable();
+    private static readonly string ConStr = System.Configuration.ConfigurationManager.ConnectionStrings["CS"].ToString();
+    private DataTable _dt = new DataTable();
+
     protected void Page_Load(object sender, EventArgs e)
     {
         GetAdDetails();
     }
+
     private static SqlConnection GetObjCon()
     {
-        return new SqlConnection(conStr);
+        return new SqlConnection(ConStr);
     }
+
     public void GetAdDetails()
     {
         try
         {
             using (var db = GetObjCon())
             {
-                dt = new DataTable();
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "User_GetSingleAdDetails";
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = db;
+                _dt = new DataTable();
+                var cmd = new SqlCommand
+                {
+                    CommandText = "User_GetSingleAdDetails",
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = db
+                };
 
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-                ShowDetails(dt);
+                var da = new SqlDataAdapter(cmd);
+                da.Fill(_dt);
+                ShowDetails(_dt);
             }
         }
         catch (Exception ex)
@@ -41,29 +41,20 @@ public partial class Details : System.Web.UI.Page
             Response.Write(ex.Message);
         }
     }
+
     public void ShowDetails(DataTable dt)
     {
         try
         {
-            string title = "";
-            string price = "";
-            string location = "";
-            string description = "";
-            string postedDate = "";
-            string postedBy = "";
-            string condition = "";
-            string views = "";
-            string contactNo = "";
-
-            title = dt.Rows[0]["TITLE"].ToString().Trim();
-            price = dt.Rows[0]["PRICE"].ToString().Trim();
-            location = dt.Rows[0]["LOC"].ToString().Trim();
-            description = dt.Rows[0]["DESC"].ToString().Trim();
-            postedDate = dt.Rows[0]["POSTED_DATE"].ToString().Trim();
-            postedBy = dt.Rows[0]["POSTED_BY"].ToString().Trim();
-            condition = dt.Rows[0]["CONDITION"].ToString().Trim();
-            views = dt.Rows[0]["VISITOR"].ToString().Trim();
-            contactNo = dt.Rows[0]["CONTACT"].ToString().Trim();
+            var title = dt.Rows[0]["TITLE"].ToString().Trim();
+            var price = dt.Rows[0]["PRICE"].ToString().Trim();
+            var location = dt.Rows[0]["LOC"].ToString().Trim();
+            var description = dt.Rows[0]["DESC"].ToString().Trim();
+            var postedDate = dt.Rows[0]["POSTED_DATE"].ToString().Trim();
+            var postedBy = dt.Rows[0]["POSTED_BY"].ToString().Trim();
+            var condition = dt.Rows[0]["CONDITION"].ToString().Trim();
+            var views = dt.Rows[0]["VISITOR"].ToString().Trim();
+            var contactNo = dt.Rows[0]["CONTACT"].ToString().Trim();
 
             adTitle.Text = title;
             adPrice.Text = price;
@@ -79,7 +70,5 @@ public partial class Details : System.Web.UI.Page
         {
             Response.Write(ex.Message);
         }
-
     }
-
 }

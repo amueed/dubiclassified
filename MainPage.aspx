@@ -9,7 +9,7 @@
         <div id="layerslider" style="width: 100%; height: 181px;">
             <div class="ls-slide" data-ls="transition2d:1;timeshift:-1000;">
                 <img src="images/slider/img1.jpg" class="ls-bg" alt="Slide background" />
-                <img class="ls-l" style="bottom: 0; top: auto; margin-bottom: 0; left: 0; white-space: nowrap;" data-ls="offsetxin:0;offsetyin:250;durationin:950;delayin:500;offsetxout:0;durationout:1000;">
+                <img class="ls-l" style="bottom: 0; top: auto; margin-bottom: 0; left: 0; white-space: nowrap;" data-ls="offsetxin:0;offsetyin:250;durationin:950;delayin:500;offsetxout:0;durationout:1000;" alt="">
                 <a class="ls-l ls-linkto-2 slider_prev_btn" data-ls="offsetxin:-50;delayin:1000;offsetxout:-50;">
                     <i class="fa fa-angle-left"></i></a>
                 <a class="ls-l ls-linkto-2 slider_next_btn" data-ls="offsetxin:50;delayin:1000;offsetxout:50;">
@@ -18,7 +18,7 @@
             </div>
             <div class="ls-slide" data-ls="transition2d:1;timeshift:-1000;">
                 <img src="images/slider/img1.jpg" class="ls-bg" alt="Slide background" />
-                <img class="ls-l" style="bottom: 0; top: auto; margin-bottom: 0; left: 450px; white-space: nowrap;" data-ls="offsetxin:0;offsetyin:250;durationin:950;delayin:500;offsetxout:0;durationout:1000;" />
+                <img class="ls-l" style="bottom: 0; top: auto; margin-bottom: 0; left: 450px; white-space: nowrap;" data-ls="offsetxin:0;offsetyin:250;durationin:950;delayin:500;offsetxout:0;durationout:1000;" alt=""/>
                 <a class="ls-l ls-linkto-1 slider_next_btn" data-ls="offsetxin:50;delayin:1000;offsetxout:50;">
                     <i class="fa fa-angle-right"></i>
                 </a>
