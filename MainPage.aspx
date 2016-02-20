@@ -18,7 +18,7 @@
             </div>
             <div class="ls-slide" data-ls="transition2d:1;timeshift:-1000;">
                 <img src="images/slider/img1.jpg" class="ls-bg" alt="Slide background" />
-                <img class="ls-l" style="bottom: 0; top: auto; margin-bottom: 0; left: 450px; white-space: nowrap;" data-ls="offsetxin:0;offsetyin:250;durationin:950;delayin:500;offsetxout:0;durationout:1000;" alt=""/>
+                <img class="ls-l" style="bottom: 0; top: auto; margin-bottom: 0; left: 450px; white-space: nowrap;" data-ls="offsetxin:0;offsetyin:250;durationin:950;delayin:500;offsetxout:0;durationout:1000;" alt="" />
                 <a class="ls-l ls-linkto-1 slider_next_btn" data-ls="offsetxin:50;delayin:1000;offsetxout:50;">
                     <i class="fa fa-angle-right"></i>
                 </a>
@@ -83,7 +83,6 @@
                             <li><a href="/motors/heavy-vehicles/">Heavy Vehicles</a> <span>353 </span></li>
 
                             <li><a href="/motors/motorcycles/">Motorcycles</a> <span>472 </span></li>
-
                         </ul>
                         <div class="place"><a href="#">Place an Ad</a></div>
                     </div>
@@ -91,7 +90,6 @@
                         <div class="feature_icon">
                             <span><i class="fa fa-home"></i></span>
                             <h3>Property for Sale</h3>
-
                         </div>
                         <ul>
 
@@ -104,7 +102,6 @@
                             <li><a href="/motors/heavy-vehicles/">Heavy Vehicles</a> <span>353 </span></li>
 
                             <li><a href="/motors/motorcycles/">Motorcycles</a> <span>472 </span></li>
-
                         </ul>
                         <div class="place"><a href="#">Place an Ad</a></div>
                     </div>
@@ -112,7 +109,6 @@
                         <div class="feature_icon">
                             <span><i class="fa fa-home"></i></span>
                             <h3>Property for Rent</h3>
-
                         </div>
                         <ul>
 
@@ -125,7 +121,6 @@
                             <li><a href="/motors/heavy-vehicles/">Heavy Vehicles</a> <span>353 </span></li>
 
                             <li><a href="/motors/motorcycles/">Motorcycles</a> <span>472 </span></li>
-
                         </ul>
                         <div class="place"><a href="#">Place an Ad</a></div>
                     </div>
@@ -133,7 +128,6 @@
                         <div class="feature_icon">
                             <span><i class="fa fa-car"></i></span>
                             <h3>Moters</h3>
-
                         </div>
                         <ul>
 
@@ -146,7 +140,6 @@
                             <li><a href="/motors/heavy-vehicles/">Heavy Vehicles</a> <span>353 </span></li>
 
                             <li><a href="/motors/motorcycles/">Motorcycles</a> <span>472 </span></li>
-
                         </ul>
                         <div class="place"><a href="#">Place an Ad</a></div>
                     </div>
@@ -154,7 +147,6 @@
                         <div class="feature_icon">
                             <span><i class="fa fa-home"></i></span>
                             <h3>Property for Sale</h3>
-
                         </div>
                         <ul>
 
@@ -167,7 +159,6 @@
                             <li><a href="/motors/heavy-vehicles/">Heavy Vehicles</a> <span>353 </span></li>
 
                             <li><a href="/motors/motorcycles/">Motorcycles</a> <span>472 </span></li>
-
                         </ul>
                         <div class="place"><a href="#">Place an Ad</a></div>
                     </div>
@@ -175,7 +166,6 @@
                         <div class="feature_icon">
                             <span><i class="fa fa-home"></i></span>
                             <h3>Property for Rent</h3>
-
                         </div>
                         <ul>
 
@@ -188,7 +178,6 @@
                             <li><a href="/motors/heavy-vehicles/">Heavy Vehicles</a> <span>353 </span></li>
 
                             <li><a href="/motors/motorcycles/">Motorcycles</a> <span>472 </span></li>
-
                         </ul>
                         <div class="place"><a href="#">Place an Ad</a></div>
                     </div>--%>
@@ -217,4 +206,3 @@
         </div>
     </div>
 </asp:Content>
-

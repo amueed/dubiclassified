@@ -69,7 +69,7 @@ Assigned to:	Themeforest
 	width:100%;
 	float:left;
 }
-/*woocommerce heading start*/ 
+/*woocommerce heading start*/
 .woo_heading {
 	width: 100%;
 	float: left;
@@ -93,8 +93,7 @@ Assigned to:	Themeforest
 	background-color: #c8cdd2;
 	z-index: -1;
 }
-/*woocommerce heading end*/	
-
+/*woocommerce heading end*/
 
 /*products start*/
 .products {
@@ -180,8 +179,7 @@ Assigned to:	Themeforest
 .products .product-image .tag.sale {
 	background-color: #f77b77;
 }
-/*products end*/	
-
+/*products end*/
 
 /* single product start */
 .woocommerce div.product {
@@ -349,7 +347,7 @@ Assigned to:	Themeforest
 	float: left;
 	padding: 25px;
 }
-/* single product end */	
+/* single product end */
 
 /*single product reviews start*/
 .woocommerce #reviews #comments ol.commentlist {
@@ -479,8 +477,7 @@ Assigned to:	Themeforest
 .woocommerce #review_form #respond p.comment-form-email input {
 	width: 100%;
 }
-/*single product reviews end*/	
-	
+/*single product reviews end*/
 
 /*star rating start*/
 .star-rating {
@@ -554,7 +551,7 @@ Assigned to:	Themeforest
 .woocommerce_pagination ul {
 	float: right;
 }
-/********************* woocommerce sidebar start ********************/	
+/********************* woocommerce sidebar start ********************/
 .cls_sidebar_wrapper .widget.woocommerce.widget_categories ul li a {
 	text-transform: uppercase;
 	color: #5a657e;
@@ -657,5 +654,5 @@ Assigned to:	Themeforest
 }
 .slider-handle.triangle {
 	background: transparent none;
-}	
+}
 /********************* woocommerce sidebar end ********************/

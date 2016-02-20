@@ -45,7 +45,6 @@
    before time-mode was moved into a separate plugin.
    (patch by Paolo Valleri, pull request #1028)
 
-
 ## Flot 0.8.2 ##
 
 ### Changes ###
@@ -176,7 +175,6 @@
 
  - Fixed missing semicolons in the core library.
    (reported by Michal Zglinski)
-
 
 ## Flot 0.8.0 ##
 
@@ -416,7 +414,6 @@ The base and overlay canvas are now using the CSS classes "flot-base" and
  - Fixed recalculation of tickSize and tickDecimals on calls to setupGrid.
    (patch by thecountofzero, pull request #861, issues #860, #1000)
 
-
 ## Flot 0.7 ##
 
 ### API changes ###
@@ -548,7 +545,7 @@ also surfaced, if your graphs are slow in IE, you may want to give it a spin:
  - Refactor replot behaviour so Flot tries to reuse the existing canvas,
    adding shutdown() methods to the plot. (based on patch by Ryley Breiddal,
    issue 269)
-   
+
    This prevents a memory leak in Chrome and hopefully makes replotting faster
    for those who are using $.plot instead of .setData()/.draw(). Also update
    jQuery to 1.5.1 to prevent IE leaks fixed in jQuery.
@@ -643,8 +640,6 @@ also surfaced, if your graphs are slow in IE, you may want to give it a spin:
  - Update colorhelpers plugin to avoid dying when trying to parse an
    invalid string (reported by cadavor, issue 483).
 
-
-
 ## Flot 0.6 ##
 
 ### API changes ###
@@ -708,7 +703,7 @@ in event handling speed.
    The "setting options" example provides a demonstration.
 
  - Gradient bars. (suggestion by stefpet)
-  
+
  - Added a "plotunselected" event which is triggered when the selection is
    removed, see "selection" example. (suggestion by Meda Ugo)
 
@@ -735,7 +730,7 @@ in event handling speed.
 
  - Added pointOffset method for converting a point in data space to an offset
    within the placeholder.
-  
+
  - Plugin system: register an init method in the $.flot.plugins array to get
    started, see PLUGINS.txt for details on how to write plugins (it's easy).
    There are also some extra methods to enable access to internal state.
@@ -744,7 +739,7 @@ in event handling speed.
    the data and doing the plot. This can be used to modify Flot without
    changing the source, useful for writing plugins. Some hooks are defined,
    more are likely to come.
-  
+
  - Threshold plugin: you can set a threshold and a color, and the data points
    below that threshold will then get the color. Useful for marking data
    below 0, for instance.
@@ -834,8 +829,6 @@ in event handling speed.
  - Make sure points on top take precedence when finding nearby points when
    hovering. (reported by didroe, issue 224)
 
-
-
 ## Flot 0.5 ##
 
 Timestamps are now in UTC. Also "selected" event -> becomes "plotselected"
@@ -890,9 +883,9 @@ code shouldn't break) and markings (formerly coloredAreas).
    value they represent.
 
  - setSelection now takes a second parameter which you can use to prevent the
-   method from firing the "plotselected" handler. 
+   method from firing the "plotselected" handler.
 
- - Improved the handling of axis auto-scaling with bars. 
+ - Improved the handling of axis auto-scaling with bars.
 
 ## Bug fixes ##
 
@@ -900,7 +893,7 @@ code shouldn't break) and markings (formerly coloredAreas).
    timothytoe)
 
  - Fixed a bug in finding max values for all-negative data sets.
- 
+
  - Prevent the possibility of eternal looping in tick calculations.
 
  - Fixed a bug when borderWidth is set to 0. (reported by Rob/sanchothefat)
@@ -918,8 +911,6 @@ code shouldn't break) and markings (formerly coloredAreas).
  - Using the "container" option in legend now overwrites the container element
    instead of just appending to it, fixing the infinite legend bug. (reported
    by several people, fix by Brad Dewey)
-
-
 
 ## Flot 0.4 ##
 
@@ -974,8 +965,6 @@ min, max, tickDecimals, tickSize.
 
  - Prevent IE/Safari text selection when selecting stuff on the canvas.
 
-
-
 ## Flot 0.3 ##
 
 This is mostly a quick-fix release because jquery.js wasn't included in the
@@ -993,8 +982,6 @@ previous zip/tarball.
 
  - Fixed a bug in dealing with data where min = max. (thanks to Michael
    Messinides)
-
-
 
 ## Flot 0.2 ##
 
@@ -1018,8 +1005,6 @@ Moved labelMargin option to grid from x/yaxis.
    labels into links.
 
  - Reduced the size of the code. (patch by Guy Fraser)
-
-
 
 ## Flot 0.1 ##
 

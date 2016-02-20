@@ -4,12 +4,11 @@
  * Specially modified to work with Holder.js
  */
 
-;(function(name, global, callback){
-		global[name] = callback;
+; (function (name, global, callback) {
+    global[name] = callback;
 })("onDomReady", this,
 
-(function(win) {
-
+(function (win) {
     'use strict';
 
     //Lazy loading fix for Firefox < 3.6
@@ -27,7 +26,7 @@
 
         LOAD = "load",
         FALSE = false,
-        ONLOAD = "on"+LOAD,
+        ONLOAD = "on" + LOAD,
         COMPLETE = "complete",
         READYSTATE = "readyState",
         ATTACHEVENT = "attachEvent",
@@ -48,28 +47,27 @@
         callbacks = [];
 
     // Handle when the DOM is ready
-    function ready( fn ) {
-        if ( !isReady ) {
-
+    function ready(fn) {
+        if (!isReady) {
             // Make sure body exists, at least, in case IE gets a little overzealous (ticket #5443).
-            if ( !doc.body ) {
-                return defer( ready );
+            if (!doc.body) {
+                return defer(ready);
             }
 
             // Remember that the DOM is ready
             isReady = true;
 
             // Execute all callbacks
-            while ( fn = callbacks.shift() ) {
-                defer( fn );
+            while (fn = callbacks.shift()) {
+                defer(fn);
             }
         }
     }
 
     // The ready event handler
-    function completed( event ) {
+    function completed(event) {
         // readyState === "complete" is good enough for us to call the dom ready in oldIE
-        if ( w3c || event.type === LOAD || doc[READYSTATE] === COMPLETE ) {
+        if (w3c || event.type === LOAD || doc[READYSTATE] === COMPLETE) {
             detach();
             ready();
         }
@@ -77,19 +75,19 @@
 
     // Clean-up method for dom ready events
     function detach() {
-        if ( w3c ) {
-            doc[REMOVEEVENTLISTENER]( DOMCONTENTLOADED, completed, FALSE );
-            win[REMOVEEVENTLISTENER]( LOAD, completed, FALSE );
+        if (w3c) {
+            doc[REMOVEEVENTLISTENER](DOMCONTENTLOADED, completed, FALSE);
+            win[REMOVEEVENTLISTENER](LOAD, completed, FALSE);
         } else {
-            doc[DETACHEVENT]( ONREADYSTATECHANGE, completed );
-            win[DETACHEVENT]( ONLOAD, completed );
+            doc[DETACHEVENT](ONREADYSTATECHANGE, completed);
+            win[DETACHEVENT](ONLOAD, completed);
         }
     }
 
     // Defers a function, scheduling it to run after the current call stack has cleared.
-    function defer( fn, wait ) {
+    function defer(fn, wait) {
         // Allow 0 to be passed
-        setTimeout( fn, +wait >= 0 ? wait : 1 );
+        setTimeout(fn, +wait >= 0 ? wait : 1);
     }
 
     // Attach the listeners:
@@ -97,41 +95,41 @@
     // Catch cases where onDomReady is called after the browser event has already occurred.
     // we once tried to use readyState "interactive" here, but it caused issues like the one
     // discovered by ChrisS here: http://bugs.jquery.com/ticket/12282#comment:15
-    if ( doc[READYSTATE] === COMPLETE ) {
+    if (doc[READYSTATE] === COMPLETE) {
         // Handle it asynchronously to allow scripts the opportunity to delay ready
-        defer( ready );
+        defer(ready);
 
-    // Standards-based browsers support DOMContentLoaded
-    } else if ( w3c ) {
+        // Standards-based browsers support DOMContentLoaded
+    } else if (w3c) {
         // Use the handy event callback
-        doc[ADDEVENTLISTENER]( DOMCONTENTLOADED, completed, FALSE );
+        doc[ADDEVENTLISTENER](DOMCONTENTLOADED, completed, FALSE);
 
         // A fallback to window.onload, that will always work
-        win[ADDEVENTLISTENER]( LOAD, completed, FALSE );
+        win[ADDEVENTLISTENER](LOAD, completed, FALSE);
 
-    // If IE event model is used
+        // If IE event model is used
     } else {
         // Ensure firing before onload, maybe late but safe also for iframes
-        doc[ATTACHEVENT]( ONREADYSTATECHANGE, completed );
+        doc[ATTACHEVENT](ONREADYSTATECHANGE, completed);
 
         // A fallback to window.onload, that will always work
-        win[ATTACHEVENT]( ONLOAD, completed );
+        win[ATTACHEVENT](ONLOAD, completed);
 
         // If IE and not a frame
         // continually check to see if the document is ready
         try {
             top = win.frameElement == null && docElem;
-        } catch(e) {}
+        } catch (e) { }
 
-        if ( top && top.doScroll ) {
+        if (top && top.doScroll) {
             (function doScrollCheck() {
-                if ( !isReady ) {
+                if (!isReady) {
                     try {
                         // Use the trick by Diego Perini
                         // http://javascript.nwbox.com/IEContentLoaded/
                         top.doScroll("left");
-                    } catch(e) {
-                        return defer( doScrollCheck, 50 );
+                    } catch (e) {
+                        return defer(doScrollCheck, 50);
                     }
 
                     // detach all dom ready events
@@ -144,15 +142,15 @@
         }
     }
 
-    function onDomReady( fn ) {
+    function onDomReady(fn) {
         // If DOM is ready, execute the function (async), otherwise wait
-        isReady ? defer( fn ) : callbacks.push( fn );
+        isReady ? defer(fn) : callbacks.push(fn);
     }
 
     // Add version
     onDomReady.version = "1.4.0";
     // Add method to check if DOM is ready
-    onDomReady.isReady = function(){
+    onDomReady.isReady = function () {
         return isReady;
     };
 

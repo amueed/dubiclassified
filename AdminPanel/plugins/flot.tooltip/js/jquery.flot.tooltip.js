@@ -1,14 +1,14 @@
 /*
  * jquery.flot.tooltip
- * 
+ *
  * description: easy-to-use tooltips for Flot charts
  * version: 0.8.4
  * authors: Krzysztof Urbas @krzysu [myviews.pl],Evan Steinkerchner @Roundaround
  * website: https://github.com/krzysu/flot.tooltip
- * 
+ *
  * build on 2014-08-04
  * released under MIT License, 2012
-*/ 
+*/
 (function ($) {
     // plugin options, default values
     var defaultOptions = {
@@ -68,7 +68,6 @@
         }
 
         plot.hooks.bindEvents.push(function (plot, eventHolder) {
-
             // get plot options
             that.plotOptions = plot.getOptions();
 
@@ -169,7 +168,6 @@
                     var distToLine = dotLineLength(pos.x, pos.y, pointPrev.x, pointPrev.y, pointNext.x, pointNext.y, false);
 
                     if (distToLine < that.tooltipOptions.lines.threshold) {
-
                         var closestIndex = lineDistance(pointPrev.x, pointPrev.y, pos.x, pos.y) <
                             lineDistance(pos.x, pos.y, pointNext.x, pointNext.y) ? xBeforeIndex : xAfterIndex;
 
@@ -283,7 +281,6 @@
      * @return {string} real tooltip content for current item
      */
     FlotTooltip.prototype.stringFormat = function (content, item) {
-
         var percentPattern = /%p\.{0,1}(\d{0,})/;
         var seriesPattern = /%s/;
         var xLabelPattern = /%lx/; // requires flot-axislabels plugin https://github.com/markrcote/flot-axislabels, will be ignored if plugin isn't loaded
@@ -327,7 +324,7 @@
             p = item.series.percent;
         } else if (typeof (item.series.percents) !== 'undefined') {
             p = item.series.percents[item.dataIndex];
-        }        
+        }
         if (typeof p === 'number') {
             content = this.adjustValPrecision(percentPattern, content, p);
         }
@@ -374,7 +371,6 @@
 
         // change x from number to given label, if given
         if (typeof item.series.xaxis.ticks !== 'undefined') {
-
             var ticks;
             if (this.hasRotatedXAxisTicks(item)) {
                 // xaxis.ticks will be an empty array if tickRotor is being used, but the values are available in rotatedTicks
@@ -447,7 +443,6 @@
 
     //
     FlotTooltip.prototype.adjustValPrecision = function (pattern, content, value) {
-
         var precision;
         var matchResult = content.match(pattern);
         if( matchResult !== null ) {
@@ -486,5 +481,4 @@
         name: 'tooltip',
         version: '0.8.4'
     });
-
 })(jQuery);

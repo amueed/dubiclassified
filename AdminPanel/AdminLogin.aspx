@@ -67,6 +67,5 @@
 
     <!-- Custom JavaScript -->
     <script src="/AdminPanel/js/custom/AdminLogin.js"></script>
-
 </body>
 </html>

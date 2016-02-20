@@ -28,7 +28,6 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -208,6 +207,4 @@
 
     <!--custom javascript-->
     <script src="js/custom/Categories.js"></script>
-
 </asp:Content>
-

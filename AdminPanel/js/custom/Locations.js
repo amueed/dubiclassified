@@ -44,7 +44,6 @@ function GetLocationsSuccess(data) {
     }
 }
 
-
 function CreateActionMenu() {
     var actionMenu = '';
     actionMenu += '<div class="btn-group pull-right">';

@@ -31,7 +31,6 @@
                     <div class="row">
                         <div>
                             <div class="col-md-12">
-
                                 <h4 style="margin-top: 0; padding-bottom: 10px">
                                     <asp:Label ID="adTitle" runat="server" Text="Label"></asp:Label>
                                 </h4>

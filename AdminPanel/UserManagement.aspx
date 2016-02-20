@@ -139,7 +139,6 @@
                                             <td>Active:</td>
                                             <td>
                                                 <asp:CheckBox ID="activeCheckBox" runat="server" Checked='<%# Bind("active") %>' /></td>
-
                                         </tr>
                                         <tr>
                                             <td>Ads Limit:</td>
@@ -171,9 +170,7 @@
                                             <td></td>
                                             <td></td>
                                         </tr>
-
                                     </table>
-
                                 </InsertItemTemplate>
                                 <ItemTemplate>
                                     user_id:
@@ -277,4 +274,3 @@
         </div>
     </div>
 </asp:Content>
-

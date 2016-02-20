@@ -105,7 +105,6 @@ Placeholders using a custom font are rendered using canvas by default, due to SV
 
 `<object>` placeholders work like `<img>` placeholders, with the added benefit of their DOM being able to be inspected and modified.
 
-
 Customizing themes
 ------------------
 

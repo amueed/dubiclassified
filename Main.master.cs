@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.UI.WebControls;
 
 public partial class Main : System.Web.UI.MasterPage
 {
-    static string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["CS"].ToString();
+    private static string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["CS"].ToString();
+
     //DataSet ds = new DataSet();
-    DataTable dt;
+    private DataTable dt;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         //when user redirect from Default.aspx page, store location in session
@@ -34,10 +32,12 @@ public partial class Main : System.Web.UI.MasterPage
             LoadCategories();
         }
     }
+
     private static SqlConnection GetObjCon()
     {
         return new SqlConnection(conStr);
     }
+
     public void LoadWebConfig()
     {
         try
@@ -61,15 +61,20 @@ public partial class Main : System.Web.UI.MasterPage
                         TabTitle.Text = propertyVal;
                         WebTitle.Text = propertyVal;
                         break;
+
                     case "website_desc":
                         //WebDesc.Text = propertyVal;
                         break;
+
                     case "website_logo":
                         break;
+
                     case "facebook_link":
                         break;
+
                     case "twitter_link":
                         break;
+
                     default:
                         break;
                 }
@@ -107,9 +112,9 @@ public partial class Main : System.Web.UI.MasterPage
         }
         finally
         {
-
         }
     }
+
     public void LoadCategories()
     {
         try
@@ -136,7 +141,6 @@ public partial class Main : System.Web.UI.MasterPage
         }
         finally
         {
-
         }
     }
 }

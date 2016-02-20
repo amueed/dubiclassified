@@ -4,7 +4,6 @@
 
 > Now support cdnjs & jsdelivr
 
-
 ## Installation
 
 * [npm](http://npmjs.org/)
@@ -85,7 +84,6 @@ For double tap support.
   });
 ```
 
-
 ### [DEMO](http://demo.onokumus.com/metisMenu/)
 
 Contains a simple HTML file to demonstrate metisMenu plugin.
@@ -98,7 +96,6 @@ Contains a simple HTML file to demonstrate metisMenu plugin.
 * 2014-06-18   v1.0.3        Create grunt task
 * 2014-06-10   v1.0.2        Fixed for IE8 & IE9
 
-
 ## Author
 
 metisMenu was made with love by these guys and a bunch of awesome [contributors](https://github.com/onokumus/metisMenu/graphs/contributors).
@@ -106,7 +103,6 @@ metisMenu was made with love by these guys and a bunch of awesome [contributors]
 [![Osman Nuri Okumuş](https://0.gravatar.com/avatar/4fa374411129d6f574c33e4753ec402e?s=70)](http://onokumus.com) |
 --- | --- | --- | --- | --- | --- | ---
 [Osman Nuri Okumuş](http://onokumus.com) |
-
 
 ## License
 

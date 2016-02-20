@@ -37,6 +37,3 @@ $('#txtPassword').on('keypress', function () {
         $('#lblMsg').text('').hide();
     }
 });
-
-
-

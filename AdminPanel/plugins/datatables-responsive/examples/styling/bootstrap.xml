@@ -28,6 +28,4 @@ This example shows DataTables and the Responsive extension being used with the [
 Note that the `dt-responsive` class is used to indicate to the extension that it should be enabled on this page, as `responsive` [has special meaning in Bootstrap](http://getbootstrap.com/css/#tables-responsive). The `r-init responsive` option could also be used if required.
 
 ]]></info>
-
 </dt-example>
-

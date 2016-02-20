@@ -40,7 +40,6 @@
                         <div class="form-group ">
                             <label>Price:<span style="color: red; font-size: 16px">*</span></label>
                             <input type="text" id="txtPrice" placeholder="Price" class="form-control" runat="server" />
-
                         </div>
                         <div class="form-group">
                             <label>
@@ -82,8 +81,4 @@
     </div>
     <!--Custom js for this webpage-->
     <script src="js/custom/Post.js"></script>
-
-
-
 </asp:Content>
-

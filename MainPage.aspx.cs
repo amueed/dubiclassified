@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.UI.WebControls;
 
 public partial class MainPage : System.Web.UI.Page
 {
-    static string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["CS"].ToString();
-    DataSet ds = new DataSet();
+    private static string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["CS"].ToString();
+    private DataSet ds = new DataSet();
+
     protected void Page_Load(object sender, EventArgs e)
     {
         GetCategories();
@@ -50,6 +47,7 @@ public partial class MainPage : System.Web.UI.Page
             Response.Write(ex.Message);
         }
     }
+
     protected void rptCat_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
         if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)

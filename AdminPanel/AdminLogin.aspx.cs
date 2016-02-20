@@ -1,23 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 public partial class AdminPanel_AdminLogin : System.Web.UI.Page
 {
     private static readonly string ConStr = System.Configuration.ConfigurationManager.ConnectionStrings["CS"].ToString();
+
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
+
     private static SqlConnection GetObjCon()
     {
         return new SqlConnection(ConStr);
     }
+
     protected void btnLogin_Click(object sender, EventArgs e)
     {
         var db = GetObjCon();
@@ -52,10 +49,12 @@ public partial class AdminPanel_AdminLogin : System.Web.UI.Page
                         Session.Timeout = 15;
                         Response.Redirect("~/AdminPanel/Dashboard.aspx");
                         break;
+
                     case 404:
                         lblMsg.InnerText = "Login Failed! Invalid Username/Password.";
                         lblMsg.Style["display"] = "block";
                         break;
+
                     default:
                         //Response.Redirect("~/AdminPanel/AdminLogin.aspx");
                         lblMsg.InnerText = "Error! Unable to Login.";

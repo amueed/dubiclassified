@@ -8,7 +8,7 @@ This repository holds the following plug-in types for DataTables:
 * Sorting
   * Type based
   * Custom data source based
-* API 
+* API
 * Filtering
   * Type based
   * Row based

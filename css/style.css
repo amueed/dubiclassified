@@ -190,8 +190,6 @@ font-size: 22px;
     color: #000;
 }
 
-
-
 .container-fluid {
     padding-right: 15px;
     padding-left: 15px;
@@ -218,7 +216,6 @@ font-size: 22px;
     width: 80%;
     float: left;
     display: block;
-	  
 }
 .btn-default {
     color: #333;
@@ -247,7 +244,7 @@ font-size: 22px;
     font-weight: 300;
     height: 46px;
     margin: 0;
-   
+
     /*-webkit-border-radius: 34px;
     -moz-border-radius: 34px;
     border-radius: 34px;*/
@@ -629,7 +626,7 @@ font-size: 22px;
 .fixed_menu .cls_logo {
 	line-height: 64px;
 }
-/*Navigation start*/	
+/*Navigation start*/
 .cls_nav_wrapper {
 	width: 100% !important;
 	float: left;
@@ -817,7 +814,7 @@ transform:scale(1.02);
 	background-color: #f5f5f5;
 	color: #99a4bd;
 }
-/*mega menu start*/	
+/*mega menu start*/
 .cls_nav_wrapper > ul > li > .mega-menu-wrapper {
 	position: absolute;
 	top: 100%;
@@ -872,9 +869,9 @@ transform:scale(1.02);
 	background-color: #f5f5f5;
 	color: #99a4bd;
 }
-/******************************************** header end ******************************************/		
+/******************************************** header end ******************************************/
 
-/******************************************** social start ******************************************/		
+/******************************************** social start ******************************************/
 .cls_social {
 	display: block;
 }
@@ -902,17 +899,15 @@ transform:scale(1.02);
 .team_overlay .cls_social > ul > li > a:hover {
 	color: #fff !important;
 }
-/******************************************** social end ******************************************/	
+/******************************************** social end ******************************************/
 
-/******************************************** slider start ******************************************/	
+/******************************************** slider start ******************************************/
 .cls_slider_wrapper {
 	width: 100%;
 	float: left;
 	position: relative;
 	margin-bottom: 49.5px;
 }
-
-
 
 .home3_slider .ls-gpuhack {
 	background: rgba(0, 0, 0, 0.44) url(../images/slider/mask3.png);
@@ -997,16 +992,15 @@ transform:scale(1.02);
 	background-color: rgba(255,255,255,0.8);
 	color: #fff;
 }
-/******************************************** slider end ******************************************/		
+/******************************************** slider end ******************************************/
 
-
-/******************************************** service start ******************************************/			
+/******************************************** service start ******************************************/
 .cls_service_wrapper {
 	margin: 0 auto;
 	padding: 0px 0px 100px;
 	width: 100%;
 	float:left;
-	background:url(../images/slider/banner.jpg) no-repeat center bottom; 
+	background:url(../images/slider/banner.jpg) no-repeat center bottom;
 }
 .cls_service {
 	width: 100%;
@@ -1152,8 +1146,7 @@ transform:scale(1.02);
 .cls_service_iconr:hover > .content > h4 {
 	color: #999999;
 }
-/******************************************** service end ******************************************/	
-
+/******************************************** service end ******************************************/
 
 /************************************* quality style section start ********************************/
 .quality_style_wrapper {
@@ -1967,7 +1960,7 @@ transform:scale(1.02);
 	border-color: #fff;
 }
 /**Pricing Table**/
-				 
+
 .process {
 	clear: both;
 	width: 100%;
@@ -2108,7 +2101,7 @@ transform:scale(1.02);
 	-ms-transition:all 0.3s;
 	-o-transition:all 0.3s;
 	transition:all 0.3s;
-	}	
+	}
 .service_feature:hover .service_feature_text{
 	color:#fff;
 	}
@@ -2126,14 +2119,14 @@ transform:scale(1.02);
 	-o-animation:zoomOut 0.5s;
 	animation:zoomOut 0.5s;
 	display:none;
-	}	
+	}
 .feature_submit {
 	float: left;
 	width: 100%;
 	text-align: center;
 	padding: 20px 0;
 }
-.service_feature a.service_submit, 
+.service_feature a.service_submit,
 .service_feature a.service_submit:hover {
 	padding: 10px 32px;
 	background-color: #959a9f;
@@ -2141,11 +2134,10 @@ transform:scale(1.02);
 	border-color: #fff;
 	display:none;
 }
-.service_feature:hover a.service_submit, 
+.service_feature:hover a.service_submit,
 .service_feature:hover a.service_submit:hover {
 	display:inline-block;
 }
-		
 
 .service_feature_title {
 	float: left;
@@ -2319,9 +2311,6 @@ transform:scale(1.02);
 	margin: 0 auto;
 }
 /**skill chart**/
-
-
-
 
 .about_page .process {
 	padding-top: 0;
@@ -2582,14 +2571,12 @@ transform:scale(1.02);
 .mb-slider .mb-panel.current {
 	cursor: auto;
 }
-/*how we are icon slider end*/	
-	
-	
+/*how we are icon slider end*/
+
 .ct_highlight {
 	color: #99a4bd;
 }
 /*how we are end*/
-
 
 /********************* about 1st page end *********************/
 
@@ -3336,7 +3323,7 @@ div#cls_googleMap {
 	color: #777777;
 	position: relative;
 }
-/*Blog post medium image start*/	
+/*Blog post medium image start*/
 .blog_post_medium_image {
 	width: 100%;
 	float: left;
@@ -3415,7 +3402,7 @@ div#cls_googleMap {
 	-o-transition: all 0.3s;
 	transition: all 0.3s;
 }
-/*blog post medium image end*/		
+/*blog post medium image end*/
 
 .post_image_slider {
 	width: 100%;
@@ -3612,9 +3599,9 @@ transform:scale(0.9);
 	color: #5a657e;
 	float: right;
 }
-/******************************blog post medium image end ************************/	
+/******************************blog post medium image end ************************/
 
-/******************************blog post pagination start ************************/	
+/******************************blog post pagination start ************************/
 .post_pagination {
 	display: block;
 	width: 100%;
@@ -3658,8 +3645,7 @@ transform:scale(0.9);
 .boxed_post_pager ul {
 	display: inline-block;
 }
-/******************************blog post pagination end ************************/	
-
+/******************************blog post pagination end ************************/
 
 /******************************blog singe page start ************************/
 .blog_single_page_wrapper {
@@ -3747,9 +3733,9 @@ transform:scale(0.9);
 .about_auther_content .content {
 	display: block;
 }
-/******************************blog singe page end ************************/	
+/******************************blog singe page end ************************/
 
-/******************************blog singe comments start ************************/	
+/******************************blog singe comments start ************************/
 .comments-area {
 	width: 100%;
 	float: left;
@@ -3883,7 +3869,7 @@ transform:scale(0.9);
 	border-color: #99a4bd;
 	color: #99a4bd;
 }
-/******************************blog singe comments end ************************/	
+/******************************blog singe comments end ************************/
 
 /******************************faq start ************************/
 .faq-tabs {
@@ -3964,10 +3950,9 @@ transform:scale(0.9);
 .faq-tabs .panel-default > .panel-heading + .panel-collapse > .panel-body {
 	border-top: none;
 }
-/******************************faq end ************************/	
+/******************************faq end ************************/
 
-
-/******************************typography start ************************/	
+/******************************typography start ************************/
 .label-theme {
 	background-color: #99a4bd;
 	padding: 0px 4px 3px;
@@ -3998,10 +3983,9 @@ transform:scale(0.9);
 .push_down_40{
 	padding-top:50px;
 	}
-/******************************typography end ************************/	
+/******************************typography end ************************/
 
-
-/******************************sidebar widget start ************************/	
+/******************************sidebar widget start ************************/
 .cls_sidebar_wrapper {
 	width: 100%;
 	float: left;
@@ -4216,9 +4200,9 @@ transform:scale(0.9);
 	text-decoration: none;
 	margin-bottom: 0px;
 }
-/******************************sidebar widget end ************************/	
+/******************************sidebar widget end ************************/
 
-/******************************** shortcode start *********************************/	
+/******************************** shortcode start *********************************/
 .shortcode_wraper {
 	margin: 0 auto;
 	width:100%;
@@ -4639,7 +4623,7 @@ transform:scale(0.9);
 	-moz-osx-font-smoothing: grayscale;
 	transform: translate(0, 0);
 }
-/******************************** shortcode end ***********************************/	
+/******************************** shortcode end ***********************************/
 
 /************************************* footer start ********************************/
 .footer_wrapper {
@@ -4818,7 +4802,7 @@ footer .copyright p {
 	-o-animation: rotateIn 0.4s;
 	animation: rotateIn 0.4s;
 	display: block;
-}	
+}
 .main h3{     margin-top: 10px;
     font-family: Montserrat!important;
     /* text-transform: uppercase; */
@@ -4868,13 +4852,13 @@ li{ list-style:none}
 	.banner2{ padding:40px 0; text-align:center; font-size:15px}
 	.banner3{ padding:20px 0}
 	.banner4 li{     float: left;
-	
+
     width:200px;
     background: rgba(222, 222, 222, 0.44);
     margin: 0px 20px 20px 0;
     border:1px solid rgba(199, 199, 199, 0.41); height:82px;}
 	.banner4 li span{ float:left; padding:0 10px 0px 0; }
-	
+
 	.banner4 li a{ color:#000; font-family:Montserrat}
 	.banner4{ padding-bottom:50px; float:left; border:1px solid #CCC; padding:10px}
 	.banner4 p{ padding-top:15px; text-align:center}
