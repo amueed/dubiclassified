@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="sp-loading">
-                            <img src="images/ads_img/sp-loading.gif" /><br>
+                            <img src="images/ads_img/sp-loading.gif" alt="user_pic" />
                             LOADING IMAGES
                         </div>
                         <div class="sp-wrap" style="min-width: 200px; max-width: 600px;">
@@ -40,20 +40,47 @@
                 <!--Details-->
                 <div class="row">
                     <div class="col-md-12 four">
-                        <!--Title-->
-                        <div class="row">
-                            <h3>Pair of male n female cats very beautiful n having soft furr
-                                <asp:Label ID="adTitle" runat="server" Text="Label"></asp:Label>
-                            </h3>
-                        </div>
-                        <!--Description-->
-                        <div class="row">
-                            <p style="padding-top: 30px; color: #999">
-                                When you call, don't forget to mention that you found this ad on OLX.com.pk. I do not wish to be contacted by telemarketers or representatives of any other website.
-                            </p>
-                        </div>
-                        <div class="row">
-                            Views:541
+                        <div class="d">
+                            <div class="col-md-10">
+                                <!--Title-->
+                                <div class="row">
+                                    <h3>
+                                        <asp:Label ID="adTitle" runat="server" Text="Label"></asp:Label>
+                                    </h3>
+                                </div>
+                                <div class="row">
+                                    <ul>
+                                        <li>
+                                            <span class="fa fa-calendar"></span>&nbsp;<strong>Posted On:&nbsp;</strong><asp:Label ID="adPostedDate" runat="server" Text=""></asp:Label>
+                                        </li>
+                                    </ul>
+
+                                    <ul>
+                                        <li>
+                                            <span class="fa fa-comments"></span>&nbsp;<strong>Condition:&nbsp;</strong><asp:Label ID="adCondition" runat="server" Text=""></asp:Label>
+                                        </li>
+                                    </ul>
+
+                                    <ul>
+                                        <li>
+                                            <span class="fa fa-map-marker"></span>&nbsp;<strong>Location:&nbsp;</strong><asp:Label ID="adLoc" runat="server" Text=""></asp:Label>
+                                        </li>
+                                    </ul>
+
+                                    <ul>
+                                        <li>
+                                            <span class="fa fa-eye"></span>&nbsp;<strong>Views:&nbsp;</strong><asp:Label ID="adViews" runat="server" Text="Label"></asp:Label>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--Description-->
+                                <div class="row">
+                                    <p style="padding-top: 30px; color: #999">
+                                        <!--description-->
+                                        <asp:Label ID="adDesc" runat="server" Text="Label"></asp:Label>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -94,19 +121,26 @@
             <!--Section-II-->
             <div class="col-md-3">
                 <div class="rate">
-                    Rs 25,000
+                    <!--price-->
+                    <asp:Label ID="adPrice" runat="server" Text="Label"></asp:Label>
+                    <%--Rs 25,000--%>
                 </div>
                 <div class="information">
                     <span>
-                        <img src="images/boy.jpg" alt="photo">WAQAS</span>
+                        <img src="images/boy.jpg" width="74" height="72" alt="photo">
+                        <!--posted by-->
+                        <asp:Label ID="adPostedBy" runat="server" Text="Label"></asp:Label>
+                    </span>
                     <p>
                         <span>Away</span>
-                        <span>Active on site since 1 Month </span>
+                        <span>Active on site since 1 Month</span>
                         <span><a>User Ads</a></span>
                     </p>
                 </div>
                 <div class="information">
-                    <span><i class="fa fa-check-square-o"></i>+92 3367368396</span>
+                    <span><i class="fa fa-check-square-o"></i>
+                        <asp:Label ID="adContact" runat="server" Text="Label"></asp:Label>
+                    </span>
                 </div>
                 <div class="information">
                     <h4>Safety Tips for Buyers</h4>
