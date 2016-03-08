@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Services;
+using dubiclassified.dal;
 
 public partial class Post : System.Web.UI.Page
 {
@@ -137,7 +138,6 @@ public partial class Post : System.Web.UI.Page
     {
         try
         {
-
             int location;
             int category;
             int subCategory;

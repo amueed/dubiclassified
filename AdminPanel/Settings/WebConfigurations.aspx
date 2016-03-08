@@ -15,12 +15,6 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <strong>Settings</strong>
-                        <button type="button" class="btn-link pull-right" data-toggle="modal" data-target="#subCatModal" title="Add">
-                            <span class="fa fa-plus fa-fw"></span>
-                        </button>
-                        <button type="button" class="btn-link pull-right" title="Refresh">
-                            <span class="fa fa-refresh fa-fw"></span>
-                        </button>
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">

@@ -2,21 +2,18 @@
 using System.Data;
 using System.Data.SqlClient;
 
-public partial class Details : System.Web.UI.Page
+public partial class Details2 : System.Web.UI.Page
 {
     private static readonly string ConStr = System.Configuration.ConfigurationManager.ConnectionStrings["CS"].ToString();
     private DataTable _dt = new DataTable();
-
     protected void Page_Load(object sender, EventArgs e)
     {
         GetAdDetails();
     }
-
     private static SqlConnection GetObjCon()
     {
         return new SqlConnection(ConStr);
     }
-
     public void GetAdDetails()
     {
         try
@@ -41,7 +38,6 @@ public partial class Details : System.Web.UI.Page
             Response.Write(ex.Message);
         }
     }
-
     public void ShowDetails(DataTable dt)
     {
         try

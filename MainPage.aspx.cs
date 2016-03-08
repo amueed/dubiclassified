@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
-
+using dubiclassified.dal;
 public partial class MainPage : System.Web.UI.Page
 {
     private static string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["CS"].ToString();

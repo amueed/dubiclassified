@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Services;
+using dubiclassified.dal;
 
 public partial class AdminPanel_Locations : System.Web.UI.Page
 {
