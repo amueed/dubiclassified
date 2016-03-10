@@ -16,6 +16,13 @@ public partial class Post : System.Web.UI.Page
     DataTable dt = new DataTable();
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        if (Session["userLogin"] == null)
+        {
+            var returnURL = HttpContext.Current.Request.Url.ToString();
+            Response.Redirect("~/UserLogin.aspx?url=" + returnURL);
+        }
+
         GetLocations();
         GetCategories();
     }
@@ -189,6 +196,7 @@ public partial class Post : System.Web.UI.Page
             _obj.posted_date = postedDate;
             _obj.expire_date = expiryDate;
             _obj.views = 0;
+
             var db = GetObjDB();
             using (db)
             {

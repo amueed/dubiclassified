@@ -20,7 +20,7 @@ public partial class Main : System.Web.UI.MasterPage
         }
 
         //if session values is empty user will redirect to the Default.aspx page
-        if (Session["loc"] == null || Session["loc"] == "")
+        if (Session["loc"].ToString() == null || Session["loc"] == "")
         {
             Response.Redirect("~/Default.aspx");
         }
