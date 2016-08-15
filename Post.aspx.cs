@@ -7,22 +7,19 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Services;
-using dubiclassified.dal;
+using DubiClassified.DAL;
 
 public partial class Post : System.Web.UI.Page
 {
-    static string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["CS"].ToString();
     DataSet ds = new DataSet();
     DataTable dt = new DataTable();
     protected void Page_Load(object sender, EventArgs e)
     {
-
         if (Session["userLogin"] == null)
         {
             var returnURL = HttpContext.Current.Request.Url.ToString();
             Response.Redirect("~/UserLogin.aspx?url=" + returnURL);
         }
-
         GetLocations();
         GetCategories();
     }
@@ -32,7 +29,7 @@ public partial class Post : System.Web.UI.Page
     }
     private static SqlConnection GetObjCon()
     {
-        return new SqlConnection(conStr);
+        return new SqlConnection(DubiClassified.Settings.DatabaseSettings.GetConnectionString());
     }
     public void GetLocations()
     {
@@ -139,7 +136,6 @@ public partial class Post : System.Web.UI.Page
         {
             throw;
         }
-
     }
     protected void btnPost_Click(object sender, EventArgs e)
     {

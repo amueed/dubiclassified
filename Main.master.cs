@@ -20,7 +20,7 @@ public partial class Main : System.Web.UI.MasterPage
         }
 
         //if session values is empty user will redirect to the Default.aspx page
-        if (Session["loc"].ToString() == null || Session["loc"] == "")
+        if (Session["loc"] == null)
         {
             Response.Redirect("~/Default.aspx");
         }
@@ -110,9 +110,6 @@ public partial class Main : System.Web.UI.MasterPage
         {
             Response.Write(ex.Message);
         }
-        finally
-        {
-        }
     }
 
     public void LoadCategories()
@@ -123,7 +120,7 @@ public partial class Main : System.Web.UI.MasterPage
             {
                 dt = new DataTable();
                 string query = "SELECT category_id AS ID, category_name AS NAME FROM categories WHERE ISNULL(parent_id,'')='' AND ISNULL(deleted,0)=0";
-                SqlDataAdapter da = new SqlDataAdapter(query, db);
+                var da = new SqlDataAdapter(query, db);
                 da.Fill(dt);
             }
 
@@ -132,15 +129,12 @@ public partial class Main : System.Web.UI.MasterPage
             ddlCategories.DataSource = dt;
             ddlCategories.DataBind();
 
-            ListItem item = new ListItem("--Select Category--", "0");
+            var item = new ListItem("--Select Category--", "0");
             ddlCategories.Items.Insert(0, item);
         }
         catch (Exception ex)
         {
             Response.Write(ex.Message);
-        }
-        finally
-        {
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Services;
-using dubiclassified.dal;
+using DubiClassified.DAL;
 
 public partial class AdminPanel_Categories : System.Web.UI.Page
 {

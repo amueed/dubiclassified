@@ -2,10 +2,9 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
-using dubiclassified.dal;
+using DubiClassified.DAL;
 public partial class MainPage : System.Web.UI.Page
 {
-    private static string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["CS"].ToString();
     private DataSet ds = new DataSet();
 
     protected void Page_Load(object sender, EventArgs e)
@@ -20,7 +19,7 @@ public partial class MainPage : System.Web.UI.Page
 
     private static SqlConnection GetObjCon()
     {
-        return new SqlConnection(conStr);
+        return new SqlConnection(DubiClassified.Settings.DatabaseSettings.GetConnectionString());
     }
 
     public void GetCategories()
