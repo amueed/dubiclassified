@@ -20,7 +20,7 @@
 </head>
 <body>
     <!--Data Source for Locations-->
-    <asp:SqlDataSource ID="sdsLocations" runat="server" ConnectionString="<%$ ConnectionStrings:CS %>" SelectCommand="SELECT UPPER([location_id]) [location_id],UPPER([location_name]) [location_name] FROM locations" SelectCommandType="Text"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="sdsLocations" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT UPPER([location_id]) [location_id],UPPER([location_name]) [location_name] FROM locations" SelectCommandType="Text"></asp:SqlDataSource>
     <!--main wrapper start-->
     <div class="section first">
         <div class="container">
@@ -80,61 +80,9 @@
                                     <span>
                                         <img src="images/burji.jpg">
                                     </span>
-                                    <%#Eval("location_name")%>
-                                </a>
-                            </li>
+                                    &nbsp;<%#Eval("location_name")%></a></li>
                         </ItemTemplate>
                     </asp:Repeater>
-
-                    <%-- <li>
-                        <span>
-                            <img src="images/burji.jpg"></span>
-                        <a href="#">
-                            <p>Burj khalifa</p>
-                        </a>
-                    </li>
-                    <li>
-                        <span>
-                            <img src="images/dubhi-mall.jpg"></span>
-                        <a href="#">
-                            <p>Dubhi</p>
-                        </a>
-                    </li>
-                    <li>
-                        <span>
-                            <img src="images/oman.jpg"></span>
-                        <a href="#">
-                            <p>Oman</p>
-                        </a>
-                    </li>
-                    <li>
-                        <span>
-                            <img src="images/bahrain.jpg"></span>
-                        <a href="#">
-                            <p>Bahrain</p>
-                        </a>
-                    </li>
-                    <li>
-                        <span>
-                            <img src="images/qatar.jpg"></span>
-                        <a href="#">
-                            <p>Qatar</p>
-                        </a>
-                    </li>
-                    <li>
-                        <span>
-                            <img src="images/burji.jpg"></span>
-                        <a href="#">
-                            <p>Burj khalifa</p>
-                        </a>
-                    </li>
-                    <li>
-                        <span>
-                            <img src="images/dubhi-mall.jpg"></span>
-                        <a href="#">
-                            <p>Dubhi</p>
-                        </a>
-                    </li>--%>
                 </ul>
             </div>
         </div>

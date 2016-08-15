@@ -9,14 +9,13 @@ using System.Web.UI.WebControls;
 
 public partial class UserLogin : System.Web.UI.Page
 {
-    private static readonly string ConStr = System.Configuration.ConfigurationManager.ConnectionStrings["CS"].ToString();
     protected void Page_Load(object sender, EventArgs e)
     {
 
     }
     private static SqlConnection GetObjCon()
     {
-        return new SqlConnection(ConStr);
+        return new SqlConnection(DubiClassified.Settings.DatabaseSettings.GetConnectionString());
     }
     protected void btnLogin_Click(object sender, EventArgs e)
     {

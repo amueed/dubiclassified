@@ -5,8 +5,6 @@ using System.Web.UI.WebControls;
 
 public partial class Main : System.Web.UI.MasterPage
 {
-    private static string conStr = System.Configuration.ConfigurationManager.ConnectionStrings["CS"].ToString();
-
     //DataSet ds = new DataSet();
     private DataTable dt;
 
@@ -35,7 +33,7 @@ public partial class Main : System.Web.UI.MasterPage
 
     private static SqlConnection GetObjCon()
     {
-        return new SqlConnection(conStr);
+        return new SqlConnection(DubiClassified.Settings.DatabaseSettings.GetConnectionString());
     }
 
     public void LoadWebConfig()

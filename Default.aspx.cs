@@ -4,8 +4,6 @@ using System.Data.SqlClient;
 
 public partial class Locations : System.Web.UI.Page
 {
-    private SqlConnection con = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["CS"].ToString());
-
     protected void Page_Load(object sender, EventArgs e)
     {
         LoadWebConfig();
@@ -17,7 +15,7 @@ public partial class Locations : System.Web.UI.Page
         {
             DataTable dt = new DataTable();
             string query = "SELECT * FROM web_config";
-            SqlDataAdapter da = new SqlDataAdapter(query, con);
+            SqlDataAdapter da = new SqlDataAdapter(query, DubiClassified.Settings.DatabaseSettings.GetConnectionString());
             da.Fill(dt);
 
             foreach (DataRow row in dt.Rows)
